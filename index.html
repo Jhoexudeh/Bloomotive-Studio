@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-
+<html lang="en">
 <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SEO --> <title>Bloomotive | Brand Strategy, Identity & Digital Experiences
   </title> <meta name="description" content="Bloomotive is a global brand strategy and design studio
@@ -18,14 +17,9 @@
   <meta name="twitter:description" content="Bloomotive helps ambitious businesses build distinctive brands, 
     stronger positioning, and digital experiences that attract better clients." > <!-- Theme -->
   <meta name="theme-color" content="#0F1816"> <!-- Favicon --> 
-<!-- Favicon -->
 <link rel="icon" href="/images/bloomotive.png" type="images/png">
 <link rel="shortcut icon" href="/images/bloomotive.png" type="images/png"> <!-- Structured Data --> 
-  
-  
-  
-  
-  
+
   <script type="application/ld+json"> { "@context": "https://schema.org", "@type":
   "ProfessionalService", "name": "Bloomotive", "url": "https://tbmbrand.com/", "description": "Bloomotive is a global brand strategy and 
   design studio helping ambitious businesses build distinctive brands, stronger positioning, and digital experiences.",
@@ -42,19 +36,7 @@
 }
 </script>
 
-
-
-
-
-  
-
 </head>
-
-
-
-
-
-
 
 <style>
   /* ===== Reset ===== */
@@ -78,6 +60,7 @@
     --font-display:"Neue Haas Grotesk Display","Helvetica Neue",Helvetica,Arial,sans-serif;
     --font-body:"Neue Haas Grotesk Text","Helvetica Neue",Helvetica,Arial,sans-serif;
     --ease:cubic-bezier(.16,1,.3,1);
+    --ease-in-out:cubic-bezier(.77,0,.175,1);
   }
 
   body{
@@ -118,6 +101,34 @@
   .reveal-d3{transition-delay:.24s}
   .reveal-d4{transition-delay:.32s}
 
+  /* ===== Scroll progress ===== */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;width:0%;
+    background:var(--text);z-index:300;
+    transition:width .1s linear;
+  }
+
+  /* ===== Ambient hero glow (decorative, paused under reduced motion) ===== */
+  .hero-glow{
+    position:absolute;top:-10%;right:-10%;width:52vw;height:52vw;max-width:640px;max-height:640px;
+    background:radial-gradient(circle,rgba(17,17,17,.055),transparent 70%);
+    border-radius:50%;z-index:-1;pointer-events:none;
+    animation:heroDrift 16s var(--ease-in-out) infinite alternate;
+  }
+  @keyframes heroDrift{
+    0%{transform:translate(0,0) scale(1)}
+    100%{transform:translate(-4%,4%) scale(1.08)}
+  }
+
+  /* ===== Spotlight hover (cursor-tracked, pointer devices only) ===== */
+  .spotlight{position:relative}
+  .spotlight::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(17,17,17,.05),transparent 72%);
+    opacity:0;transition:opacity .5s var(--ease);
+  }
+  .spotlight.is-active::before{opacity:1}
+
   /* ===== Nav ===== */
   header{
     position:fixed;top:0;left:0;right:0;z-index:200;
@@ -153,11 +164,12 @@
     border:1px solid var(--text);border-radius:999px;
     padding:.6rem 1.3rem;font-size:.88rem;font-weight:500;
     transition:background .3s var(--ease),color .3s var(--ease);
+    white-space:nowrap;
   }
   .nav-cta:hover{background:var(--text);color:var(--bg-primary)}
   .nav-toggle{display:none}
 
-  @media (max-width:860px){
+  @media (max-width:900px){
     .nav-links{display:none}
     .nav-toggle{
       display:flex;flex-direction:column;gap:5px;width:22px;
@@ -168,7 +180,7 @@
   /* ===== Hero ===== */
   .hero{
     min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:9rem 6vw 4rem;position:relative;
+    padding:6rem 6vw 4rem;position:relative;
   }
   .hero-eyebrow{
     font-size:.82rem;color:var(--text-muted);letter-spacing:.06em;
@@ -193,34 +205,22 @@
   .btn-primary{
     background:var(--text);color:var(--bg-primary);
     padding:.95rem 1.9rem;border-radius:999px;font-size:.95rem;font-weight:500;
-    display:inline-flex;align-items:center;gap:.5rem;
+    display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;
     transition:transform .35s var(--ease),box-shadow .35s var(--ease);
   }
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(17,17,17,.18)}
+  .btn-primary:active{transform:translateY(0) scale(.97);transition:transform .12s var(--ease)}
   .btn-secondary{
     font-size:.95rem;font-weight:500;display:inline-flex;align-items:center;gap:.5rem;
-    position:relative;padding-bottom:3px;
+    position:relative;padding-bottom:3px;white-space:nowrap;
   }
   .btn-secondary::after{
     content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--text);
     transform:scaleX(1);transform-origin:left;transition:transform .35s var(--ease);
   }
   .btn-secondary:hover::after{transform:scaleX(0);transform-origin:right}
-
-  .scroll-cue{
-    position:absolute;bottom:2.4rem;left:6vw;
-    display:flex;align-items:center;gap:.7rem;color:var(--text-muted);font-size:.8rem;
-  }
-  .scroll-cue .line{
-    width:1px;height:38px;background:var(--text-muted);
-    animation:scrollcue 2.2s var(--ease) infinite;
-  }
-  @keyframes scrollcue{
-    0%{transform:scaleY(0);transform-origin:top}
-    50%{transform:scaleY(1);transform-origin:top}
-    50.01%{transform:scaleY(1);transform-origin:bottom}
-    100%{transform:scaleY(0);transform-origin:bottom}
-  }
+  .btn-secondary:active{transform:scale(.97);transition:transform .12s var(--ease)}
+  .nav-cta:active{transform:scale(.96);transition:transform .12s var(--ease)}
 
   /* ===== Section shell ===== */
   section{padding:7rem 0}
@@ -293,23 +293,58 @@
     padding:2.4rem 0;border-bottom:1px solid var(--line);
     align-items:baseline;
   }
-  .process-num{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--text-muted)}
+  .process-num{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--text-muted);transition:color .35s var(--ease)}
+  .process-item{transition:padding-left .4s var(--ease)}
+  .process-item:hover{padding-left:.6rem}
+  .process-item:hover .process-num{color:var(--text)}
   .process-item h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em;margin-bottom:.5rem}
   .process-item p{color:var(--text-muted);max-width:52ch;line-height:1.7}
 
-  /* ===== Services ===== */
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem}
-  .service-card{
+  /* ===== Offers (How We Work) ===== */
+  .offers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem}
+  .offer-card{
     background:var(--bg-secondary);border-radius:var(--radius-md);padding:2.6rem 2.2rem;
-    border:1px solid var(--line);
+    border:1px solid var(--line);display:flex;flex-direction:column;
   }
-  .service-card h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em;margin-bottom:1.6rem}
-  .service-card ul li{
-    display:flex;align-items:baseline;gap:.7rem;font-size:.94rem;color:var(--text-muted);
+  .offer-card.is-primary{border-color:var(--text)}
+  .offer-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
+  .offer-card h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em}
+  .offer-price{font-family:var(--font-display);font-weight:600;font-size:1.15rem;white-space:nowrap}
+  .offer-outcome{color:var(--text-muted);font-size:.96rem;line-height:1.65;margin-bottom:1.6rem}
+  .offer-card ul{margin-top:auto}
+  .offer-card ul li{
+    display:flex;align-items:baseline;gap:.7rem;font-size:.92rem;color:var(--text-muted);
     padding:.6rem 0;border-top:1px solid var(--line);
   }
-  .service-card ul li:first-child{border-top:none}
-  .service-card ul li::before{content:"—";color:var(--text)}
+  .offer-card ul li:first-child{border-top:none}
+  .offer-card ul li::before{content:"-";color:var(--text)}
+  .offers-cta{margin-top:2.4rem;display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
+  .offers-cta p{color:var(--text-muted);font-size:.88rem}
+
+  /* ===== Lead magnet ===== */
+  .lead-magnet{background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lead-magnet-inner{max-width:640px}
+  .lead-form{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
+  .lead-form input[type="email"]{
+    flex:1 1 260px;padding:.9rem 1.2rem;border-radius:999px;border:1px solid var(--line);
+    background:var(--bg-primary);color:var(--text);font:inherit;font-size:.95rem;
+  }
+  .lead-form input[type="email"]::placeholder{color:var(--text-muted)}
+  .lead-note{margin-top:1rem;font-size:.82rem;color:var(--text-muted)}
+
+  /* ===== Apply form ===== */
+  .apply-form{
+    text-align:left;max-width:520px;margin:2.6rem auto 0;
+    display:flex;flex-direction:column;gap:1.3rem;
+  }
+  .form-field{display:flex;flex-direction:column;gap:.5rem}
+  .form-field label{font-size:.82rem;color:rgba(247,245,240,.7)}
+  .form-field input,.form-field textarea{
+    background:var(--bg-primary);color:var(--text);border:1px solid transparent;border-radius:10px;
+    padding:.85rem 1rem;font:inherit;font-size:.95rem;resize:vertical;
+  }
+  .form-field textarea{min-height:120px}
+  .apply-form .btn-primary{align-self:flex-start;margin-top:.2rem}
 
   /* ===== About ===== */
   .about-inner{max-width:760px}
@@ -321,7 +356,9 @@
   .testi-card{
     background:var(--bg-primary);border:1px solid var(--line);border-radius:var(--radius-md);
     padding:2.2rem;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;
+    transition:transform .4s var(--ease),box-shadow .4s var(--ease);
   }
+  .testi-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(17,17,17,.08)}
   .testi-quote{font-size:1.02rem;line-height:1.7}
   .testi-who{margin-top:1.8rem;display:flex;align-items:center;gap:.8rem}
   .testi-avatar{
@@ -352,7 +389,7 @@
   }
   .faq-a p{color:var(--text-muted);padding-bottom:1.6rem;max-width:56ch;line-height:1.7}
 
-  /* ===== Final CTA ===== */
+  /* ===== Final CTA (Apply) ===== */
   .final-cta{
     background:var(--text);color:var(--bg-primary);border-radius:24px;
     margin:0 6vw;padding:5.5rem 6vw;text-align:center;
@@ -361,6 +398,7 @@
   .final-cta p{color:rgba(247,245,240,.7);max-width:44ch;margin:1.2rem auto 2.6rem;line-height:1.7}
   .final-cta .btn-primary{background:var(--bg-primary);color:var(--text)}
   .final-cta .btn-primary:hover{box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .final-cta .cta-note{margin:1.4rem 0 0;font-size:.86rem;color:rgba(247,245,240,.55)}
 
   /* ===== Footer ===== */
   footer{padding:5rem 0 3rem}
@@ -383,23 +421,24 @@
     .process-item{grid-template-columns:1fr;gap:.6rem}
     .trust .wrap{flex-direction:column;align-items:flex-start}
     .final-cta{margin:0 4vw;padding:4rem 5vw}
+    .offer-top{flex-direction:column;gap:.3rem}
   }
 </style>
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
 <header id="siteHeader">
   <nav aria-label="Primary">
     <a href="#" class="logo">Bloomotive</a>
     <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#how-we-work">How We Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <a href="#apply" class="nav-cta">Apply for an Audit</a>
     <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </nav>
 </header>
@@ -408,16 +447,13 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow reveal">Brand strategy · Identity · Digital</p>
-    <h1 class="reveal reveal-d1">Your business can be excellent and still be perceived as ordinary.</h1>
-    <p class="hero-sub reveal reveal-d2">Bloomotive closes that gap. We help ambitious businesses clarify what makes them valuable, position themselves to be chosen, and build brands that reflect where they're going not where they started.</p>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <p class="hero-eyebrow reveal">Brand Strategy, Identity, Digital</p>
+    <h1 class="reveal reveal-d1">You built something real. Most people still can't tell.</h1>
+    <p class="hero-sub reveal reveal-d2">Bloomotive closes that gap, engineering the positioning, identity, and digital experience your business has actually earned.</p>
     <div class="hero-actions reveal reveal-d3">
-      <a href="mailto:bloomotive@tbmbrand.com" class="btn-primary">Send a message <span aria-hidden="true">→</span></a>
-      <a href="#work" class="btn-secondary">See the Proof</a>
-    </div>
-    <div class="scroll-cue" aria-hidden="true">
-      <span class="line"></span>
-      <span>Scroll</span>
+      <a href="#apply" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></a>
+      <a href="#case-studies" class="btn-secondary">See the Work</a>
     </div>
   </section>
 
@@ -426,21 +462,21 @@
     <div class="wrap">
       <h3 class="reveal">We turn business value into perceived value.</h3>
       <div class="stat-row">
-        <div class="stat reveal reveal-d1"><div class="stat-num">10+</div><div class="stat-label">Brands Positioned</div></div>
-        <div class="stat reveal reveal-d2"><div class="stat-num">5★</div><div class="stat-label">Client Satisfaction</div></div>
-        <div class="stat reveal reveal-d3"><div class="stat-num">24hrs</div><div class="stat-label">Average Response</div></div>
-        <div class="stat reveal reveal-d4"><div class="stat-num">100%</div><div class="stat-label">Strategy-led work</div></div>
+        <div class="stat reveal reveal-d1"><div class="stat-num"><span class="count" data-target="10">0</span>+</div><div class="stat-label">Brands Positioned</div></div>
+        <div class="stat reveal reveal-d2"><div class="stat-num">5&#9733;</div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat reveal reveal-d3"><div class="stat-num"><span class="count" data-target="24">0</span>hrs</div><div class="stat-label">Average Response</div></div>
+        <div class="stat reveal reveal-d4"><div class="stat-num"><span class="count" data-target="100">0</span>%</div><div class="stat-label">Strategy-led work</div></div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED WORK -->
-  <section id="work">
+  <!-- CASE STUDIES -->
+  <section id="case-studies">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Selected work</p>
+        <p class="eyebrow">Case studies</p>
         <h2>Proof that positioning changes perception.</h2>
-        <p class="section-body">A sample of brand systems and digital experiences built to change how a business is seen, trusted, and chosen not just how it looks.</p>
+        <p class="section-body">Real businesses, real perception problems, and the strategy that closed the gap. Not just what the brand looks like, but what it now does for the business behind it.</p>
       </div>
       <div class="work-grid">
 
@@ -452,9 +488,9 @@
   </div>
 
   <div class="work-info">
-    <p class="tag">Real Estate · Brand Identity</p>
+    <p class="tag">Real Estate &middot; Brand Identity</p>
     <h3>AVENOR</h3>
-    <p>A mark built to signal permanence and trust before a single word is read.</p>
+    <p>Buyers had to trust the company before touring a single property. The new mark signals permanence before anyone reads a word.</p>
   </div>
 </a>
 
@@ -462,45 +498,45 @@
         <article class="work-card reveal reveal-d1">
           <div class="work-thumb"><img src="images/vanta.jpg" alt="Logo mark for VANTA" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">vanta</span></div>
           <div class="work-info">
-            <p class="tag">Design Agency · Brand Identity</p>
+            <p class="tag">Design Agency &middot; Brand Identity</p>
             <h3>VANTA</h3>
-            <p>Built to turn attention into trust, and trust into action.</p>
+            <p>A design agency competing for attention with no distinct point of view. The identity now turns that attention into follow-up calls.</p>
           </div>
         </article>
 
          <article class="work-card reveal reveal-d1">
           <div class="work-thumb"><img src="images/Jandjhairss.jpg" alt="Logo mark for JANDJHAIRSS" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">jandjhairss Co</span></div>
           <div class="work-info">
-            <p class="tag">Beauty & Personal Care · Logo Mark</p>
+            <p class="tag">Beauty & Personal Care &middot; Logo Mark</p>
             <h3>JANDJHAIRSS</h3>
-            <p>Where beauty meets prestige an identity that elevates every appointment into an experience.</p>
+            <p>A studio priced like the appointment came cheap. The new identity reads closer to the experience it actually delivers.</p>
           </div>
         </article>
 
         <article class="work-card reveal reveal-d2">
           <div class="work-thumb"><img src="images/evidiq.jpg" alt="Logo mark for EVIDIQ" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">evidiq</span></div>
           <div class="work-info">
-            <p class="tag">Audit & Advisory · Brand Identity</p>
+            <p class="tag">Audit & Advisory &middot; Brand Identity</p>
             <h3>EVIDIQ</h3>
-            <p>We turned financial complexity into a brand built on clarity and confidence.</p>
+            <p>Audit work is hard to explain and easy to distrust. We rebuilt the brand around clarity, so clients understand the value before the invoice.</p>
           </div>
         </article>
 
         <article class="work-card reveal">
           <div class="work-thumb"><img src="images/stratigen.jpg" alt="Logo mark for STRATIGEN" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">stratigen</span></div>
           <div class="work-info">
-            <p class="tag">Business Consulting · Brand Identity</p>
+            <p class="tag">Business Consulting &middot; Brand Identity</p>
             <h3>STRATIGEN</h3>
-            <p>A brand that turns business challenges into clear strategy, at first glance.</p>
+            <p>Strong thinking, forgettable name. The new brand states the strategy in the mark itself.</p>
           </div>
         </article>
 
         <article class="work-card reveal reveal-d1">
           <div class="work-thumb"><img src="images/mentorly.jpg" alt="Logo mark and brand system for MENTORLY" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">mentorly</span></div>
           <div class="work-info">
-            <p class="tag">Coaching · Brand Identity</p>
+            <p class="tag">Coaching &middot; Brand Identity</p>
             <h3>MENTORLY</h3>
-            <p>Learn the skill. Build the confidence. Create the career in three words on a mark.</p>
+            <p>One coaching brand among a hundred identical ones. We narrowed the whole business down to three words: learn, build, create.</p>
           </div>
         </article>
 
@@ -518,9 +554,9 @@
   </div>
 
   <div class="work-info">
-    <p class="tag">Skincare · Landing Page</p>
+    <p class="tag">Skincare &middot; Landing Page</p>
     <h3>AUREVIA</h3>
-    <p>Strategic identity paired with a digital experience engineered to convert.</p>
+    <p>A formulation good enough to sell itself, with no storefront built to prove it. The new page was engineered to convert on first visit.</p>
   </div>
 </article>
         
@@ -538,9 +574,9 @@
   </div>
 
   <div class="work-info">
-    <p class="tag">Business Consulting · Landing Page</p>
+    <p class="tag">Business Consulting &middot; Landing Page</p>
     <h3>ELEVATE CONSULTING</h3>
-    <p>Find your advantage. Build the strategy. Elevate your business.</p>
+    <p>Strong client results with no site built to prove them. The new page turns that track record into new inquiries.</p>
   </div>
 </article>    
          
@@ -552,15 +588,12 @@
   </div>
 
   <div class="work-info">
-    <p class="tag">Marine Technology · Brand Identity</p>
+    <p class="tag">Marine Technology &middot; Brand Identity</p>
     <h3>PELAGIC</h3>
-    <p>Turning complex data into clear decisions, smarter operations, and competitive edge.</p>
+    <p>Complex marine data with nothing to make it feel trustworthy to buyers. The identity now reads as precision, not noise.</p>
   </div>
 </a>      
-      
-      
-    
-      
+
       </div>
     </div>
   </section>
@@ -573,22 +606,38 @@
         <h2>Good design isn't decoration.<br>It's positioning.</h2>
       </div>
       <div class="why-grid">
-        <div class="why-card reveal">
+        <div class="why-card spotlight reveal">
           <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
-          <h3>Brand Strategy & Positioning</h3>
-          <p>We start by finding the truth about what makes your business valuable then build the story that makes it obvious to everyone else.</p>
+          <h3>Positioning First</h3>
+          <p>We find the truth about what makes your business valuable, then build the story that makes it obvious to everyone else.</p>
         </div>
-        <div class="why-card reveal reveal-d1">
+        <div class="why-card spotlight reveal reveal-d1">
           <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/></svg>
-          <h3>Distinctive Identity Design</h3>
-          <p>A logo and visual system built from research and reasoning, not trend-chasing one that signals value before a word is read.</p>
+          <h3>Identity Built to Last</h3>
+          <p>A visual system built from research and reasoning, not trend-chasing. One that signals value before a word is read.</p>
         </div>
-        <div class="why-card reveal reveal-d2">
+        <div class="why-card spotlight reveal reveal-d2">
           <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
-          <h3>High-Performing Digital Experiences</h3>
-          <p>Layout and copy engineered around one job: turning a visitor's attention into a next step, and that next step into revenue.</p>
+          <h3>Digital That Converts</h3>
+          <p>Layout and copy engineered around one job: turning a visitor's attention into a next step, and that step into revenue.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- LEAD MAGNET -->
+  <section class="lead-magnet" id="checklist">
+    <div class="wrap lead-magnet-inner">
+      <p class="eyebrow reveal">Free resource</p>
+      <h2 class="reveal reveal-d1">The Brand Perception Checklist</h2>
+      <p class="section-body reveal reveal-d2">Fifteen questions that show exactly where your brand is leaking trust, attention, or revenue, before you spend a dollar fixing it.</p>
+      <form class="lead-form reveal reveal-d3" id="checklistForm" novalidate>
+        <label for="checklistEmail" class="sr-only">Email address</label>
+        <input type="email" id="checklistEmail" name="email" placeholder="you@company.com" required autocomplete="email">
+        <button type="submit" class="btn-primary">Send Me the Checklist</button>
+      </form>
+      <p class="lead-note">We'll email the checklist directly. No spam, unsubscribe anytime.</p>
+      <!-- TODO: swap this form for your Kit (ConvertKit) embed to automate delivery -->
     </div>
   </section>
 
@@ -618,7 +667,7 @@
           <span class="process-num">03</span>
           <div>
             <h3>Design</h3>
-            <p>We build the identity and digital experience, reviewed together in working sessions not surprise reveals.</p>
+            <p>We build the identity and digital experience, reviewed together in working sessions, not surprise reveals.</p>
           </div>
         </div>
         <div class="process-item reveal reveal-d3">
@@ -632,33 +681,44 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" style="background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <!-- HOW WE WORK / OFFERS -->
+  <section id="how-we-work" style="background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Services</p>
-        <h2>Strategy. Positioning. Identity. Digital.</h2>
+        <p class="eyebrow">Work with us</p>
+        <h2>We don't do branding. We engineer advantage.</h2>
+        <p class="section-body">Every engagement starts the same way: naming exactly where perception is costing you, before we touch a single design file.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <h3>Brand Strategy & Identity</h3>
+      <div class="offers-grid">
+        <div class="offer-card spotlight reveal">
+          <div class="offer-top">
+            <h3>Brand Clarity Audit</h3>
+            <span class="offer-price">$150</span>
+          </div>
+          <p class="offer-outcome">A focused strategy session that names the perception leaks costing you clients, and what to fix first.</p>
           <ul>
-            <li>Positioning & messaging</li>
-            <li>Market & competitor research</li>
-            <li>Logo & visual identity system</li>
-            <li>Brand guidelines</li>
-            <li>Complete asset files</li>
+            <li>A 90-minute strategy session</li>
+            <li>Three specific perception leaks named</li>
+            <li>A written action plan you can run with alone</li>
           </ul>
         </div>
-        <div class="service-card reveal reveal-d1">
-          <h3>Digital Experience Design</h3>
+        <div class="offer-card is-primary spotlight reveal reveal-d1">
+          <div class="offer-top">
+            <h3>Brand Advantage Program</h3>
+            <span class="offer-price">From $1,200</span>
+          </div>
+          <p class="offer-outcome">A fully engineered brand ecosystem built to make you the obvious choice in your category.</p>
           <ul>
-            <li>Conversion-focused UX</li>
-            <li>Strategic copy & layout</li>
-            <li>Responsive web design</li>
-            <li>Built to perform, not just impress</li>
+            <li>Full positioning and messaging rebuild</li>
+            <li>Complete visual identity system</li>
+            <li>A digital experience built to convert</li>
+            <li>90 days of implementation support</li>
           </ul>
         </div>
+      </div>
+      <div class="offers-cta reveal reveal-d2">
+        <a href="#apply" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></a>
+        <p>Pricing shown in USD. Local currency invoicing available on request.</p>
       </div>
     </div>
   </section>
@@ -667,13 +727,11 @@
   <section id="about">
     <div class="wrap">
       <div class="section-head reveal" style="margin-bottom:2.4rem">
-        <p class="eyebrow">About Bloomotive</p>
+        <p class="eyebrow">Why Bloomotive exists</p>
       </div>
       <div class="about-inner reveal">
-        <p>Bloomotive exists to turn business value into perceived value.</p>
-        <p>Your business can be excellent and still be perceived as ordinary. We help ambitious businesses clarify what makes them valuable, position themselves to be chosen, 
-          and build brands that reflect where they're going not where they started. We combine brand strategy, distinctive identity, 
-          and high-performing digital experiences into one system. We don't just make businesses look better. We make them easier to understand, trust, and choose.</p>
+        <p>We started Bloomotive after watching good businesses lose to worse ones that simply looked more certain.</p>
+        <p>Great execution doesn't sell itself. We've watched founders and operators build genuinely strong businesses and still get passed over, not because the work was weak, but because the perception around it hadn't caught up. Bloomotive exists to close that gap: to engineer the positioning, identity, and digital experience a business has actually earned. We believe perception is the new battlefield, and advantage can be engineered.</p>
       </div>
     </div>
   </section>
@@ -726,7 +784,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Questions</p>
-        <h2>Before you reach out.</h2>
+        <h2>Before you apply.</h2>
       </div>
       <div class="faq-list reveal">
         <div class="faq-item" data-open="false">
@@ -736,6 +794,15 @@
           </button>
           <div class="faq-a">
             <p>Brand strategy and identity projects typically run one to two weeks. A digital experience runs three to four weeks. Timelines depend on how quickly feedback moves.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-open="false">
+          <button class="faq-q" aria-expanded="false">
+            Is the audit a sales pitch?
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a">
+            <p>No. It's a strategic review of your positioning. If we see a fit, we'll invite you into the process. If we don't, you'll still leave with a clear list of what to fix.</p>
           </div>
         </div>
         <div class="faq-item" data-open="false">
@@ -772,13 +839,28 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section id="contact">
+  <!-- APPLY -->
+  <section id="apply">
     <div class="final-cta reveal">
-      <p class="eyebrow" style="color:rgba(247,245,240,.6)">Get in touch</p>
+      <p class="eyebrow" style="color:rgba(247,245,240,.6)">Apply for an audit</p>
       <h2>Ready to be perceived at the level you actually operate?</h2>
-      <p>Tell us about the business and where it's going. We'll reply within 24 hours with next steps.</p>
-      <a href="mailto:bloomotive@tbmbrand.com" class="btn-primary">Tell us about your Business <span aria-hidden="true">→</span></a>
+      <p>Tell us about the business, the industry, and the one thing that isn't converting. We reply within 24 hours with next steps.</p>
+      <form class="apply-form" id="applyForm" novalidate>
+        <div class="form-field">
+          <label for="applyName">Name</label>
+          <input type="text" id="applyName" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="applyCompany">Company or startup</label>
+          <input type="text" id="applyCompany" name="company" required autocomplete="organization">
+        </div>
+        <div class="form-field">
+          <label for="applyChallenge">What's the one thing that isn't converting the way it should?</label>
+          <textarea id="applyChallenge" name="challenge" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></button>
+      </form>
+      <p class="cta-note">This isn't a sales call. It's a strategic review. Submitting opens your email client with these details filled in.</p>
     </div>
   </section>
 
@@ -790,50 +872,39 @@
       <div class="footer-logo">Bloomotive</div>
       <div class="footer-cols">
         <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">Brand strategy & identity</a></li>
-            <li><a href="#services">Digital experiences</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
           <h4>Studio</h4>
           <ul>
-            <li><a href="#work">Work</a></li>
+            <li><a href="#case-studies">Case studies</a></li>
+            <li><a href="#how-we-work">How we work</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="#checklist">Free checklist</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="bloomotive@tbmbrand.com">bloomotive@tbmbrand.com</a></li>
+            <li><a href="mailto:bloomotive@tbmbrand.com">bloomotive@tbmbrand.com</a></li>
+            <li><a href="#apply">Apply for an audit</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Bloomotive. All rights reserved.</p>
+      <p>&copy; 2026 Bloomotive. All rights reserved.</p>
       <div class="social-row">
-       
-        
     <a href="https://www.instagram.com/thebloomotive/"
    aria-label="Bloomotive on Instagram"
    target="_blank"
    rel="noopener noreferrer">
   Instagram
 </a>    
-        
    <a href="https://www.linkedin.com/company/bloomotive"
    aria-label="Bloomotive on LinkedIn"
    target="_blank"
    rel="noopener noreferrer">
   LinkedIn
-</a>     
-        
-      
-      
-        <!-- <a href="#" aria-label="Bloomotive on X">X</a> -->
+</a>
       </div>
     </div>
   </div>
@@ -860,6 +931,56 @@
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   revealEls.forEach(el => io.observe(el));
+
+  // Scroll progress bar
+  const scrollProgress = document.getElementById('scrollProgress');
+  const updateScrollProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    scrollProgress.style.width = pct + '%';
+  };
+  document.addEventListener('scroll', updateScrollProgress, { passive: true });
+  window.addEventListener('resize', updateScrollProgress);
+  updateScrollProgress();
+
+  // Count-up on the trust stats, once each is in view
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('.count');
+  const easeOutCount = (t) => 1 - Math.pow(1 - t, 3);
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10) || 0;
+      countIo.unobserve(el);
+      if (prefersReducedMotion) {
+        el.textContent = target;
+        return;
+      }
+      const duration = 900;
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(target * easeOutCount(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.6 });
+  countEls.forEach((el) => countIo.observe(el));
+
+  // Spotlight hover: track pointer position on cursor-tracked cards
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.spotlight').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
+        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
+        card.classList.add('is-active');
+      });
+      card.addEventListener('pointerleave', () => card.classList.remove('is-active'));
+    });
+  }
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -897,6 +1018,51 @@
     navLinks.style.gap = '1.2rem';
     navToggle.setAttribute('aria-expanded', String(!open));
   });
+
+  // In-page anchor scrolling, handled manually so links always scroll
+  // within this page instead of relying on native hash navigation.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      const id = this.getAttribute('href').slice(1);
+      if (!id) return; // href="#" (logo) keeps default top-of-page behavior
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Apply form: opens the visitor's email client with their details filled in
+  const applyForm = document.getElementById('applyForm');
+  if (applyForm) {
+    applyForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('applyName').value.trim();
+      const company = document.getElementById('applyCompany').value.trim();
+      const challenge = document.getElementById('applyChallenge').value.trim();
+      const subject = encodeURIComponent('Brand Clarity Audit Application - ' + company);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\nCompany or startup: ' + company + '\n\nThe challenge:\n' + challenge
+      );
+      window.location.href = 'mailto:bloomotive@tbmbrand.com?subject=' + subject + '&body=' + body;
+    });
+  }
+
+  // Checklist form: requests the free resource by email
+  const checklistForm = document.getElementById('checklistForm');
+  if (checklistForm) {
+    checklistForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('checklistEmail').value.trim();
+      const subject = encodeURIComponent('Send me the Brand Perception Checklist');
+      const body = encodeURIComponent('Please send the checklist to: ' + email);
+      window.location.href = 'mailto:bloomotive@tbmbrand.com?subject=' + subject + '&body=' + body;
+    });
+  }
 </script>
 
 </body>
