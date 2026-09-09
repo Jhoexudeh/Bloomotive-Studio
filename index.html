@@ -1,1068 +1,1396 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO --> <title>Bloomotive | Brand Strategy, Identity & Digital Experiences
-  </title> <meta name="description" content="Bloomotive is a global brand strategy and design studio
-             helping ambitious businesses build distinctive brands, stronger positioning, and
-             digital experiences that attract better clients." > <meta name="robots" content="index, follow"> 
-  <link rel="canonical" href="https://tbmbrand.com/">
-  <!-- Open Graph --> 
-  <meta property="og:title" content="Bloomotive | Brand Strategy, Identity & Digital Experiences">
-  <meta property="og:description" content="Your business can be excellent and still be perceived as ordinary. 
-    Bloomotive helps ambitious businesses build brands that are easier to understand, trust, and choose." > 
-  <meta property="og:type" content="website"> <meta property="og:url"
-  content="https://tbmbrand.com/"> <meta property="og:site_name" content="Bloomotive"> <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image"> 
-  <meta name="twitter:title" content="Bloomotive | Brand Strategy, Identity & Digital Experiences" >
-  <meta name="twitter:description" content="Bloomotive helps ambitious businesses build distinctive brands, 
-    stronger positioning, and digital experiences that attract better clients." > <!-- Theme -->
-  <meta name="theme-color" content="#0F1816"> <!-- Favicon --> 
-<link rel="icon" href="/images/bloomotive.png" type="images/png">
-<link rel="shortcut icon" href="/images/bloomotive.png" type="images/png"> <!-- Structured Data --> 
-
-  <script type="application/ld+json"> { "@context": "https://schema.org", "@type":
-  "ProfessionalService", "name": "Bloomotive", "url": "https://tbmbrand.com/", "description": "Bloomotive is a global brand strategy and 
-  design studio helping ambitious businesses build distinctive brands, stronger positioning, and digital experiences.",
-  "areaServed": "Worldwide", "serviceType": [ "Brand Strategy", "Brand Positioning", "Brand Identity Design",
-  "Logo Design", "Web Design", "Landing Page Design" ] } </script> 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Bloomotive",
-  "alternateName": "Bloomotive Studio",
-  "url": "https://tbmbrand.com/"
-}
-</script>
-
-</head>
-
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloomotive | Strategic Brand Studio</title>
+<meta name="description" content="Bloomotive helps ambitious businesses sharpen their positioning, elevate their identity, and build digital experiences that make their value easier to see, trust, and choose.">
+<meta property="og:title" content="Bloomotive | Strategic Brand Studio">
+<meta property="og:description" content="A strategic brand studio for businesses that have outgrown how they're perceived. Positioning, identity, and digital experience — built as one system.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bloomotive | Strategic Brand Studio">
+<meta name="twitter:description" content="Your business has grown. Your brand should look like it.">
+<link rel="canonical" href="https://www.bloomotive.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  Display typeface: Suisse Screen Trial (Swiss Typefaces) is a licensed
+  commercial font — it isn't distributed on Google Fonts and can't be
+  embedded here without your license files. The stack below will render
+  Suisse Screen if it's installed locally on the viewing machine; everyone
+  else falls back to Helvetica Neue / Arial, which shares its grotesk
+  proportions closely. Send over the .woff2 files (or a link to your
+  Suisse Screen license) and I'll self-host it with a proper @font-face
+  so it renders correctly for every visitor.
+-->
 <style>
-  /* ===== Reset ===== */
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
-  button{font:inherit;cursor:pointer;background:none;border:none}
-  ul{list-style:none}
+/* ============================================================
+   BLOOMOTIVE — DESIGN TOKENS
+   Editorial strategic-studio system. Warm paper ground, near-
+   black ink, a single deep botanical-green accent used sparingly.
+   No gradients, no shadows-as-decoration, no glassmorphism.
+   ============================================================ */
+:root{
+  /* Brand palette — primary, secondary, paper, as supplied */
+  --paper:      #F7F5F0;   /* brand paper */
+  --paper-2:    #EDEAE1;   /* soft stone section band, tinted from paper */
+  --paper-3:    #E2DED2;   /* deeper stone, hairlines on stone */
+  --ink:        #0F1816;   /* brand primary */
+  --ink-soft:   #4B534F;   /* secondary text — ink softened toward paper */
+  --ink-faint:  #868E8A;
+  --line:       #DAD6CB;   /* hairline on paper */
+  --line-soft:  #E6E3D9;
+  --accent:     #A694D4;   /* brand secondary — fills, borders, on-dark text/accents */
+  --accent-deep:#6C5A9C;   /* secondary darkened for legible text on paper (WCAG AA) */
+  --accent-2:   #8F7BC4;   /* accent hover state */
+  --dark:       #0F1816;   /* brand primary doubles as the dark section ground */
+  --dark-line:  #24312D;
+  --dark-ink:   #F7F5F0;   /* paper, used as text on dark */
+  --dark-soft:  #97A19C;
 
-  /* ===== Tokens ===== */
-  :root{
-    --bg-primary:#F7F5F0;
-    --bg-secondary:#E6E3DE;
-    --text:#111111;
-    --text-muted:#6B6B6B;
-    --accent:#111111;
-    --line:#D8D5CE;
-    --radius-md:14px;
-    --radius-sm:8px;
-    --font-display:"Neue Haas Grotesk Display","Helvetica Neue",Helvetica,Arial,sans-serif;
-    --font-body:"Neue Haas Grotesk Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-    --ease:cubic-bezier(.16,1,.3,1);
-    --ease-in-out:cubic-bezier(.77,0,.175,1);
-  }
+  --display:    "Suisse Screen Trial", "Suisse Works", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, sans-serif;
+  --sans:       'Manrope', ui-sans-serif, system-ui, sans-serif;
 
-  body{
-    background:var(--bg-primary);
-    color:var(--text);
-    font-family:var(--font-body);
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+  --maxw: 1240px;
+  --pad: clamp(20px, 4vw, 64px);
+  --r-sm: 3px;
+  --r-md: 6px;
 
-  ::selection{background:var(--text);color:var(--bg-primary)}
+  --ease: cubic-bezier(.22,.68,0,1);
+}
 
-  .wrap{max-width:1200px;margin:0 auto;padding:0 6vw}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+input,textarea,select{font:inherit;color:inherit;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4,p{margin:0;}
 
-  /* focus visibility */
-  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
-    outline:2px solid var(--text);
-    outline-offset:3px;
-    border-radius:4px;
-  }
+:focus-visible{
+  outline:2px solid var(--accent-deep);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.dark :focus-visible, .on-dark :focus-visible{outline-color:var(--accent);}
 
-  /* reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
-  }
+.skip-link{
+  position:absolute; left:12px; top:-60px;
+  background:var(--ink); color:var(--paper);
+  padding:12px 18px; border-radius:var(--r-sm);
+  z-index:999; transition:top .2s var(--ease);
+  font-weight:600; font-size:14px;
+}
+.skip-link:focus{top:12px;}
 
-  .sr-only{
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
-  }
+.wrap{max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad);}
 
-  /* ===== Reveal ===== */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-  .reveal.is-visible{opacity:1;transform:translateY(0)}
-  .reveal-d1{transition-delay:.08s}
-  .reveal-d2{transition-delay:.16s}
-  .reveal-d3{transition-delay:.24s}
-  .reveal-d4{transition-delay:.32s}
+/* ---- type scale ---- */
+.eyebrow{
+  font-family:var(--sans); font-weight:700; font-size:12.5px;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--ink-faint);
+}
+.on-dark .eyebrow{color:var(--dark-soft);}
+h1,.h1{
+  font-family:var(--display); font-weight:500; letter-spacing:-.02em;
+  font-size:clamp(40px, 6vw, 78px); line-height:.96;
+}
+h2,.h2{
+  font-family:var(--display); font-weight:500; letter-spacing:-.015em;
+  font-size:clamp(30px, 4vw, 50px); line-height:1.04;
+}
+h3,.h3{
+  font-family:var(--display); font-weight:500; letter-spacing:-.01em;
+  font-size:clamp(22px, 2.6vw, 30px); line-height:1.14;
+}
+.italic{font-style:italic; font-weight:500; color:var(--accent-deep);}
+.on-dark .italic{color:var(--accent);}
+.lede{
+  font-family:var(--sans); font-weight:500; font-size:clamp(17px,1.7vw,20px);
+  color:var(--ink-soft); line-height:1.55; max-width:46ch;
+}
+.body-text{font-size:16px; color:var(--ink-soft); line-height:1.65; max-width:56ch;}
+.num{font-family:var(--display); font-weight:400; font-style:italic;}
 
-  /* ===== Scroll progress ===== */
-  .scroll-progress{
-    position:fixed;top:0;left:0;height:2px;width:0%;
-    background:var(--text);z-index:300;
-    transition:width .1s linear;
-  }
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--sans); font-weight:700; font-size:14.5px;
+  padding:14px 24px; border-radius:999px;
+  transition:transform .35s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{background:var(--accent); color:var(--ink);}
+.btn-primary:hover{background:var(--accent-2); color:var(--ink); transform:translateY(-2px);}
+.btn-primary:active{transform:translateY(0);}
+.btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+.btn-ghost:hover{border-color:var(--accent-deep); color:var(--accent-deep); transform:translateY(-2px);}
+.on-dark .btn-primary{background:var(--accent); color:var(--dark);}
+.on-dark .btn-primary:hover{background:#BBAADF;}
+.on-dark .btn-ghost{border-color:var(--dark-ink); color:var(--dark-ink);}
+.on-dark .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+.btn-arrow{transition:transform .35s var(--ease);}
+.btn:hover .btn-arrow{transform:translateX(3px);}
+.btn-text{
+  display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:15px;
+  border-bottom:1.5px solid var(--line); padding-bottom:3px;
+  transition:border-color .25s var(--ease), color .25s var(--ease), gap .25s var(--ease);
+}
+.btn-text:hover{border-color:var(--accent-deep); color:var(--accent-deep); gap:11px;}
+.on-dark .btn-text{border-color:var(--dark-line); color:var(--dark-ink);}
+.on-dark .btn-text:hover{border-color:var(--accent); color:var(--accent);}
 
-  /* ===== Ambient hero glow (decorative, paused under reduced motion) ===== */
-  .hero-glow{
-    position:absolute;top:-10%;right:-10%;width:52vw;height:52vw;max-width:640px;max-height:640px;
-    background:radial-gradient(circle,rgba(17,17,17,.055),transparent 70%);
-    border-radius:50%;z-index:-1;pointer-events:none;
-    animation:heroDrift 16s var(--ease-in-out) infinite alternate;
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  background:rgba(247,245,240,.86); backdrop-filter:blur(10px) saturate(120%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease), background .3s var(--ease);
+}
+.site-header.scrolled{border-bottom-color:var(--line);}
+.header-row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:76px;
+}
+.logo{
+  font-family:var(--display); font-size:21px; font-weight:500; letter-spacing:-.01em;
+}
+.logo em{font-style:italic; color:var(--accent-deep);}
+.site-footer .logo em{color:var(--accent);}
+.main-nav{display:flex; align-items:center; gap:38px;}
+.nav-links{display:flex; gap:32px;}
+.nav-links a{
+  font-size:14.5px; font-weight:600; color:var(--ink-soft); position:relative; padding:4px 0;
+  transition:color .2s;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; right:100%; bottom:0; height:1.5px; background:var(--accent-deep);
+  transition:right .3s var(--ease);
+}
+.nav-links a:hover, .nav-links a[aria-current="page"]{color:var(--ink);}
+.nav-links a:hover::after, .nav-links a[aria-current="page"]::after{right:0;}
+.nav-cta{display:flex; align-items:center; gap:18px;}
+.menu-toggle{display:none;}
+@media (max-width: 860px){
+  .nav-links{display:none;}
+  .nav-cta .btn-primary span.long{display:none;}
+  .menu-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border:1.5px solid var(--ink); border-radius:50%;
   }
-  @keyframes heroDrift{
-    0%{transform:translate(0,0) scale(1)}
-    100%{transform:translate(-4%,4%) scale(1.08)}
-  }
+  .menu-toggle .bars{width:16px; position:relative; height:10px;}
+  .menu-toggle .bars span{position:absolute; left:0; right:0; height:1.5px; background:var(--ink); transition:transform .3s var(--ease), opacity .2s;}
+  .menu-toggle .bars span:first-child{top:0;}
+  .menu-toggle .bars span:last-child{bottom:0;}
+  .menu-toggle[aria-expanded="true"] .bars span:first-child{transform:translateY(4.5px) rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] .bars span:last-child{transform:translateY(-4.5px) rotate(-45deg);}
+}
+.mobile-menu{
+  position:fixed; inset:76px 0 0 0; background:var(--paper); z-index:190;
+  padding:32px var(--pad) 40px; transform:translateY(-8px); opacity:0; pointer-events:none;
+  transition:opacity .28s var(--ease), transform .28s var(--ease);
+  border-top:1px solid var(--line);
+}
+.mobile-menu.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+.mobile-menu a{display:block; font-family:var(--display); font-size:34px; padding:14px 0; border-bottom:1px solid var(--line);}
+.mobile-menu .btn-primary{margin-top:28px;}
 
-  /* ===== Spotlight hover (cursor-tracked, pointer devices only) ===== */
-  .spotlight{position:relative}
-  .spotlight::before{
-    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-    background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),rgba(17,17,17,.05),transparent 72%);
-    opacity:0;transition:opacity .5s var(--ease);
-  }
-  .spotlight.is-active::before{opacity:1}
+/* ============================================================
+   PAGE / LAYOUT MACHINERY
+   ============================================================ */
+main{padding-top:76px;}
+.page{display:none;}
+.page.is-active{display:block;}
+.section{padding:clamp(64px,9vw,128px) 0;}
+.section-tight{padding:clamp(48px,6vw,84px) 0;}
+.on-stone{background:var(--paper-2);}
+.on-dark{background:var(--dark); color:var(--dark-ink);}
+.on-dark .body-text, .on-dark .lede{color:var(--dark-soft);}
+.hairline{border-top:1px solid var(--line);}
+.on-dark .hairline{border-top-color:var(--dark-line);}
 
-  /* ===== Nav ===== */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:200;
-    transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
-    border-bottom:1px solid transparent;
-  }
-  header.scrolled{
-    background:rgba(247,245,240,.82);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.4rem 6vw;
-  }
-  .logo{
-    font-family:var(--font-display);
-    font-weight:600;font-size:1.15rem;letter-spacing:-0.02em;
-  }
-  .nav-links{display:flex;align-items:center;gap:2.4rem}
-  .nav-links li a{
-    position:relative;font-size:.92rem;color:var(--text);
-    padding-bottom:3px;
-  }
-  .nav-links li a::after{
-    content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
-    background:var(--text);transform:scaleX(0);transform-origin:right;
-    transition:transform .35s var(--ease);
-  }
-  .nav-links li a:hover::after{transform:scaleX(1);transform-origin:left}
-  .nav-cta{
-    border:1px solid var(--text);border-radius:999px;
-    padding:.6rem 1.3rem;font-size:.88rem;font-weight:500;
-    transition:background .3s var(--ease),color .3s var(--ease);
-    white-space:nowrap;
-  }
-  .nav-cta:hover{background:var(--text);color:var(--bg-primary)}
-  .nav-toggle{display:none}
+.grid-2{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,5vw,80px); align-items:start;}
+@media (max-width:820px){.grid-2{grid-template-columns:1fr;}}
 
-  @media (max-width:900px){
-    .nav-links{display:none}
-    .nav-toggle{
-      display:flex;flex-direction:column;gap:5px;width:22px;
-    }
-    .nav-toggle span{display:block;width:100%;height:1.5px;background:var(--text)}
-  }
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+.reveal.in-view{opacity:1; transform:none;}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1; transform:none; transition:none;}
+  *{scroll-behavior:auto !important;}
+}
+html{scroll-behavior:smooth;}
 
-  /* ===== Hero ===== */
-  .hero{
-    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:6rem 6vw 4rem;position:relative;
-  }
-  .hero-eyebrow{
-    font-size:.82rem;color:var(--text-muted);letter-spacing:.06em;
-    text-transform:uppercase;margin-bottom:1.6rem;
-    display:flex;align-items:center;gap:.6rem;
-  }
-  .hero-eyebrow::before{
-    content:"";width:6px;height:6px;border-radius:50%;background:var(--text);display:inline-block;
-  }
-  h1{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:clamp(2.4rem,6vw,5.2rem);
-    line-height:1.02;letter-spacing:-0.035em;
-    max-width:15ch;
-  }
-  .hero-sub{
-    margin-top:2rem;font-size:clamp(1rem,1.6vw,1.2rem);color:var(--text-muted);
-    max-width:44ch;line-height:1.65;
-  }
-  .hero-actions{display:flex;align-items:center;gap:1.6rem;margin-top:2.8rem;flex-wrap:wrap}
-  .btn-primary{
-    background:var(--text);color:var(--bg-primary);
-    padding:.95rem 1.9rem;border-radius:999px;font-size:.95rem;font-weight:500;
-    display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;
-    transition:transform .35s var(--ease),box-shadow .35s var(--ease);
-  }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(17,17,17,.18)}
-  .btn-primary:active{transform:translateY(0) scale(.97);transition:transform .12s var(--ease)}
-  .btn-secondary{
-    font-size:.95rem;font-weight:500;display:inline-flex;align-items:center;gap:.5rem;
-    position:relative;padding-bottom:3px;white-space:nowrap;
-  }
-  .btn-secondary::after{
-    content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--text);
-    transform:scaleX(1);transform-origin:left;transition:transform .35s var(--ease);
-  }
-  .btn-secondary:hover::after{transform:scaleX(0);transform-origin:right}
-  .btn-secondary:active{transform:scale(.97);transition:transform .12s var(--ease)}
-  .nav-cta:active{transform:scale(.96);transition:transform .12s var(--ease)}
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  padding:clamp(120px,16vw,190px) 0 clamp(60px,8vw,96px);
+  position:relative;
+}
+.hero-eyebrow-row{
+  display:flex; align-items:center; gap:14px; margin-bottom:26px;
+}
+.hero-eyebrow-row .rule{width:34px; height:1.5px; background:var(--accent-deep);}
+.hero h1{max-width:15ch;}
+.hero-line{display:block; overflow:hidden;}
+.hero-line span{display:inline-block; will-change:transform;}
+.hero-foot{
+  display:grid; grid-template-columns:1.2fr .8fr; gap:48px; margin-top:46px; align-items:end;
+}
+@media (max-width:760px){.hero-foot{grid-template-columns:1fr; gap:28px;}}
+.hero-actions{display:flex; flex-wrap:wrap; gap:16px; margin-top:30px;}
+.hero-meta{font-size:13.5px; color:var(--ink-faint); border-left:1.5px solid var(--line); padding-left:16px; line-height:1.6;}
 
-  /* ===== Section shell ===== */
-  section{padding:7rem 0}
-  .section-head{max-width:640px;margin-bottom:3.6rem}
-  .eyebrow{
-    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);
-    margin-bottom:1rem;
-  }
-  h2{
-    font-family:var(--font-display);font-weight:600;
-    font-size:clamp(1.8rem,3.6vw,2.7rem);letter-spacing:-0.025em;line-height:1.1;
-  }
-  .section-body{color:var(--text-muted);margin-top:1.1rem;font-size:1.02rem;max-width:52ch;line-height:1.7}
+/* ============================================================
+   PERCEPTION GAP / STATEMENT SECTIONS
+   ============================================================ */
+.statement h2{max-width:16ch;}
+.statement-grid{display:grid; grid-template-columns:auto 1fr; gap:clamp(24px,6vw,90px);}
+@media (max-width:760px){.statement-grid{grid-template-columns:1fr;}}
+.gap-diagram{
+  display:flex; align-items:center; gap:0; margin-top:40px; max-width:520px;
+}
+.gap-node{
+  font-family:var(--display); font-style:italic; font-size:15px; color:var(--ink-soft);
+  border:1px solid var(--line); border-radius:999px; padding:10px 20px; white-space:nowrap;
+}
+.gap-connector{flex:1; height:1px; background:repeating-linear-gradient(90deg,var(--ink-faint) 0 6px,transparent 6px 12px); margin:0 10px; position:relative;}
+.gap-connector::after{content:'closing the gap'; position:absolute; top:-22px; left:50%; transform:translateX(-50%); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); white-space:nowrap;}
 
-  /* ===== Trust strip ===== */
-  .trust{background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .trust .wrap{
-    display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;align-items:center;padding:3.4rem 6vw;
-  }
-  .trust h3{
-    font-family:var(--font-display);font-weight:500;font-size:clamp(1.3rem,2.6vw,1.9rem);
-    letter-spacing:-0.02em;max-width:16ch;
-  }
-  .stat-row{display:flex;gap:2.6rem;flex-wrap:wrap}
-  .stat{min-width:90px}
-  .stat-num{font-family:var(--font-display);font-weight:600;font-size:1.9rem;letter-spacing:-0.02em}
-  .stat-label{font-size:.8rem;color:var(--text-muted);margin-top:.3rem}
+/* ============================================================
+   CAPABILITY / SERVICE ROWS (What we do)
+   ============================================================ */
+.capability-list{margin-top:56px; border-top:1px solid var(--line);}
+.capability-row{
+  display:grid; grid-template-columns:100px 1fr 1.1fr; gap:32px; padding:36px 0;
+  border-bottom:1px solid var(--line); align-items:start;
+}
+@media (max-width:820px){.capability-row{grid-template-columns:56px 1fr; }
+  .capability-row .cap-desc{grid-column:1/-1;}
+}
+.cap-num{font-family:var(--display); font-style:italic; font-size:22px; color:var(--ink-faint);}
+.cap-title{font-family:var(--display); font-size:clamp(24px,2.6vw,32px);}
+.cap-desc{font-size:15.5px; color:var(--ink-soft); max-width:44ch; padding-top:6px;}
 
-  /* ===== Work grid ===== */
-  .work-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;
-  }
-  .work-card{
-    background:var(--bg-secondary);border-radius:var(--radius-md);overflow:hidden;
-    border:1px solid var(--line);
-    transition:transform .5s var(--ease),box-shadow .5s var(--ease);
-  }
-  .work-card:hover{transform:translateY(-6px);box-shadow:0 22px 40px rgba(17,17,17,.09)}
-  .work-thumb{
-    aspect-ratio:4/3;background:
-      repeating-linear-gradient(135deg,#DEDBD3,#DEDBD3 2px,#E6E3DE 2px,#E6E3DE 10px);
-    display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
-  }
-  .work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-  .work-card:hover .work-thumb img{transform:scale(1.045)}
-  .work-thumb .fallback{
-    font-family:var(--font-display);font-size:.78rem;letter-spacing:.05em;color:var(--text-muted);
-    text-transform:uppercase;
-  }
-  .work-info{padding:1.5rem 1.6rem 1.8rem}
-  .work-info .tag{font-size:.76rem;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase}
-  .work-info h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin-top:.5rem;letter-spacing:-0.01em}
-  .work-info p{color:var(--text-muted);font-size:.92rem;margin-top:.5rem;line-height:1.6}
+/* ============================================================
+   CASE STUDIES
+   ============================================================ */
+.case-rail{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px;
+  margin-top:52px; background:var(--line);
+  border:1px solid var(--line);
+}
+.case-card{
+  background:var(--paper); padding:34px 30px 30px; display:flex; flex-direction:column; gap:16px;
+  transition:background .3s var(--ease);
+}
+.case-card:hover{background:var(--paper-2);}
+.case-tag{font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-faint);}
+.case-card h3{font-size:26px;}
+.case-block{font-size:14px; color:var(--ink-soft); line-height:1.55;}
+.case-block b{display:block; font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
+.case-toggle{
+  margin-top:auto; padding-top:14px; display:flex; align-items:center; gap:8px;
+  font-weight:700; font-size:14px; border-top:1px solid var(--line-soft); padding-top:16px;
+}
+.case-toggle .chev{transition:transform .3s var(--ease);}
+.case-card[data-open="true"] .case-toggle .chev{transform:rotate(180deg);}
+.case-detail{
+  max-height:0; overflow:hidden; transition:max-height .45s var(--ease);
+}
+.case-card[data-open="true"] .case-detail{max-height:900px;}
+.case-detail-inner{padding-top:18px; display:grid; gap:14px; border-top:1px dashed var(--line); margin-top:6px;}
+.case-detail dt{font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
+.case-detail dd{margin:3px 0 0; font-size:14.5px; color:var(--ink-soft); line-height:1.55;}
 
-  /* ===== Why cards ===== */
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-  .why-card{
-    background:var(--bg-primary);border:1px solid var(--line);border-radius:var(--radius-md);
-    padding:2.4rem 2rem;transition:border-color .35s var(--ease),transform .35s var(--ease);
-  }
-  .why-card:hover{border-color:var(--text);transform:translateY(-4px)}
-  .why-icon{width:38px;height:38px;margin-bottom:1.6rem}
-  .why-card h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-0.01em;margin-bottom:.7rem}
-  .why-card p{color:var(--text-muted);font-size:.92rem;line-height:1.65}
+/* ============================================================
+   PRINCIPLES / WHY
+   ============================================================ */
+.principle-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--dark-line); margin-top:52px; border:1px solid var(--dark-line);}
+@media (max-width:820px){.principle-grid{grid-template-columns:1fr;}}
+.principle{background:var(--dark); padding:38px 32px; }
+.principle .num{font-size:20px; color:var(--accent);}
+.principle h3{margin-top:16px; font-size:23px; color:var(--dark-ink);}
+.principle p{margin-top:12px; font-size:14.5px; color:var(--dark-soft); line-height:1.6;}
 
-  /* ===== Process ===== */
-  .process-list{border-top:1px solid var(--line)}
-  .process-item{
-    display:grid;grid-template-columns:110px 1fr;gap:2rem;
-    padding:2.4rem 0;border-bottom:1px solid var(--line);
-    align-items:baseline;
-  }
-  .process-num{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--text-muted);transition:color .35s var(--ease)}
-  .process-item{transition:padding-left .4s var(--ease)}
-  .process-item:hover{padding-left:.6rem}
-  .process-item:hover .process-num{color:var(--text)}
-  .process-item h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em;margin-bottom:.5rem}
-  .process-item p{color:var(--text-muted);max-width:52ch;line-height:1.7}
+/* ============================================================
+   PROCESS
+   ============================================================ */
+.process-list{margin-top:56px;}
+.process-row{
+  display:grid; grid-template-columns:90px 1fr; gap:28px; padding:30px 0; border-top:1px solid var(--line);
+  position:relative;
+}
+.process-row:last-child{border-bottom:1px solid var(--line);}
+.process-num{font-family:var(--display); font-style:italic; font-size:34px; color:var(--accent-deep); opacity:.55;}
+.process-body h3{font-size:22px;}
+.process-body p{margin-top:8px; font-size:15px; color:var(--ink-soft); max-width:52ch;}
 
-  /* ===== Offers (How We Work) ===== */
-  .offers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem}
-  .offer-card{
-    background:var(--bg-secondary);border-radius:var(--radius-md);padding:2.6rem 2.2rem;
-    border:1px solid var(--line);display:flex;flex-direction:column;
-  }
-  .offer-card.is-primary{border-color:var(--text)}
-  .offer-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.6rem}
-  .offer-card h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;letter-spacing:-0.02em}
-  .offer-price{font-family:var(--font-display);font-weight:600;font-size:1.15rem;white-space:nowrap}
-  .offer-outcome{color:var(--text-muted);font-size:.96rem;line-height:1.65;margin-bottom:1.6rem}
-  .offer-card ul{margin-top:auto}
-  .offer-card ul li{
-    display:flex;align-items:baseline;gap:.7rem;font-size:.92rem;color:var(--text-muted);
-    padding:.6rem 0;border-top:1px solid var(--line);
-  }
-  .offer-card ul li:first-child{border-top:none}
-  .offer-card ul li::before{content:"-";color:var(--text)}
-  .offers-cta{margin-top:2.4rem;display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
-  .offers-cta p{color:var(--text-muted);font-size:.88rem}
+/* ============================================================
+   OFFER CARDS
+   ============================================================ */
+.offer-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:52px;}
+@media (max-width:820px){.offer-grid{grid-template-columns:1fr;}}
+.offer-card{
+  border:1px solid var(--ink); border-radius:var(--r-md); padding:38px 34px; display:flex; flex-direction:column;
+  background:var(--paper);
+}
+.offer-card.featured{background:var(--ink); color:var(--paper);}
+.offer-tag{font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-faint);}
+.offer-card.featured .offer-tag{color:rgba(247,245,240,.5);}
+.offer-card h3{margin-top:12px; font-size:28px;}
+.offer-for{margin-top:10px; font-size:14.5px; color:var(--ink-soft); font-style:italic; font-family:var(--display);}
+.offer-card.featured .offer-for{color:rgba(247,245,240,.75);}
+.offer-outcome{margin-top:18px; font-size:15px; line-height:1.6; color:var(--ink-soft);}
+.offer-card.featured .offer-outcome{color:rgba(247,245,240,.82);}
+.offer-includes{margin-top:22px; display:grid; gap:9px;}
+.offer-includes li{font-size:14px; padding-left:18px; position:relative; color:var(--ink-soft);}
+.offer-card.featured .offer-includes li{color:rgba(247,245,240,.75);}
+.offer-includes li::before{content:'—'; position:absolute; left:0; color:var(--accent-deep);}
+.offer-card.featured .offer-includes li::before{color:var(--accent);}
+.offer-foot{margin-top:auto; padding-top:28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+.offer-price{font-family:var(--display); font-size:26px;}
 
-  /* ===== Lead magnet ===== */
-  .lead-magnet{background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .lead-magnet-inner{max-width:640px}
-  .lead-form{display:flex;gap:.8rem;margin-top:2rem;flex-wrap:wrap}
-  .lead-form input[type="email"]{
-    flex:1 1 260px;padding:.9rem 1.2rem;border-radius:999px;border:1px solid var(--line);
-    background:var(--bg-primary);color:var(--text);font:inherit;font-size:.95rem;
-  }
-  .lead-form input[type="email"]::placeholder{color:var(--text-muted)}
-  .lead-note{margin-top:1rem;font-size:.82rem;color:var(--text-muted)}
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testi-rail{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); margin-top:52px; border:1px solid var(--line);}
+@media (max-width:760px){.testi-rail{grid-template-columns:1fr;}}
+.testi-card{background:var(--paper-2); padding:34px; min-height:220px; display:flex; flex-direction:column; justify-content:center; gap:14px;}
+.testi-pending{
+  border:1px dashed var(--ink-faint); border-radius:var(--r-sm); padding:16px 18px;
+  font-size:13px; color:var(--ink-faint); font-style:italic;
+}
+.testi-flow{display:flex; gap:8px; flex-wrap:wrap; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint);}
+.testi-flow span:not(:last-child)::after{content:'→'; margin-left:8px; color:var(--ink-faint);}
 
-  /* ===== Apply form ===== */
-  .apply-form{
-    text-align:left;max-width:520px;margin:2.6rem auto 0;
-    display:flex;flex-direction:column;gap:1.3rem;
-  }
-  .form-field{display:flex;flex-direction:column;gap:.5rem}
-  .form-field label{font-size:.82rem;color:rgba(247,245,240,.7)}
-  .form-field input,.form-field textarea{
-    background:var(--bg-primary);color:var(--text);border:1px solid transparent;border-radius:10px;
-    padding:.85rem 1rem;font:inherit;font-size:.95rem;resize:vertical;
-  }
-  .form-field textarea{min-height:120px}
-  .apply-form .btn-primary{align-self:flex-start;margin-top:.2rem}
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+.faq-list{margin-top:44px; border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:24px 2px; width:100%; text-align:left; font-family:var(--display); font-size:clamp(18px,2vw,22px);
+}
+.faq-q .plus{position:relative; width:18px; height:18px; flex:none;}
+.faq-q .plus::before, .faq-q .plus::after{content:''; position:absolute; background:var(--ink); transition:transform .3s var(--ease);}
+.faq-q .plus::before{left:0; right:0; top:8px; height:1.5px;}
+.faq-q .plus::after{top:0; bottom:0; left:8px; width:1.5px;}
+.faq-item[data-open="true"] .plus::after{transform:rotate(90deg);}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .4s var(--ease);}
+.faq-item[data-open="true"] .faq-a{max-height:300px;}
+.faq-a p{padding:0 2px 26px; font-size:15px; color:var(--ink-soft); max-width:60ch; line-height:1.6;}
 
-  /* ===== About ===== */
-  .about-inner{max-width:760px}
-  .about-inner p{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.5;letter-spacing:-0.02em}
-  .about-inner p + p{margin-top:1.4rem;color:var(--text-muted);font-family:var(--font-body);font-weight:400;font-size:1.05rem;line-height:1.75}
+/* ============================================================
+   FINAL CTA / FOOTER
+   ============================================================ */
+.final-cta h2{max-width:15ch;}
+.final-cta .lede{color:var(--dark-soft); margin-top:20px;}
+.final-cta-actions{margin-top:36px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+.reassure{font-size:13.5px; color:var(--dark-soft); max-width:26ch; line-height:1.5;}
 
-  /* ===== Testimonials ===== */
-  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
-  .testi-card{
-    background:var(--bg-primary);border:1px solid var(--line);border-radius:var(--radius-md);
-    padding:2.2rem;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;
-    transition:transform .4s var(--ease),box-shadow .4s var(--ease);
-  }
-  .testi-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(17,17,17,.08)}
-  .testi-quote{font-size:1.02rem;line-height:1.7}
-  .testi-who{margin-top:1.8rem;display:flex;align-items:center;gap:.8rem}
-  .testi-avatar{
-    width:38px;height:38px;border-radius:50%;background:var(--bg-secondary);
-    display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:600;
-  }
-  .testi-name{font-size:.9rem;font-weight:500}
-  .testi-role{font-size:.8rem;color:var(--text-muted)}
+.site-footer{background:var(--dark); color:var(--dark-ink); padding:64px 0 32px;}
+.footer-top{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:44px; border-bottom:1px solid var(--dark-line);}
+.footer-brand .logo{color:var(--dark-ink);}
+.footer-brand p{margin-top:10px; font-size:14px; color:var(--dark-soft);}
+.footer-cols{display:flex; gap:64px; flex-wrap:wrap;}
+.footer-col h4{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--dark-soft); margin-bottom:16px;}
+.footer-col a{display:block; font-size:14.5px; padding:5px 0; color:var(--dark-ink); opacity:.85;}
+.footer-col a:hover{opacity:1; color:var(--accent);}
+.footer-bottom{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:26px; font-size:12.5px; color:var(--dark-soft);}
 
-  /* ===== FAQ ===== */
-  .faq-list{border-top:1px solid var(--line);max-width:760px}
-  .faq-item{border-bottom:1px solid var(--line)}
-  .faq-q{
-    width:100%;display:flex;align-items:center;justify-content:space-between;
-    padding:1.6rem 0;text-align:left;font-family:var(--font-display);font-weight:500;font-size:1.05rem;
-  }
-  .faq-icon{
-    width:20px;height:20px;flex-shrink:0;position:relative;margin-left:1.5rem;
-  }
-  .faq-icon::before,.faq-icon::after{
-    content:"";position:absolute;background:var(--text);top:50%;left:50%;transform:translate(-50%,-50%);
-  }
-  .faq-icon::before{width:100%;height:1px}
-  .faq-icon::after{width:1px;height:100%;transition:transform .3s var(--ease)}
-  .faq-item[data-open="true"] .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
-  .faq-a{
-    max-height:0;overflow:hidden;transition:max-height .4s var(--ease);
-  }
-  .faq-a p{color:var(--text-muted);padding-bottom:1.6rem;max-width:56ch;line-height:1.7}
+/* ============================================================
+   INNER PAGE HEROES (Work / Services / About / Apply)
+   ============================================================ */
+.page-hero{padding:clamp(120px,15vw,168px) 0 clamp(48px,6vw,72px);}
+.page-hero h1{max-width:18ch;}
+.crumbs{font-size:13px; color:var(--ink-faint); margin-bottom:22px; display:flex; gap:8px; align-items:center;}
+.crumbs a:hover{color:var(--accent-deep);}
 
-  /* ===== Final CTA (Apply) ===== */
-  .final-cta{
-    background:var(--text);color:var(--bg-primary);border-radius:24px;
-    margin:0 6vw;padding:5.5rem 6vw;text-align:center;
-  }
-  .final-cta h2{color:var(--bg-primary)}
-  .final-cta p{color:rgba(247,245,240,.7);max-width:44ch;margin:1.2rem auto 2.6rem;line-height:1.7}
-  .final-cta .btn-primary{background:var(--bg-primary);color:var(--text)}
-  .final-cta .btn-primary:hover{box-shadow:0 10px 26px rgba(0,0,0,.35)}
-  .final-cta .cta-note{margin:1.4rem 0 0;font-size:.86rem;color:rgba(247,245,240,.55)}
+/* Services page */
+.stack-list{margin-top:8px;}
+.stack-row{
+  display:grid; grid-template-columns:.4fr 1fr; gap:32px; padding:44px 0; border-top:1px solid var(--line);
+}
+.stack-row:last-child{border-bottom:1px solid var(--line);}
+@media (max-width:760px){.stack-row{grid-template-columns:1fr; gap:14px;}}
+.stack-label{display:flex; align-items:baseline; gap:14px;}
+.stack-label .num{font-size:16px; color:var(--ink-faint);}
+.stack-label h3{font-size:clamp(24px,3vw,34px);}
+.stack-desc p{font-size:16px; color:var(--ink-soft); max-width:56ch; line-height:1.65;}
+.stack-desc ul{margin-top:16px; display:grid; gap:8px;}
+.stack-desc ul li{font-size:14.5px; color:var(--ink-soft); padding-left:16px; position:relative;}
+.stack-desc ul li::before{content:'—'; position:absolute; left:0; color:var(--accent-deep);}
+.stack-connector{
+  display:flex; align-items:center; gap:12px; margin:44px 0; color:var(--ink-faint); font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+}
+.stack-connector .arrow{font-size:16px;}
 
-  /* ===== Footer ===== */
-  footer{padding:5rem 0 3rem}
-  .footer-top{
-    display:flex;flex-wrap:wrap;justify-content:space-between;gap:3rem;
-    padding-bottom:3rem;border-bottom:1px solid var(--line);
-  }
-  .footer-logo{font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:-0.02em}
-  .footer-cols{display:flex;gap:4rem;flex-wrap:wrap}
-  .footer-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:1rem}
-  .footer-col li{margin-bottom:.6rem;font-size:.92rem}
-  .footer-col a:hover{text-decoration:underline}
-  .footer-bottom{
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:2rem;
-    font-size:.82rem;color:var(--text-muted);
-  }
-  .social-row{display:flex;gap:1.4rem}
+/* About page */
+.about-quote{
+  font-family:var(--display); font-style:italic; font-size:clamp(24px,3.4vw,38px); line-height:1.28; max-width:22ch;
+  color:var(--ink);
+}
+.belief-list{margin-top:20px; display:grid; gap:0; border-top:1px solid var(--line);}
+.belief-row{display:grid; grid-template-columns:1fr 1.4fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--line);}
+@media (max-width:700px){.belief-row{grid-template-columns:1fr;}}
+.belief-row h4{font-family:var(--display); font-size:19px;}
+.belief-row p{font-size:14.5px; color:var(--ink-soft); line-height:1.6;}
+.fit-list{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); margin-top:16px; border:1px solid var(--line);}
+@media (max-width:700px){.fit-list{grid-template-columns:1fr;}}
+.fit-card{background:var(--paper); padding:26px;}
+.fit-card h4{font-size:15px; margin-bottom:8px;}
+.fit-card.good{border-left:3px solid var(--accent-deep);}
+.fit-card.notfor{border-left:3px solid var(--ink-faint);}
+.fit-card p{font-size:14px; color:var(--ink-soft); line-height:1.55;}
 
-  @media (max-width:700px){
-    .process-item{grid-template-columns:1fr;gap:.6rem}
-    .trust .wrap{flex-direction:column;align-items:flex-start}
-    .final-cta{margin:0 4vw;padding:4rem 5vw}
-    .offer-top{flex-direction:column;gap:.3rem}
-  }
+/* Application form */
+.apply-layout{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,6vw,80px); align-items:start;}
+@media (max-width:900px){.apply-layout{grid-template-columns:1fr;}}
+.apply-aside{position:sticky; top:110px;}
+.apply-aside .body-text{margin-top:16px;}
+.apply-steps{margin-top:32px; display:grid; gap:18px;}
+.apply-step{display:flex; gap:14px; align-items:flex-start;}
+.apply-step .dot{width:7px; height:7px; border-radius:50%; background:var(--accent-deep); margin-top:8px; flex:none;}
+.apply-step p{font-size:14px; color:var(--ink-soft); line-height:1.5;}
+
+.field{margin-bottom:22px;}
+.field label{display:block; font-size:13px; font-weight:700; letter-spacing:.03em; margin-bottom:8px;}
+.field .req{color:var(--accent-deep); margin-left:2px;}
+.field input, .field textarea{
+  width:100%; background:transparent; border:0; border-bottom:1.5px solid var(--line);
+  padding:11px 2px; font-size:16px; color:var(--ink); transition:border-color .25s var(--ease);
+}
+.field input:focus, .field textarea:focus{border-color:var(--accent-deep); outline:none;}
+.field textarea{resize:vertical; min-height:88px; font-family:var(--sans);}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media (max-width:560px){.field-row{grid-template-columns:1fr;}}
+.form-note{font-size:12.5px; color:var(--ink-faint); margin-top:6px;}
+#apply-form-wrap{transition:opacity .3s var(--ease);}
+.thankyou{display:none; padding:52px 0;}
+.thankyou.show{display:block;}
+.thankyou .num{font-size:30px; color:var(--accent-deep);}
+.thankyou h2{margin-top:18px; max-width:16ch;}
+.thankyou .body-text{margin-top:16px;}
+
+/* utility */
+.mt-lg{margin-top:64px;}
+.center-narrow{max-width:640px;}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
-<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-
-<header id="siteHeader">
-  <nav aria-label="Primary">
-    <a href="#" class="logo">Bloomotive</a>
-    <ul class="nav-links">
-      <li><a href="#case-studies">Case Studies</a></li>
-      <li><a href="#how-we-work">How We Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="#apply" class="nav-cta">Apply for an Audit</a>
-    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-  </nav>
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-row">
+    <a href="#" class="logo" data-nav="home" aria-label="Bloomotive — home">bloom<em>otive</em></a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#" data-nav="work">Work</a></li>
+        <li><a href="#" data-nav="approach">Approach</a></li>
+        <li><a href="#" data-nav="services">Services</a></li>
+        <li><a href="#" data-nav="about">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <span class="bars"><span></span><span></span></span>
+      </button>
+      <a href="#" class="btn btn-primary" data-nav="apply"><span class="long">Start a Conversation</span><span class="short" aria-hidden="true">Start</span> <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
 </header>
 
-<main>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" data-nav="work">Work</a>
+  <a href="#" data-nav="approach">Approach</a>
+  <a href="#" data-nav="services">Services</a>
+  <a href="#" data-nav="about">About</a>
+  <a href="#" class="btn btn-primary" data-nav="apply">Start a Conversation <span aria-hidden="true">→</span></a>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     HOME
+============================================================ -->
+<div class="page is-active" id="page-home" data-page="home">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <p class="hero-eyebrow reveal">Brand Strategy, Identity, Digital</p>
-    <h1 class="reveal reveal-d1">You built something real. Most people still can't tell.</h1>
-    <p class="hero-sub reveal reveal-d2">Bloomotive closes that gap, engineering the positioning, identity, and digital experience your business has actually earned.</p>
-    <div class="hero-actions reveal reveal-d3">
-      <a href="#apply" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></a>
-      <a href="#case-studies" class="btn-secondary">See the Work</a>
-    </div>
-  </section>
-
-  <!-- TRUST -->
-  <section class="trust" style="padding:0">
     <div class="wrap">
-      <h3 class="reveal">We turn business value into perceived value.</h3>
-      <div class="stat-row">
-        <div class="stat reveal reveal-d1"><div class="stat-num"><span class="count" data-target="10">0</span>+</div><div class="stat-label">Brands Positioned</div></div>
-        <div class="stat reveal reveal-d2"><div class="stat-num">5&#9733;</div><div class="stat-label">Client Satisfaction</div></div>
-        <div class="stat reveal reveal-d3"><div class="stat-num"><span class="count" data-target="24">0</span>hrs</div><div class="stat-label">Average Response</div></div>
-        <div class="stat reveal reveal-d4"><div class="stat-num"><span class="count" data-target="100">0</span>%</div><div class="stat-label">Strategy-led work</div></div>
+      <div class="hero-eyebrow-row reveal">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="eyebrow">Brand Strategy · Identity · Digital</span>
+      </div>
+      <h1 aria-label="Your business has grown. Your brand should look like it.">
+        <span class="hero-line"><span>Your business</span></span>
+        <span class="hero-line"><span>has grown.</span></span>
+        <span class="hero-line"><span class="italic">Your brand should</span></span>
+        <span class="hero-line"><span class="italic">look like it.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <div>
+          <p class="lede reveal">Bloomotive helps ambitious businesses sharpen their positioning, elevate their identity, and build digital experiences that make their value easier to see, trust, and choose.</p>
+          <div class="hero-actions reveal">
+            <a href="#" class="btn btn-primary" data-nav="apply">Start with a Brand Clarity Audit <span aria-hidden="true">→</span></a>
+            <a href="#" class="btn btn-ghost" data-nav="work">See the Work</a>
+          </div>
+        </div>
+        <div class="hero-meta reveal">
+          Positioning, identity, and digital experience — treated as one system, not three separate vendors.
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CASE STUDIES -->
-  <section id="case-studies">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Case studies</p>
-        <h2>Proof that positioning changes perception.</h2>
-        <p class="section-body">Real businesses, real perception problems, and the strategy that closed the gap. Not just what the brand looks like, but what it now does for the business behind it.</p>
+  <!-- PERCEPTION GAP -->
+  <section class="section on-stone statement">
+    <div class="wrap statement-grid reveal">
+      <div><span class="eyebrow">The problem</span></div>
+      <div>
+        <h2>You don't have a business problem.<br>You have a <span class="italic">perception gap.</span></h2>
+        <p class="body-text" style="margin-top:22px; max-width:52ch;">You've built something worth taking seriously. But if your positioning is unclear, your identity feels behind, or your digital experience doesn't match the quality of the business, the market doesn't get to experience your actual value.</p>
+        <p class="body-text" style="margin-top:14px; font-weight:600; color:var(--ink);">Bloomotive closes that gap.</p>
+        <div class="gap-diagram">
+          <span class="gap-node">What you've built</span>
+          <span class="gap-connector" aria-hidden="true"></span>
+          <span class="gap-node">How you're seen</span>
+        </div>
       </div>
-      <div class="work-grid">
+    </div>
+  </section>
 
-      <a href="Avenor Brand Identity.pdf" target="_blank" rel="noopener noreferrer" class="work-card reveal">
-  <div class="work-thumb">
-    <img src="images/avenor.jpg" alt="Logo mark and brand identity for AVENOR" loading="lazy"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <span class="fallback" style="display:none">avenor</span>
-  </div>
+  <!-- WHAT WE DO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>We make the value of your business easier to see.</h2>
+        <p class="body-text">Not three disconnected services — three interventions that work in sequence, each one making the next more effective.</p>
+      </div>
+      <div class="capability-list">
+        <div class="capability-row reveal">
+          <span class="cap-num">01</span>
+          <h3 class="cap-title">Positioning</h3>
+          <p class="cap-desc">Find the clearest position your business can own, and the message that makes that position obvious to the people who need to hear it.</p>
+        </div>
+        <div class="capability-row reveal">
+          <span class="cap-num">02</span>
+          <h3 class="cap-title">Identity</h3>
+          <p class="cap-desc">Turn strategy into a visual system that signals the level of business you've actually built — before a word is read.</p>
+        </div>
+        <div class="capability-row reveal">
+          <span class="cap-num">03</span>
+          <h3 class="cap-title">Digital</h3>
+          <p class="cap-desc">Build websites and digital experiences that turn attention into understanding, trust, and action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="work-info">
-    <p class="tag">Real Estate &middot; Brand Identity</p>
-    <h3>AVENOR</h3>
-    <p>Buyers had to trust the company before touring a single property. The new mark signals permanence before anyone reads a word.</p>
-  </div>
-</a>
-
-
-        <article class="work-card reveal reveal-d1">
-          <div class="work-thumb"><img src="images/vanta.jpg" alt="Logo mark for VANTA" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">vanta</span></div>
-          <div class="work-info">
-            <p class="tag">Design Agency &middot; Brand Identity</p>
-            <h3>VANTA</h3>
-            <p>A design agency competing for attention with no distinct point of view. The identity now turns that attention into follow-up calls.</p>
-          </div>
-        </article>
-
-         <article class="work-card reveal reveal-d1">
-          <div class="work-thumb"><img src="images/Jandjhairss.jpg" alt="Logo mark for JANDJHAIRSS" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">jandjhairss Co</span></div>
-          <div class="work-info">
-            <p class="tag">Beauty & Personal Care &middot; Logo Mark</p>
-            <h3>JANDJHAIRSS</h3>
-            <p>A studio priced like the appointment came cheap. The new identity reads closer to the experience it actually delivers.</p>
-          </div>
-        </article>
-
-        <article class="work-card reveal reveal-d2">
-          <div class="work-thumb"><img src="images/evidiq.jpg" alt="Logo mark for EVIDIQ" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">evidiq</span></div>
-          <div class="work-info">
-            <p class="tag">Audit & Advisory &middot; Brand Identity</p>
-            <h3>EVIDIQ</h3>
-            <p>Audit work is hard to explain and easy to distrust. We rebuilt the brand around clarity, so clients understand the value before the invoice.</p>
-          </div>
-        </article>
-
-        <article class="work-card reveal">
-          <div class="work-thumb"><img src="images/stratigen.jpg" alt="Logo mark for STRATIGEN" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">stratigen</span></div>
-          <div class="work-info">
-            <p class="tag">Business Consulting &middot; Brand Identity</p>
-            <h3>STRATIGEN</h3>
-            <p>Strong thinking, forgettable name. The new brand states the strategy in the mark itself.</p>
-          </div>
-        </article>
-
-        <article class="work-card reveal reveal-d1">
-          <div class="work-thumb"><img src="images/mentorly.jpg" alt="Logo mark and brand system for MENTORLY" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="fallback" style="display:none">mentorly</span></div>
-          <div class="work-info">
-            <p class="tag">Coaching &middot; Brand Identity</p>
-            <h3>MENTORLY</h3>
-            <p>One coaching brand among a hundred identical ones. We narrowed the whole business down to three words: learn, build, create.</p>
-          </div>
-        </article>
-
-       <article class="work-card reveal reveal-d2">
-        <div class="work-thumb">
-        <a href="https://aurevia-rho.vercel.app/" target="_blank" rel="noopener noreferrer">
-        <img
-        src="images/aurevia.jpg"
-        alt="Aurevia landing page"
-        loading="lazy"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-      >
-      <span class="fallback" style="display:none">AUREVIA</span>
-    </a>
-  </div>
-
-  <div class="work-info">
-    <p class="tag">Skincare &middot; Landing Page</p>
-    <h3>AUREVIA</h3>
-    <p>A formulation good enough to sell itself, with no storefront built to prove it. The new page was engineered to convert on first visit.</p>
-  </div>
-</article>
-        
-        
-    <article class="work-card reveal reveal-d2">
-  <div class="work-thumb">
-    <a href="https://elevate-consulting-hayq.vercel.app/" target="_blank" rel="noopener noreferrer">
-      <img 
-        src="images/elevate consulting.jpg" 
-        alt="Landing page for Elevate Consulting" 
-        loading="lazy" 
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    </a>
-    <span class="fallback" style="display:none">elevate consulting</span>
-  </div>
-
-  <div class="work-info">
-    <p class="tag">Business Consulting &middot; Landing Page</p>
-    <h3>ELEVATE CONSULTING</h3>
-    <p>Strong client results with no site built to prove them. The new page turns that track record into new inquiries.</p>
-  </div>
-</article>    
-         
- <a href="Pelagic brand identity.pdf" target="_blank" rel="noopener noreferrer" class="work-card reveal reveal-d2">
-  <div class="work-thumb">
-    <img src="images/pelagic logo.jpg" alt="Logo mark for PELAGIC" loading="lazy"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <span class="fallback" style="display:none">pelagic</span>
-  </div>
-
-  <div class="work-info">
-    <p class="tag">Marine Technology &middot; Brand Identity</p>
-    <h3>PELAGIC</h3>
-    <p>Complex marine data with nothing to make it feel trustworthy to buyers. The identity now reads as precision, not noise.</p>
-  </div>
-</a>      
-
+  <!-- CASE STUDIES (preview) -->
+  <section class="section on-stone">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>The work should change how the business is perceived.</h2>
+        <p class="body-text">Real businesses. Real perception problems. Strategic decisions that changed how they showed up.</p>
+      </div>
+      <div class="mt-lg reveal">
+        <a href="#" class="btn-text" data-nav="work">View the full case study archive <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
   <!-- WHY BLOOMOTIVE -->
-  <section style="background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <section class="section on-dark">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Why Bloomotive</p>
-        <h2>Good design isn't decoration.<br>It's positioning.</h2>
+      <div class="grid-2 reveal">
+        <h2>Good design isn't decoration.<br>It's <span class="italic">positioning.</span></h2>
       </div>
-      <div class="why-grid">
-        <div class="why-card spotlight reveal">
-          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
-          <h3>Positioning First</h3>
-          <p>We find the truth about what makes your business valuable, then build the story that makes it obvious to everyone else.</p>
+      <div class="principle-grid">
+        <div class="principle reveal">
+          <span class="num">01</span>
+          <h3>Positioning first</h3>
+          <p>We determine what makes the business valuable, and why it should matter, before opening a design file.</p>
         </div>
-        <div class="why-card spotlight reveal reveal-d1">
-          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/></svg>
-          <h3>Identity Built to Last</h3>
-          <p>A visual system built from research and reasoning, not trend-chasing. One that signals value before a word is read.</p>
+        <div class="principle reveal">
+          <span class="num">02</span>
+          <h3>Identity built to signal</h3>
+          <p>The visual system communicates the right signals about your business before a word is read.</p>
         </div>
-        <div class="why-card spotlight reveal reveal-d2">
-          <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.4"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
-          <h3>Digital That Converts</h3>
-          <p>Layout and copy engineered around one job: turning a visitor's attention into a next step, and that step into revenue.</p>
+        <div class="principle reveal">
+          <span class="num">03</span>
+          <h3>Digital that moves people</h3>
+          <p>Your website isn't a digital brochure. It should guide attention toward understanding, trust, and action.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- LEAD MAGNET -->
-  <section class="lead-magnet" id="checklist">
-    <div class="wrap lead-magnet-inner">
-      <p class="eyebrow reveal">Free resource</p>
-      <h2 class="reveal reveal-d1">The Brand Perception Checklist</h2>
-      <p class="section-body reveal reveal-d2">Fifteen questions that show exactly where your brand is leaking trust, attention, or revenue, before you spend a dollar fixing it.</p>
-      <form class="lead-form reveal reveal-d3" id="checklistForm" novalidate>
-        <label for="checklistEmail" class="sr-only">Email address</label>
-        <input type="email" id="checklistEmail" name="email" placeholder="you@company.com" required autocomplete="email">
-        <button type="submit" class="btn-primary">Send Me the Checklist</button>
-      </form>
-      <p class="lead-note">We'll email the checklist directly. No spam, unsubscribe anytime.</p>
-      <!-- TODO: swap this form for your Kit (ConvertKit) embed to automate delivery -->
     </div>
   </section>
 
   <!-- PROCESS -->
-  <section id="process">
+  <section class="section">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">How we work</p>
-        <h2>A clear process from first call to launch.</h2>
+      <div class="grid-2 reveal">
+        <h2>Strategy before aesthetics.</h2>
+        <p class="body-text">A four-stage process, run in order, every time.</p>
       </div>
       <div class="process-list">
-        <div class="process-item reveal">
+        <div class="process-row reveal">
           <span class="process-num">01</span>
-          <div>
-            <h3>Discovery</h3>
-            <p>We learn the business, the audience, and the outcome the brand needs to produce before we open a design file.</p>
-          </div>
+          <div class="process-body"><h3>Discover</h3><p>Understand the business, the audience, the market, and the specific perception problem you're carrying.</p></div>
         </div>
-        <div class="process-item reveal reveal-d1">
+        <div class="process-row reveal">
           <span class="process-num">02</span>
-          <div>
-            <h3>Strategy</h3>
-            <p>We define the positioning the brand has to communicate: what makes you valuable, and why you're the obvious choice.</p>
-          </div>
+          <div class="process-body"><h3>Position</h3><p>Define what the brand should own, communicate, and be remembered for — and why that's defensible.</p></div>
         </div>
-        <div class="process-item reveal reveal-d2">
+        <div class="process-row reveal">
           <span class="process-num">03</span>
-          <div>
-            <h3>Design</h3>
-            <p>We build the identity and digital experience, reviewed together in working sessions, not surprise reveals.</p>
-          </div>
+          <div class="process-body"><h3>Build</h3><p>Translate the strategy into an identity system and a digital experience that carry it consistently.</p></div>
         </div>
-        <div class="process-item reveal reveal-d3">
+        <div class="process-row reveal">
           <span class="process-num">04</span>
-          <div>
-            <h3>Launch</h3>
-            <p>We deliver final files and a live experience ready to represent the business at the level it actually operates.</p>
-          </div>
+          <div class="process-body"><h3>Launch</h3><p>Deliver a coherent system that represents the business at the level it actually operates.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW WE WORK / OFFERS -->
-  <section id="how-we-work" style="background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <!-- OFFER -->
+  <section class="section on-stone" id="home-offer">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Work with us</p>
-        <h2>We don't do branding. We engineer advantage.</h2>
-        <p class="section-body">Every engagement starts the same way: naming exactly where perception is costing you, before we touch a single design file.</p>
+      <div class="grid-2 reveal">
+        <h2>Start where the problem is.</h2>
+        <p class="body-text">Not every business needs a complete rebrand. Sometimes you need clarity first.</p>
       </div>
-      <div class="offers-grid">
-        <div class="offer-card spotlight reveal">
-          <div class="offer-top">
-            <h3>Brand Clarity Audit</h3>
+      <div class="offer-grid">
+        <div class="offer-card reveal">
+          <span class="offer-tag">Offer 01</span>
+          <h3>Brand Clarity Audit</h3>
+          <p class="offer-for">For businesses that know something isn't working, but aren't sure what.</p>
+          <p class="offer-outcome">Identify the positioning and perception gaps holding the brand back, and leave with a clear action plan.</p>
+          <ul class="offer-includes">
+            <li>90-minute strategic session</li>
+            <li>Perception and positioning diagnosis</li>
+            <li>Three critical gaps identified</li>
+            <li>Written strategic recommendations</li>
+          </ul>
+          <div class="offer-foot">
             <span class="offer-price">$150</span>
+            <a href="#" class="btn btn-ghost" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a>
           </div>
-          <p class="offer-outcome">A focused strategy session that names the perception leaks costing you clients, and what to fix first.</p>
-          <ul>
-            <li>A 90-minute strategy session</li>
-            <li>Three specific perception leaks named</li>
-            <li>A written action plan you can run with alone</li>
-          </ul>
         </div>
-        <div class="offer-card is-primary spotlight reveal reveal-d1">
-          <div class="offer-top">
-            <h3>Brand Advantage Program</h3>
+        <div class="offer-card featured reveal">
+          <span class="offer-tag">Offer 02</span>
+          <h3>Positioning + Identity + Digital</h3>
+          <p class="offer-for">For businesses ready to bring the entire brand experience up to the level of the business.</p>
+          <p class="offer-outcome">A full system: what you say, how you look, and how you're experienced online — built as one coherent piece of work.</p>
+          <ul class="offer-includes">
+            <li>Positioning and messaging</li>
+            <li>Visual identity system</li>
+            <li>Website / digital experience</li>
+            <li>Strategic implementation support</li>
+          </ul>
+          <div class="offer-foot">
             <span class="offer-price">From $1,200</span>
+            <a href="#" class="btn btn-primary" data-nav="apply">Discuss Your Brand <span aria-hidden="true">→</span></a>
           </div>
-          <p class="offer-outcome">A fully engineered brand ecosystem built to make you the obvious choice in your category.</p>
-          <ul>
-            <li>Full positioning and messaging rebuild</li>
-            <li>Complete visual identity system</li>
-            <li>A digital experience built to convert</li>
-            <li>90 days of implementation support</li>
-          </ul>
         </div>
-      </div>
-      <div class="offers-cta reveal reveal-d2">
-        <a href="#apply" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></a>
-        <p>Pricing shown in USD. Local currency invoicing available on request.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head reveal" style="margin-bottom:2.4rem">
-        <p class="eyebrow">Why Bloomotive exists</p>
-      </div>
-      <div class="about-inner reveal">
-        <p>We started Bloomotive after watching good businesses lose to worse ones that simply looked more certain.</p>
-        <p>Great execution doesn't sell itself. We've watched founders and operators build genuinely strong businesses and still get passed over, not because the work was weak, but because the perception around it hadn't caught up. Bloomotive exists to close that gap: to engineer the positioning, identity, and digital experience a business has actually earned. We believe perception is the new battlefield, and advantage can be engineered.</p>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section style="background:var(--bg-secondary);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <section class="section">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Client feedback</p>
-        <h2>What it's like to work with us.</h2>
+      <div class="grid-2 reveal">
+        <h2>When the brand finally catches up with the business.</h2>
       </div>
-      <div class="testi-grid">
+      <div class="testi-rail">
         <div class="testi-card reveal">
-          <p class="testi-quote">"Bloomotive rebuilt our positioning, 
-            our logo, and our homepage in a way that finally matched how we wanted to be perceived. We started closing larger clients within weeks."</p>
-          <div class="testi-who">
-            <div class="testi-avatar" aria-hidden="true">RM</div>
-            <div>
-              <p class="testi-name">Rachel Mendes</p>
-              <p class="testi-role">Founder, consulting firm</p>
-            </div>
-          </div>
+          <span class="testi-flow"><span>Generic positioning</span><span>Clear category ownership</span><span>Confident pricing conversations</span></span>
+          <div class="testi-pending">Client testimonial pending written approval — this quote will be published once verified.</div>
         </div>
-        <div class="testi-card reveal reveal-d1">
-          <p class="testi-quote">"They didn't just make it prettier. They made our value obvious, and our landing page conversion rate nearly doubled."</p>
-          <div class="testi-who">
-            <div class="testi-avatar" aria-hidden="true">DK</div>
-            <div>
-              <p class="testi-name">Daniel Kwan</p>
-              <p class="testi-role">Co-founder, Vanta startup</p>
-            </div>
-          </div>
+        <div class="testi-card reveal">
+          <span class="testi-flow"><span>Looked smaller than the business was</span><span>Identity rebuilt to match</span><span>Started attracting bigger clients</span></span>
+          <div class="testi-pending">Client testimonial pending written approval — this quote will be published once verified.</div>
         </div>
-        <div class="testi-card reveal reveal-d2">
-          <p class="testi-quote">"Calm, precise, and genuinely strategic. Every question they asked in discovery showed up in the final brand."</p>
-          <div class="testi-who">
-            <div class="testi-avatar" aria-hidden="true">AO</div>
-            <div>
-              <p class="testi-name">Amara Okafor</p>
-              <p class="testi-role">CEO, Avenor</p>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (condensed) -->
+  <section class="section on-stone">
+    <div class="wrap grid-2 reveal">
+      <h2>Bloomotive exists for businesses that have outgrown their brand.</h2>
+      <div>
+        <p class="body-text">We started Bloomotive after seeing good businesses lose attention to businesses that simply looked more certain. Great execution doesn't sell itself.</p>
+        <p class="body-text" style="margin-top:14px;">When the positioning is unclear, the identity feels behind, or the digital experience doesn't communicate the value of the business, the market makes its own assumptions. We believe perception is a competitive advantage — and advantage can be engineered.</p>
+        <a href="#" class="btn-text" style="margin-top:22px;" data-nav="about">More on how we think <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
+  <section class="section" id="home-faq">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Questions</p>
-        <h2>Before you apply.</h2>
+      <div class="grid-2 reveal">
+        <h2>Before you start.</h2>
       </div>
-      <div class="faq-list reveal">
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            How long does a project take?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-a">
-            <p>Brand strategy and identity projects typically run one to two weeks. A digital experience runs three to four weeks. Timelines depend on how quickly feedback moves.</p>
-          </div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            Is the audit a sales pitch?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-a">
-            <p>No. It's a strategic review of your positioning. If we see a fit, we'll invite you into the process. If we don't, you'll still leave with a clear list of what to fix.</p>
-          </div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            What do you need from me?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-a">
-            <p>A clear picture of your business, audience, and any existing brand materials. We handle the rest through structured discovery and strategy sessions.</p>
-          </div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            Do you reposition existing brands?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-a">
-            <p>Yes, absolutely. While we build brands from the ground up, we also step in to reposition existing ones.
-          If a brand has lost its edge, outgrown its current market position, or needs to pivot to capture
-          a higher-value audience, we realign your strategy, messaging, and visual identity to give you a dominant, modern stance in the market.</p>
-          </div>
-        </div>
-        <div class="faq-item" data-open="false">
-          <button class="faq-q" aria-expanded="false">
-            Can you build the digital experience too?
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-a">
-            <p>Yes. We design digital experiences including high-converting web applications, landing pages, 
-              and intuitive UI/UX that translate your brand strategy into a seamless user journey. </p>
+      <div class="faq-list" id="faqList"><!-- populated by JS --></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section on-dark final-cta">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>Your business is already operating at a certain level.<br><span class="italic">Does your brand show it?</span></h2>
+        <div>
+          <p class="lede">Tell us where the business is today, where you're trying to take it, and what's getting in the way.</p>
+          <div class="final-cta-actions">
+            <a href="#" class="btn btn-primary" data-nav="apply">Start with a Brand Clarity Audit <span aria-hidden="true">→</span></a>
+            <span class="reassure">This isn't a sales pitch. It's a strategic review.</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- APPLY -->
-  <section id="apply">
-    <div class="final-cta reveal">
-      <p class="eyebrow" style="color:rgba(247,245,240,.6)">Apply for an audit</p>
-      <h2>Ready to be perceived at the level you actually operate?</h2>
-      <p>Tell us about the business, the industry, and the one thing that isn't converting. We reply within 24 hours with next steps.</p>
-      <form class="apply-form" id="applyForm" novalidate>
-        <div class="form-field">
-          <label for="applyName">Name</label>
-          <input type="text" id="applyName" name="name" required autocomplete="name">
-        </div>
-        <div class="form-field">
-          <label for="applyCompany">Company or startup</label>
-          <input type="text" id="applyCompany" name="company" required autocomplete="organization">
-        </div>
-        <div class="form-field">
-          <label for="applyChallenge">What's the one thing that isn't converting the way it should?</label>
-          <textarea id="applyChallenge" name="challenge" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Apply for an Audit <span aria-hidden="true">&rarr;</span></button>
-      </form>
-      <p class="cta-note">This isn't a sales call. It's a strategic review. Submitting opens your email client with these details filled in.</p>
+</div><!-- /page-home -->
+
+<!-- ============================================================
+     WORK / CASE STUDIES
+============================================================ -->
+<div class="page" id="page-work" data-page="work">
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <div class="crumbs"><a href="#" data-nav="home">Home</a><span aria-hidden="true">/</span><span>Work</span></div>
+      <span class="eyebrow">Case Studies</span>
+      <h1 style="margin-top:14px;">Work that changed how businesses show up.</h1>
+      <p class="lede" style="margin-top:20px;">Every project starts as a strategic problem, not a design brief. Expand a case to see how each one was diagnosed and solved.</p>
     </div>
   </section>
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="case-rail" id="caseRail"><!-- populated by JS --></div>
+    </div>
+  </section>
+  <section class="section on-dark final-cta">
+    <div class="wrap grid-2 reveal">
+      <h2>Think your business is the next case study?</h2>
+      <div>
+        <p class="lede">Start with the Brand Clarity Audit and we'll tell you exactly where the gap is.</p>
+        <div class="final-cta-actions"><a href="#" class="btn btn-primary" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     APPROACH
+============================================================ -->
+<div class="page" id="page-approach" data-page="approach">
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <div class="crumbs"><a href="#" data-nav="home">Home</a><span aria-hidden="true">/</span><span>Approach</span></div>
+      <span class="eyebrow">How we work</span>
+      <h1 style="margin-top:14px;">Strategy before aesthetics.</h1>
+      <p class="lede" style="margin-top:20px;">Design decisions that aren't grounded in a positioning decision are just decoration. So we make the positioning decision first.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>Good design isn't decoration.<br>It's <span class="italic">positioning.</span></h2>
+      </div>
+      <div class="belief-list">
+        <div class="belief-row reveal">
+          <h4>Positioning first</h4>
+          <p>We determine what makes the business valuable, and why it should matter, before opening a design file. A beautiful identity built on an unclear position just makes the confusion look expensive.</p>
+        </div>
+        <div class="belief-row reveal">
+          <h4>Identity built to signal</h4>
+          <p>Every visual decision — type, color, layout, material — is a signal. We choose signals that communicate the right level of business before a single word is read.</p>
+        </div>
+        <div class="belief-row reveal">
+          <h4>Digital that moves people</h4>
+          <p>A website isn't a digital brochure. It's the place where attention should turn into understanding, trust, and action — or it isn't doing its job.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-stone">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>The process, in four stages.</h2>
+        <p class="body-text">Rigorous, not bureaucratic. The same order, every time.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-row reveal"><span class="process-num">01</span><div class="process-body"><h3>Discover</h3><p>We study the business, the audience, the market, and the specific way perception is falling short of reality.</p></div></div>
+        <div class="process-row reveal"><span class="process-num">02</span><div class="process-body"><h3>Position</h3><p>We define what the brand should own, communicate, and be remembered for — a position, not a slogan.</p></div></div>
+        <div class="process-row reveal"><span class="process-num">03</span><div class="process-body"><h3>Build</h3><p>Strategy becomes identity and digital experience: the visible, usable proof of the position.</p></div></div>
+        <div class="process-row reveal"><span class="process-num">04</span><div class="process-body"><h3>Launch</h3><p>We deliver a coherent system that represents the business at the level it actually operates — and hand it over cleanly.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-dark final-cta">
+    <div class="wrap grid-2 reveal">
+      <h2>Curious where your brand stands today?</h2>
+      <div><p class="lede">The Brand Clarity Audit is the fastest way to find out.</p>
+        <div class="final-cta-actions"><a href="#" class="btn btn-primary" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<div class="page" id="page-services" data-page="services">
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <div class="crumbs"><a href="#" data-nav="home">Home</a><span aria-hidden="true">/</span><span>Services</span></div>
+      <span class="eyebrow">What we do</span>
+      <h1 style="margin-top:14px;">Three interventions. One system.</h1>
+      <p class="lede" style="margin-top:20px;">Positioning, identity, and digital aren't disconnected services here. Each one exists to make the next one work harder.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="stack-list">
+        <div class="stack-row reveal">
+          <div class="stack-label"><span class="num">01</span><h3>Positioning</h3></div>
+          <div class="stack-desc">
+            <p>Decide what the market should understand about your business — and why that understanding is worth more than what a competitor offers.</p>
+            <ul>
+              <li>Competitive and category analysis</li>
+              <li>Core positioning statement</li>
+              <li>Message architecture</li>
+              <li>Naming and language decisions, where needed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stack-connector reveal"><span class="arrow" aria-hidden="true">↓</span> makes the position visible</div>
+        <div class="stack-row reveal">
+          <div class="stack-label"><span class="num">02</span><h3>Identity</h3></div>
+          <div class="stack-desc">
+            <p>Turn the position into a visual system — the signals that tell people what kind of business they're dealing with before they read a word.</p>
+            <ul>
+              <li>Visual identity system: mark, type, color, texture</li>
+              <li>Brand guidelines built for real-world use</li>
+              <li>Application across the touchpoints that matter</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stack-connector reveal"><span class="arrow" aria-hidden="true">↓</span> makes the position actionable</div>
+        <div class="stack-row reveal">
+          <div class="stack-label"><span class="num">03</span><h3>Digital</h3></div>
+          <div class="stack-desc">
+            <p>Build the website and digital experience where the position gets tested — where attention either turns into trust, or doesn't.</p>
+            <ul>
+              <li>Website strategy, UX, and design</li>
+              <li>Production-ready frontend build</li>
+              <li>Conversion and content structure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-stone">
+    <div class="wrap">
+      <div class="grid-2 reveal">
+        <h2>Start where the problem is.</h2>
+        <p class="body-text">Not every business needs all three at once.</p>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-card reveal">
+          <span class="offer-tag">Offer 01</span>
+          <h3>Brand Clarity Audit</h3>
+          <p class="offer-for">For businesses that know something isn't working, but aren't sure what.</p>
+          <p class="offer-outcome">Identify the positioning and perception gaps holding the brand back, and leave with a clear action plan.</p>
+          <ul class="offer-includes">
+            <li>90-minute strategic session</li>
+            <li>Perception and positioning diagnosis</li>
+            <li>Three critical gaps identified</li>
+            <li>Written strategic recommendations</li>
+          </ul>
+          <div class="offer-foot"><span class="offer-price">$150</span><a href="#" class="btn btn-ghost" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="offer-card featured reveal">
+          <span class="offer-tag">Offer 02</span>
+          <h3>Positioning + Identity + Digital</h3>
+          <p class="offer-for">For businesses ready to bring the entire brand experience up to the level of the business.</p>
+          <p class="offer-outcome">A full system: what you say, how you look, and how you're experienced online — built as one coherent piece of work.</p>
+          <ul class="offer-includes">
+            <li>Positioning and messaging</li>
+            <li>Visual identity system</li>
+            <li>Website / digital experience</li>
+            <li>Strategic implementation support</li>
+          </ul>
+          <div class="offer-foot"><span class="offer-price">From $1,200</span><a href="#" class="btn btn-primary" data-nav="apply">Discuss Your Brand <span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<div class="page" id="page-about" data-page="about">
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <div class="crumbs"><a href="#" data-nav="home">Home</a><span aria-hidden="true">/</span><span>About</span></div>
+      <span class="eyebrow">About Bloomotive</span>
+      <h1 style="margin-top:14px;">Bloomotive exists for businesses that have outgrown their brand.</h1>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap grid-2 reveal">
+      <p class="about-quote">"Great execution doesn't sell itself. When the brand doesn't communicate the value of the business, the market makes its own assumptions."</p>
+      <div>
+        <p class="body-text">We started Bloomotive after watching good businesses lose attention to businesses that simply looked more certain — not better, just more certain.</p>
+        <p class="body-text" style="margin-top:14px;">When the positioning is unclear, the identity feels behind, or the digital experience doesn't match the quality of the business, the market fills in the gap with its own assumptions. Usually the wrong ones.</p>
+        <p class="body-text" style="margin-top:14px; font-weight:600; color:var(--ink);">We believe perception is a competitive advantage. And advantage can be engineered.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-stone">
+    <div class="wrap reveal">
+      <h2>What we believe.</h2>
+      <div class="belief-list">
+        <div class="belief-row reveal"><h4>Clarity beats cleverness</h4><p>The core message should land in seconds. Sophistication comes from precision, not complexity.</p></div>
+        <div class="belief-row reveal"><h4>Design follows decision</h4><p>Every visual choice sits downstream of a positioning decision. We make the decision first.</p></div>
+        <div class="belief-row reveal"><h4>Restraint is a signal</h4><p>Premium doesn't mean exaggerated. We'd rather be small, sharp, and strategically serious than loud.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap reveal">
+      <h2>Who we work best with.</h2>
+      <div class="fit-list mt-lg">
+        <div class="fit-card good"><h4>A strong fit</h4><p>Businesses that have built something real, but whose brand hasn't caught up — moving upmarket, expanding into new markets, or simply tired of looking smaller than they are.</p></div>
+        <div class="fit-card notfor"><h4>Probably not yet</h4><p>Very early-stage ideas still validating whether the business itself works. Get traction first — the brand will matter more once there's something to signal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-dark final-cta">
+    <div class="wrap grid-2 reveal">
+      <h2>Ready to see where the gap is?</h2>
+      <div><p class="lede">Start with a Brand Clarity Audit — a strategic review, not a sales pitch.</p>
+        <div class="final-cta-actions"><a href="#" class="btn btn-primary" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     APPLY
+============================================================ -->
+<div class="page" id="page-apply" data-page="apply">
+  <section class="page-hero" style="padding-bottom:0;">
+    <div class="wrap reveal">
+      <div class="crumbs"><a href="#" data-nav="home">Home</a><span aria-hidden="true">/</span><span>Apply</span></div>
+      <span class="eyebrow">Brand Clarity Audit</span>
+      <h1 style="margin-top:14px; max-width:16ch;">Your business has grown. Let's see where the brand hasn't caught up.</h1>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="apply-layout" id="apply-form-wrap">
+        <aside class="apply-aside reveal">
+          <span class="eyebrow">What happens next</span>
+          <p class="body-text">A few minutes of detail now means a sharper 90-minute session later.</p>
+          <div class="apply-steps">
+            <div class="apply-step"><span class="dot" aria-hidden="true"></span><p>We'll review your application and respond with next steps.</p></div>
+            <div class="apply-step"><span class="dot" aria-hidden="true"></span><p>If it's a fit, we'll schedule your 90-minute strategic session.</p></div>
+            <div class="apply-step"><span class="dot" aria-hidden="true"></span><p>You'll leave with three critical gaps identified and written recommendations.</p></div>
+          </div>
+        </aside>
+
+        <form id="applyForm" novalidate>
+          <div class="field-row">
+            <div class="field"><label for="f-name">Name<span class="req">*</span></label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+            <div class="field"><label for="f-company">Company<span class="req">*</span></label><input id="f-company" name="company" type="text" required autocomplete="organization"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="f-website">Website</label><input id="f-website" name="website" type="url" placeholder="https://" autocomplete="url"></div>
+            <div class="field"><label for="f-industry">Industry<span class="req">*</span></label><input id="f-industry" name="industry" type="text" required></div>
+          </div>
+          <div class="field"><label for="f-what">What does your business do?<span class="req">*</span></label><textarea id="f-what" name="what" required></textarea></div>
+          <div class="field"><label for="f-goal">What are you trying to achieve?<span class="req">*</span></label><textarea id="f-goal" name="goal" required></textarea></div>
+          <div class="field"><label for="f-problem">What's the biggest problem with your current brand?<span class="req">*</span></label><textarea id="f-problem" name="problem" required></textarea></div>
+          <div class="field"><label for="f-change">What would you like to change?</label><textarea id="f-change" name="change"></textarea></div>
+          <p class="form-note">Fields marked <span class="req">*</span> are required.</p>
+          <button type="submit" class="btn btn-primary" style="margin-top:12px;">Apply for an Audit <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+
+      <div class="thankyou center-narrow" id="thankyou">
+        <span class="num">✓</span>
+        <h2>Application received.</h2>
+        <p class="body-text">We'll review your application and respond with next steps. If it's a fit, we'll be in touch to schedule your 90-minute strategic session.</p>
+        <a href="#" class="btn-text" style="margin-top:22px;" data-nav="home">Back to home <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</div>
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
-      <div class="footer-logo">Bloomotive</div>
+      <div class="footer-brand">
+        <a href="#" class="logo" data-nav="home">bloom<em>otive</em></a>
+        <p>Strategic Brand Studio</p>
+      </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Studio</h4>
-          <ul>
-            <li><a href="#case-studies">Case studies</a></li>
-            <li><a href="#how-we-work">How we work</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#checklist">Free checklist</a></li>
-          </ul>
+          <a href="#" data-nav="work">Work</a>
+          <a href="#" data-nav="approach">Approach</a>
+          <a href="#" data-nav="services">Services</a>
+          <a href="#" data-nav="about">About</a>
+          <a href="#" data-nav="home" data-anchor="home-faq">FAQ</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:bloomotive@tbmbrand.com">bloomotive@tbmbrand.com</a></li>
-            <li><a href="#apply">Apply for an audit</a></li>
-          </ul>
+          <a href="mailto:hello@bloomotive.com">hello@bloomotive.com</a>
+          <a href="#" data-nav="apply">Start a Conversation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Elsewhere</h4>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Bloomotive. All rights reserved.</p>
-      <div class="social-row">
-    <a href="https://www.instagram.com/thebloomotive/"
-   aria-label="Bloomotive on Instagram"
-   target="_blank"
-   rel="noopener noreferrer">
-  Instagram
-</a>    
-   <a href="https://www.linkedin.com/company/bloomotive"
-   aria-label="Bloomotive on LinkedIn"
-   target="_blank"
-   rel="noopener noreferrer">
-  LinkedIn
-</a>
-      </div>
+      <span>© <span id="year"></span> Bloomotive. All rights reserved.</span>
+      <span>Strategic Brand Studio</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Sticky nav blur on scroll
-  const header = document.getElementById('siteHeader');
-  const onScroll = () => {
-    if (window.scrollY > 12) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+(function(){
+  "use strict";
+
+  /* ---------- YEAR ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- HEADER SCROLL STATE ---------- */
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){
+    if(window.scrollY > 8){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
   };
-  document.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+  /* ---------- MOBILE MENU ---------- */
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.setAttribute('aria-label','Open menu');
+  }
+  function toggleMenu(){
+    var open = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open ? 'true':'false');
+    menuToggle.setAttribute('aria-label', open ? 'Close menu':'Open menu');
+  }
+  menuToggle.addEventListener('click', toggleMenu);
+
+  /* ---------- ROUTER ---------- */
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  function goTo(pageName, anchorId){
+    var target = document.getElementById('page-' + pageName);
+    if(!target) return;
+    pages.forEach(function(p){ p.classList.remove('is-active'); });
+    target.classList.add('is-active');
+
+    document.querySelectorAll('.nav-links a').forEach(function(a){
+      if(a.dataset.nav === pageName){ a.setAttribute('aria-current','page'); }
+      else{ a.removeAttribute('aria-current'); }
+    });
+
+    closeMenu();
+    window.scrollTo({top:0, behavior:'auto'});
+
+    if(anchorId){
+      requestAnimationFrame(function(){
+        var el = document.getElementById(anchorId);
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    }
+
+    // move focus to page heading for a11y
+    var heading = target.querySelector('h1');
+    if(heading){ heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true}); }
+
+    revealCheck();
+  }
+
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-nav]');
+    if(!link) return;
+    e.preventDefault();
+    goTo(link.dataset.nav, link.dataset.anchor);
+  });
+
+  /* ---------- SCROLL REVEAL ---------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach(el => io.observe(el));
-
-  // Scroll progress bar
-  const scrollProgress = document.getElementById('scrollProgress');
-  const updateScrollProgress = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-    scrollProgress.style.width = pct + '%';
-  };
-  document.addEventListener('scroll', updateScrollProgress, { passive: true });
-  window.addEventListener('resize', updateScrollProgress);
-  updateScrollProgress();
-
-  // Count-up on the trust stats, once each is in view
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const countEls = document.querySelectorAll('.count');
-  const easeOutCount = (t) => 1 - Math.pow(1 - t, 3);
-  const countIo = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.dataset.target, 10) || 0;
-      countIo.unobserve(el);
-      if (prefersReducedMotion) {
-        el.textContent = target;
-        return;
-      }
-      const duration = 900;
-      const start = performance.now();
-      const step = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        el.textContent = Math.round(target * easeOutCount(progress));
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
-  }, { threshold: 0.6 });
-  countEls.forEach((el) => countIo.observe(el));
-
-  // Spotlight hover: track pointer position on cursor-tracked cards
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.spotlight').forEach((card) => {
-      card.addEventListener('pointermove', (e) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
-        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
-        card.classList.add('is-active');
-      });
-      card.addEventListener('pointerleave', () => card.classList.remove('is-active'));
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
+  function revealCheck(){
+    if(!io){ revealEls.forEach(function(el){ el.classList.add('in-view'); }); return; }
+    revealEls.forEach(function(el){
+      if(el.offsetParent !== null){ io.observe(el); }
     });
   }
+  revealCheck();
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const btn = item.querySelector('.faq-q');
-    const answer = item.querySelector('.faq-a');
-    btn.addEventListener('click', () => {
-      const isOpen = item.getAttribute('data-open') === 'true';
-      document.querySelectorAll('.faq-item').forEach(other => {
-        other.setAttribute('data-open', 'false');
-        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-        other.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if (!isOpen) {
-        item.setAttribute('data-open', 'true');
-        btn.setAttribute('aria-expanded', 'true');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      }
+  /* ---------- HERO LOAD-IN (single orchestrated moment) ---------- */
+  var heroLines = document.querySelectorAll('.hero-line span');
+  heroLines.forEach(function(span, i){
+    span.style.transform = 'translateY(110%)';
+    span.style.transition = 'transform .85s cubic-bezier(.22,.68,0,1)';
+    span.style.transitionDelay = (i * 90) + 'ms';
+  });
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      heroLines.forEach(function(span){ span.style.transform = 'translateY(0)'; });
     });
   });
 
-  // Mobile nav toggle (simple show/hide of links inline)
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.style.display === 'flex';
-    navLinks.style.display = open ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'fixed';
-    navLinks.style.top = '68px';
-    navLinks.style.left = '0';
-    navLinks.style.right = '0';
-    navLinks.style.background = 'var(--bg-primary)';
-    navLinks.style.padding = '1.5rem 6vw';
-    navLinks.style.borderBottom = '1px solid var(--line)';
-    navLinks.style.gap = '1.2rem';
-    navToggle.setAttribute('aria-expanded', String(!open));
+  /* ---------- FAQ DATA + ACCORDION ---------- */
+  var faqData = [
+    {q:"How long does a project take?", a:"A Brand Clarity Audit is a single 90-minute session with written follow-up. The full Positioning, Identity, and Digital engagement typically runs several weeks, depending on scope — we'll give you a specific timeline once we understand the work."},
+    {q:"Is the Brand Clarity Audit a sales pitch?", a:"No. It's a strategic review. You'll leave with three identified gaps and written recommendations whether or not you ever work with us again."},
+    {q:"What do you need from me?", a:"Access to your current brand materials, honest answers about where the business is today, and one hour of focused time before the session."},
+    {q:"Do you work with existing brands?", a:"Yes — most of our work is with businesses that already have a brand in place but have outgrown it. We rarely start from a blank page."},
+    {q:"Can you build the digital experience too?", a:"Yes. Digital is one of the three core interventions, alongside positioning and identity, and it's most effective when built on the other two."},
+    {q:"What happens after the audit?", a:"We'll review your application and respond with next steps. If a full engagement makes sense, we'll walk you through scope and next steps directly."},
+    {q:"Can you work with businesses outside Nigeria?", a:"Yes. Bloomotive works with ambitious businesses wherever they're based."}
+  ];
+  var faqList = document.getElementById('faqList');
+  faqData.forEach(function(item, i){
+    var el = document.createElement('div');
+    el.className = 'faq-item reveal';
+    el.dataset.open = 'false';
+    el.innerHTML =
+      '<button class="faq-q" aria-expanded="false" id="faq-btn-'+i+'" aria-controls="faq-panel-'+i+'">'+
+        '<span>'+item.q+'</span><span class="plus" aria-hidden="true"></span>'+
+      '</button>'+
+      '<div class="faq-a" id="faq-panel-'+i+'" role="region" aria-labelledby="faq-btn-'+i+'"><p>'+item.a+'</p></div>';
+    faqList.appendChild(el);
   });
+  faqList.addEventListener('click', function(e){
+    var btn = e.target.closest('.faq-q');
+    if(!btn) return;
+    var item = btn.closest('.faq-item');
+    var isOpen = item.dataset.open === 'true';
+    // close siblings
+    faqList.querySelectorAll('.faq-item').forEach(function(other){
+      other.dataset.open = 'false';
+      other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+    });
+    if(!isOpen){
+      item.dataset.open = 'true';
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+  revealCheck();
 
-  // In-page anchor scrolling, handled manually so links always scroll
-  // within this page instead of relying on native hash navigation.
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', function (e) {
-      const id = this.getAttribute('href').slice(1);
-      if (!id) return; // href="#" (logo) keeps default top-of-page behavior
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (navLinks.style.display === 'flex') {
-        navLinks.style.display = 'none';
-        navToggle.setAttribute('aria-expanded', 'false');
+  /* ---------- CASE STUDIES DATA + RENDER ---------- */
+  var cases = [
+    {
+      client:"Avenor", tag:"Real Estate · Brand Identity",
+      problem:"Buyers needed to trust the company before they'd consider a property.",
+      intervention:"A visual identity designed to create a stronger signal of credibility and confidence.",
+      detail:{
+        business:"A residential real estate developer competing for buyer attention in a crowded, trust-sensitive category.",
+        challenge:"Strong developments, but a brand presence that didn't reassure buyers before the first conversation.",
+        perception:"The identity read as generic developer marketing — indistinguishable from smaller, less capitalized competitors.",
+        diagnosis:"Trust had to be established visually, before a sales conversation ever started.",
+        positioning:"Positioned around certainty and permanence rather than lifestyle imagery alone.",
+        identity:"A visual identity built to read as established and dependable across print, signage, and digital.",
+        digital:"Property presentation pages designed to carry that same sense of credibility online.",
+        outcome:"A brand presence that supports the sales conversation instead of undermining it. No fabricated metrics — the strategic shift is the result."
       }
-    });
+    },
+    {
+      client:"Vanta", tag:"B2B Software · Positioning & Identity",
+      problem:"A technical, category-defining product with a brand that felt too generic to signal category leadership.",
+      intervention:"Positioning and visual identity rebuilt to read as authoritative to enterprise buyers.",
+      detail:{
+        business:"A B2B software company selling a technical product to security-conscious buyers.",
+        challenge:"The product was strong; the brand around it didn't communicate the seriousness of the category.",
+        perception:"Enterprise buyers associated the visual identity with early-stage, unproven vendors.",
+        diagnosis:"The gap was credibility, not capability.",
+        positioning:"Sharpened the message architecture around the specific outcome buyers cared about.",
+        identity:"An identity system built to read as mature and enterprise-ready.",
+        digital:"Restructured the site to lead with proof and precision rather than feature lists.",
+        outcome:"A brand that matches the seriousness of the buying decision it's asking for."
+      }
+    },
+    {
+      client:"J&J Hairss", tag:"Beauty · Brand Identity",
+      problem:"A strong product line presented like a local shop rather than a scalable beauty brand.",
+      intervention:"An identity system built to support wider retail distribution and premium shelf positioning.",
+      detail:{
+        business:"A hair care brand with a loyal customer base looking to move into wider retail.",
+        challenge:"Packaging and identity that worked for direct sales didn't hold up next to established retail competitors.",
+        perception:"The brand read as homemade rather than production-ready, regardless of product quality.",
+        diagnosis:"Retail buyers judge shelf presence before they judge formulation.",
+        positioning:"Repositioned around a clearer promise and a more specific customer.",
+        identity:"A packaging and identity system built to compete visually on a retail shelf.",
+        digital:"A storefront designed to carry the same premium signal as the new packaging.",
+        outcome:"A brand ready for conversations with retail buyers it couldn't credibly have before."
+      }
+    },
+    {
+      client:"Evidiq", tag:"Data / SaaS · Positioning + Digital",
+      problem:"A complex data product that was hard to explain to non-technical stakeholders.",
+      intervention:"Clarified positioning and a digital experience built around comprehension, not just feature depth.",
+      detail:{
+        business:"A data platform selling into organizations where the economic buyer isn't the technical user.",
+        challenge:"The product's value was real but consistently under-communicated to decision-makers.",
+        perception:"Prospects couldn't summarize what the company did after visiting the website.",
+        diagnosis:"The complexity of the product was leaking into the complexity of the pitch.",
+        positioning:"One clear sentence, tested against non-technical stakeholders, became the anchor for everything else.",
+        identity:"Visual language simplified to support clarity over cleverness.",
+        digital:"A website restructured around a single comprehension path rather than a menu of features.",
+        outcome:"A pitch that a non-technical buyer can repeat back accurately."
+      }
+    },
+    {
+      client:"Stratigen", tag:"Consulting · Positioning",
+      problem:"Sounded like every other consulting firm claiming to be 'strategic.'",
+      intervention:"A sharpened point of view and message architecture built to differentiate.",
+      detail:{
+        business:"A boutique consulting firm competing against larger, better-known names.",
+        challenge:"The firm's actual point of view was distinctive; its language wasn't.",
+        perception:"Prospective clients couldn't tell Stratigen apart from a dozen similarly worded firms.",
+        diagnosis:"Differentiation existed in how they worked, but hadn't been translated into language.",
+        positioning:"Built a specific, ownable point of view rather than a generic capabilities list.",
+        identity:"A visual system restrained enough to let the point of view carry the weight.",
+        digital:"Case-driven content structure replacing generic service pages.",
+        outcome:"A firm that sounds like itself instead of the category average."
+      }
+    },
+    {
+      client:"Mentorly", tag:"Education · Identity + Digital",
+      problem:"Its audience couldn't tell if this was a serious platform or a side project.",
+      intervention:"Identity and digital experience rebuilt to establish credibility with mentors and learners alike.",
+      detail:{
+        business:"A mentorship platform connecting professionals with learners in a specific field.",
+        challenge:"Both sides of the marketplace needed to trust the platform before engaging.",
+        perception:"The look and feel undercut the seriousness of the people it was trying to attract as mentors.",
+        diagnosis:"A two-sided marketplace needs a brand that reassures both sides simultaneously.",
+        positioning:"Repositioned around credibility and outcomes rather than generic community language.",
+        identity:"A more restrained, professional identity system built to earn mentor trust.",
+        digital:"Onboarding flows redesigned to reduce hesitation on both sides of the marketplace.",
+        outcome:"A platform that reads as credible to the professionals it depends on to work at all."
+      }
+    }
+  ];
+
+  var caseRail = document.getElementById('caseRail');
+  var detailFields = [
+    ["business","The business"],["challenge","The challenge"],["perception","The perception problem"],
+    ["diagnosis","Strategic diagnosis"],["positioning","Positioning decision"],["identity","Identity intervention"],
+    ["digital","Digital intervention"],["outcome","Outcome / implication"]
+  ];
+  cases.forEach(function(c, i){
+    var card = document.createElement('article');
+    card.className = 'case-card reveal';
+    card.dataset.open = 'false';
+
+    var dl = detailFields.map(function(f){
+      return '<div><dt>'+f[1]+'</dt><dd>'+c.detail[f[0]]+'</dd></div>';
+    }).join('');
+
+    card.innerHTML =
+      '<span class="case-tag">'+c.tag+'</span>'+
+      '<h3>'+c.client+'</h3>'+
+      '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
+      '<div class="case-block"><b>Intervention</b>'+c.intervention+'</div>'+
+      '<button class="case-toggle" aria-expanded="false" aria-controls="case-detail-'+i+'">'+
+        '<span class="txt">View case study</span><span class="chev" aria-hidden="true">⌄</span>'+
+      '</button>'+
+      '<div class="case-detail" id="case-detail-'+i+'"><div class="case-detail-inner"><dl style="margin:0; display:grid; gap:14px;">'+dl+'</dl>'+
+      '<p style="font-size:12px; color:var(--ink-faint); margin-top:4px;">Visual evidence available on request — not fabricated or estimated here.</p></div></div>';
+    caseRail.appendChild(card);
   });
 
-  // Apply form: opens the visitor's email client with their details filled in
-  const applyForm = document.getElementById('applyForm');
-  if (applyForm) {
-    applyForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('applyName').value.trim();
-      const company = document.getElementById('applyCompany').value.trim();
-      const challenge = document.getElementById('applyChallenge').value.trim();
-      const subject = encodeURIComponent('Brand Clarity Audit Application - ' + company);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\nCompany or startup: ' + company + '\n\nThe challenge:\n' + challenge
-      );
-      window.location.href = 'mailto:bloomotive@tbmbrand.com?subject=' + subject + '&body=' + body;
-    });
-  }
+  caseRail.addEventListener('click', function(e){
+    var btn = e.target.closest('.case-toggle');
+    if(!btn) return;
+    var card = btn.closest('.case-card');
+    var open = card.dataset.open === 'true';
+    card.dataset.open = open ? 'false' : 'true';
+    btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    btn.querySelector('.txt').textContent = open ? 'View case study' : 'Close case study';
+  });
+  revealCheck();
 
-  // Checklist form: requests the free resource by email
-  const checklistForm = document.getElementById('checklistForm');
-  if (checklistForm) {
-    checklistForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const email = document.getElementById('checklistEmail').value.trim();
-      const subject = encodeURIComponent('Send me the Brand Perception Checklist');
-      const body = encodeURIComponent('Please send the checklist to: ' + email);
-      window.location.href = 'mailto:bloomotive@tbmbrand.com?subject=' + subject + '&body=' + body;
-    });
-  }
+  /* ---------- APPLICATION FORM ---------- */
+  var applyForm = document.getElementById('applyForm');
+  var applyWrap = document.getElementById('apply-form-wrap');
+  var thankyou = document.getElementById('thankyou');
+  applyForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!applyForm.checkValidity()){
+      applyForm.reportValidity();
+      return;
+    }
+    applyWrap.style.display = 'none';
+    thankyou.classList.add('show');
+    var h = thankyou.querySelector('h2');
+    h.setAttribute('tabindex','-1');
+    h.focus();
+  });
+
+})();
 </script>
 
 </body>
