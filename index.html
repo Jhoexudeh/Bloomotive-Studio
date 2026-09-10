@@ -255,7 +255,14 @@ h3,.h3{
    ============================================================ */
 main{padding-top:76px;}
 .page{display:none;}
-.page.is-active{display:block;}
+.page.is-active{display:block; animation:pageIn .6s var(--ease);}
+@keyframes pageIn{
+  from{opacity:0; transform:translateY(18px);}
+  to{opacity:1; transform:translateY(0);}
+}
+@media (prefers-reduced-motion: reduce){
+  .page.is-active{animation:none;}
+}
 .section{padding:clamp(64px,9vw,128px) 0;}
 .section-tight{padding:clamp(48px,6vw,84px) 0;}
 .page > section:last-of-type{padding-bottom:clamp(48px,6vw,80px);}
@@ -276,6 +283,23 @@ main{padding-top:76px;}
 }
 html{scroll-behavior:smooth;}
 
+/* staggered entrance for repeating groups — gives the reveal a little rhythm
+   instead of everything landing on the same beat */
+.capability-list .capability-row:nth-child(2){transition-delay:.08s;}
+.capability-list .capability-row:nth-child(3){transition-delay:.16s;}
+.principle-grid .principle:nth-child(2){transition-delay:.08s;}
+.principle-grid .principle:nth-child(3){transition-delay:.16s;}
+.process-list .process-row:nth-child(2){transition-delay:.08s;}
+.process-list .process-row:nth-child(3){transition-delay:.16s;}
+.process-list .process-row:nth-child(4){transition-delay:.24s;}
+.offer-grid .offer-card:nth-child(2){transition-delay:.08s;}
+.offer-grid .offer-card:nth-child(3){transition-delay:.16s;}
+.testi-rail .testi-card:nth-child(2){transition-delay:.1s;}
+.belief-list .belief-row:nth-child(2){transition-delay:.06s;}
+.belief-list .belief-row:nth-child(3){transition-delay:.12s;}
+.stack-list .stack-row:nth-of-type(3){transition-delay:.1s;}
+.stack-list .stack-row:nth-of-type(5){transition-delay:.2s;}
+
 /* ============================================================
    HERO
    ============================================================ */
@@ -286,7 +310,8 @@ html{scroll-behavior:smooth;}
 .hero-eyebrow-row{
   display:flex; align-items:center; gap:14px; margin-bottom:26px;
 }
-.hero-eyebrow-row .rule{width:34px; height:1.5px; background:var(--accent-deep);}
+.hero-eyebrow-row .rule{width:34px; height:1.5px; background:var(--accent-deep); transition:width .7s var(--ease) .15s;}
+.hero-eyebrow-row.reveal:not(.in-view) .rule{width:0;}
 .hero h1{max-width:15ch;}
 .hero-line{display:block; overflow:hidden;}
 .hero-line span{display:inline-block; will-change:transform;}
@@ -338,9 +363,12 @@ html{scroll-behavior:smooth;}
 }
 .case-card{
   background:var(--paper); padding:34px 30px 30px; display:flex; flex-direction:column; gap:16px;
-  transition:background .3s var(--ease);
+  transition:background .3s var(--ease), transform .4s var(--ease);
 }
-.case-card:hover{background:var(--paper-2);}
+.case-card:hover{background:var(--paper-2); transform:translateY(-6px);}
+@media (prefers-reduced-motion: reduce){
+  .case-card:hover{transform:none;}
+}
 .case-media{
   margin:-34px -30px 4px; aspect-ratio:4/3; overflow:hidden; background:var(--paper-3);
   position:relative;
@@ -401,7 +429,12 @@ html{scroll-behavior:smooth;}
 @media (max-width:700px){.offer-grid{grid-template-columns:1fr;}}
 .offer-card{
   border:1px solid var(--ink); border-radius:var(--r-md); padding:38px 34px; display:flex; flex-direction:column;
-  background:var(--paper);
+  background:var(--paper); transition:transform .4s var(--ease), border-color .3s var(--ease);
+}
+.offer-card:hover{transform:translateY(-6px); border-color:var(--accent-deep);}
+.offer-card.featured:hover{border-color:var(--accent);}
+@media (prefers-reduced-motion: reduce){
+  .offer-card:hover{transform:none;}
 }
 .offer-card.featured{background:var(--ink); color:var(--paper);}
 .offer-tag{font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-faint);}
@@ -515,11 +548,11 @@ html{scroll-behavior:smooth;}
 
 /* Application form */
 .apply-layout{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,6vw,80px); align-items:start;}
+.apply-aside{position:sticky; top:110px;}
 @media (max-width:900px){
   .apply-layout{grid-template-columns:1fr;}
   .apply-aside{position:static; top:auto; padding-bottom:8px; margin-bottom:8px; border-bottom:1px solid var(--line);}
 }
-.apply-aside{position:sticky; top:110px;}
 .apply-aside .body-text{margin-top:16px;}
 .apply-steps{margin-top:32px; display:grid; gap:18px;}
 .apply-step{display:flex; gap:14px; align-items:flex-start;}
@@ -1281,7 +1314,6 @@ html{scroll-behavior:smooth;}
   });
 
   /* ---------- SCROLL REVEAL ---------- */
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(entry.isIntersecting){
@@ -1291,8 +1323,11 @@ html{scroll-behavior:smooth;}
     });
   }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
   function revealCheck(){
-    if(!io){ revealEls.forEach(function(el){ el.classList.add('in-view'); }); return; }
-    revealEls.forEach(function(el){
+    // Re-query live every time: elements added later (FAQ items, case cards)
+    // must still be picked up, not just the ones present at first paint.
+    var freshEls = Array.prototype.slice.call(document.querySelectorAll('.reveal:not(.in-view)'));
+    if(!io){ freshEls.forEach(function(el){ el.classList.add('in-view'); }); return; }
+    freshEls.forEach(function(el){
       if(el.offsetParent !== null){ io.observe(el); }
     });
   }
@@ -1326,6 +1361,7 @@ html{scroll-behavior:smooth;}
     var el = document.createElement('div');
     el.className = 'faq-item reveal';
     el.dataset.open = 'false';
+    el.style.transitionDelay = Math.min(i * 60, 240) + 'ms';
     el.innerHTML =
       '<button class="faq-q" aria-expanded="false" id="faq-btn-'+i+'" aria-controls="faq-panel-'+i+'">'+
         '<span>'+item.q+'</span><span class="plus" aria-hidden="true"></span>'+
@@ -1454,6 +1490,7 @@ html{scroll-behavior:smooth;}
     var card = document.createElement('article');
     card.className = 'case-card reveal';
     card.dataset.open = 'false';
+    card.style.transitionDelay = Math.min((i % 3) * 70, 140) + 'ms';
 
     var dl = detailFields.map(function(f){
       return '<div><dt>'+f[1]+'</dt><dd>'+c.detail[f[0]]+'</dd></div>';
@@ -1484,6 +1521,23 @@ html{scroll-behavior:smooth;}
     btn.querySelector('.txt').textContent = open ? 'View case study' : 'Close case study';
   });
   revealCheck();
+
+  /* ---------- MAGNETIC BUTTONS (desktop, non-reduced-motion only) ---------- */
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if(!prefersReducedMotion && !isTouch){
+    document.querySelectorAll('.btn-primary').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * 0.28;
+        var y = (e.clientY - r.top - r.height / 2) * 0.35;
+        btn.style.transform = 'translate(' + x + 'px,' + (y - 2) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
 
   /* ---------- APPLICATION FORM ---------- */
   var applyForm = document.getElementById('applyForm');
