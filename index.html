@@ -220,10 +220,12 @@ h3,.h3{
 .nav-links a:hover, .nav-links a[aria-current="page"]{color:var(--ink);}
 .nav-links a:hover::after, .nav-links a[aria-current="page"]::after{right:0;}
 .nav-cta{display:flex; align-items:center; gap:18px;}
+.nav-cta .btn-primary span.short{display:none;}
 .menu-toggle{display:none;}
 @media (max-width: 860px){
   .nav-links{display:none;}
   .nav-cta .btn-primary span.long{display:none;}
+  .nav-cta .btn-primary span.short{display:inline;}
   .menu-toggle{
     display:flex; align-items:center; justify-content:center;
     width:42px; height:42px; border:1.5px solid var(--ink); border-radius:50%;
@@ -242,8 +244,11 @@ h3,.h3{
   border-top:1px solid var(--line);
 }
 .mobile-menu.open{opacity:1; transform:translateY(0); pointer-events:auto;}
-.mobile-menu a{display:block; font-family:var(--display); font-size:34px; padding:14px 0; border-bottom:1px solid var(--line);}
-.mobile-menu .btn-primary{margin-top:28px;}
+.mobile-menu a{display:block; font-family:var(--display); font-size:21px; padding:13px 0; border-bottom:1px solid var(--line);}
+.mobile-menu .btn-primary{margin-top:20px; width:100%; justify-content:center; padding:13px 20px; font-size:14px;}
+@media (max-width:860px){
+  .nav-cta .btn-primary{padding:10px 16px; font-size:13px; gap:6px;}
+}
 
 /* ============================================================
    PAGE / LAYOUT MACHINERY
@@ -253,6 +258,7 @@ main{padding-top:76px;}
 .page.is-active{display:block;}
 .section{padding:clamp(64px,9vw,128px) 0;}
 .section-tight{padding:clamp(48px,6vw,84px) 0;}
+.page > section:last-of-type{padding-bottom:clamp(48px,6vw,80px);}
 .on-stone{background:var(--paper-2);}
 .on-dark{background:var(--dark); color:var(--dark-ink);}
 .on-dark .body-text, .on-dark .lede{color:var(--dark-soft);}
@@ -274,7 +280,7 @@ html{scroll-behavior:smooth;}
    HERO
    ============================================================ */
 .hero{
-  padding:clamp(120px,16vw,190px) 0 clamp(60px,8vw,96px);
+  padding:clamp(96px,11vw,140px) 0 clamp(60px,8vw,96px);
   position:relative;
 }
 .hero-eyebrow-row{
@@ -335,6 +341,17 @@ html{scroll-behavior:smooth;}
   transition:background .3s var(--ease);
 }
 .case-card:hover{background:var(--paper-2);}
+.case-media{
+  margin:-34px -30px 4px; aspect-ratio:4/3; overflow:hidden; background:var(--paper-3);
+  position:relative;
+}
+.case-media img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(35%) contrast(1.02); transition:transform .6s var(--ease);}
+.case-card:hover .case-media img{transform:scale(1.04);}
+.case-media-tag{
+  position:absolute; left:12px; bottom:12px; background:rgba(15,24,22,.72); color:var(--paper);
+  font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:5px 10px; border-radius:999px;
+}
 .case-tag{font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-faint);}
 .case-card h3{font-size:26px;}
 .case-block{font-size:14px; color:var(--ink-soft); line-height:1.55;}
@@ -379,8 +396,9 @@ html{scroll-behavior:smooth;}
 /* ============================================================
    OFFER CARDS
    ============================================================ */
-.offer-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:52px;}
-@media (max-width:820px){.offer-grid{grid-template-columns:1fr;}}
+.offer-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:52px;}
+@media (max-width:1080px){.offer-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:700px){.offer-grid{grid-template-columns:1fr;}}
 .offer-card{
   border:1px solid var(--ink); border-radius:var(--r-md); padding:38px 34px; display:flex; flex-direction:column;
   background:var(--paper);
@@ -453,7 +471,7 @@ html{scroll-behavior:smooth;}
 /* ============================================================
    INNER PAGE HEROES (Work / Services / About / Apply)
    ============================================================ */
-.page-hero{padding:clamp(120px,15vw,168px) 0 clamp(48px,6vw,72px);}
+.page-hero{padding:clamp(96px,10vw,130px) 0 clamp(48px,6vw,72px);}
 .page-hero h1{max-width:18ch;}
 .crumbs{font-size:13px; color:var(--ink-faint); margin-bottom:22px; display:flex; gap:8px; align-items:center;}
 .crumbs a:hover{color:var(--accent-deep);}
@@ -497,7 +515,10 @@ html{scroll-behavior:smooth;}
 
 /* Application form */
 .apply-layout{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,6vw,80px); align-items:start;}
-@media (max-width:900px){.apply-layout{grid-template-columns:1fr;}}
+@media (max-width:900px){
+  .apply-layout{grid-template-columns:1fr;}
+  .apply-aside{position:static; top:auto; padding-bottom:8px; margin-bottom:8px; border-bottom:1px solid var(--line);}
+}
 .apply-aside{position:sticky; top:110px;}
 .apply-aside .body-text{margin-top:16px;}
 .apply-steps{margin-top:32px; display:grid; gap:18px;}
@@ -548,7 +569,7 @@ html{scroll-behavior:smooth;}
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
         <span class="bars"><span></span><span></span></span>
       </button>
-      <a href="#" class="btn btn-primary" data-nav="apply"><span class="long">Start a Conversation</span>Start<span class="short" aria-hidden="true"></span> <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <a href="#" class="btn btn-primary" data-nav="apply"><span class="long">Start a Conversation</span><span class="short" aria-hidden="true">Start</span> <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </header>
@@ -727,14 +748,30 @@ html{scroll-behavior:smooth;}
             <li>Written strategic recommendations</li>
           </ul>
           <div class="offer-foot">
-            <span class="offer-price">$150</span>
+            <span class="offer-price">$350</span>
             <a href="#" class="btn btn-ghost" data-nav="apply">Apply for an Audit <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        
-        
-        <div class="offer-card featured reveal">
+
+        <div class="offer-card reveal">
           <span class="offer-tag">Offer 02</span>
+          <h3>Positioning + Identity</h3>
+          <p class="offer-for">For businesses with a good offer that still reads and looks smaller than it is.</p>
+          <p class="offer-outcome">A sharpened position and a visual identity system built to signal the level the business actually operates at.</p>
+          <ul class="offer-includes">
+            <li>Positioning strategy and messaging</li>
+            <li>Visual identity system</li>
+            <li>Brand guidelines for real-world use</li>
+            <li>Strategic implementation support</li>
+          </ul>
+          <div class="offer-foot">
+            <span class="offer-price">From $2,200</span>
+            <a href="#" class="btn btn-ghost" data-nav="apply">Start with Positioning <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="offer-card featured reveal">
+          <span class="offer-tag">Offer 03</span>
           <h3>Positioning + Identity + Digital</h3>
           <p class="offer-for">For businesses ready to bring the entire brand experience up to the level of the business.</p>
           <p class="offer-outcome">A full system: what you say, how you look, and how you're experienced online — built as one coherent piece of work.</p>
@@ -745,7 +782,7 @@ html{scroll-behavior:smooth;}
             <li>Strategic implementation support</li>
           </ul>
           <div class="offer-foot">
-            <span class="offer-price">From $1,200</span>
+            <span class="offer-price">From $5,500</span>
             <a href="#" class="btn btn-primary" data-nav="apply">Discuss Your Brand <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -978,29 +1015,29 @@ html{scroll-behavior:smooth;}
       <li>Written strategic recommendations</li>
     </ul>
     <div class="offer-foot">
-      <span class="offer-price">$150</span>
+      <span class="offer-price">$350</span>
       <a href="#" class="btn btn-ghost" data-nav="apply">
         Apply for an Audit <span aria-hidden="true">→</span>
       </a>
     </div>
   </div>
 
-  <!-- Offer 03 -->
+  <!-- Offer 02 -->
   <div class="offer-card reveal">
     <span class="offer-tag">Offer 02</span>
-    <h3>Brand Positioning Sprint</h3>
-    <p class="offer-for">For businesses that have a good offer but struggle to communicate why they are the right choice.</p>
-    <p class="offer-outcome">Clarify what makes the business different, who it is for, and how to communicate that value with confidence.</p>
+    <h3>Positioning + Identity</h3>
+    <p class="offer-for">For businesses with a good offer that still reads and looks smaller than it is.</p>
+    <p class="offer-outcome">A sharpened position and a visual identity system built to signal the level the business actually operates at.</p>
     <ul class="offer-includes">
-      <li>Positioning strategy session</li>
-      <li>Ideal customer and audience clarity</li>
-      <li>Core value proposition</li>
-      <li>Messaging direction and recommendations</li>
+      <li>Positioning strategy and messaging</li>
+      <li>Visual identity system</li>
+      <li>Brand guidelines for real-world use</li>
+      <li>Strategic implementation support</li>
     </ul>
     <div class="offer-foot">
-      <span class="offer-price">$400</span>
+      <span class="offer-price">From $2,200</span>
       <a href="#" class="btn btn-ghost" data-nav="apply">
-        Start a Positioning Sprint <span aria-hidden="true">→</span>
+        Start with Positioning <span aria-hidden="true">→</span>
       </a>
     </div>
   </div>
@@ -1018,7 +1055,7 @@ html{scroll-behavior:smooth;}
       <li>Strategic implementation support</li>
     </ul>
     <div class="offer-foot">
-      <span class="offer-price">From $1,200</span>
+      <span class="offer-price">From $5,500</span>
       <a href="#" class="btn btn-primary" data-nav="apply">
         Discuss Your Brand <span aria-hidden="true">→</span>
       </a>
@@ -1423,6 +1460,8 @@ html{scroll-behavior:smooth;}
     }).join('');
 
     card.innerHTML =
+      '<div class="case-media"><img src="https://picsum.photos/seed/bloomotive-'+encodeURIComponent(c.client)+'/640/480" alt="" loading="lazy">'+
+      '<span class="case-media-tag">Placeholder — replace with project imagery</span></div>'+
       '<span class="case-tag">'+c.tag+'</span>'+
       '<h3>'+c.client+'</h3>'+
       '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
