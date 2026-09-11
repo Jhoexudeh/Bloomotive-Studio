@@ -204,7 +204,6 @@ h3,.h3{
 }
 .logo{
   font-family:var(--display); font-size:21px; font-weight:500; letter-spacing:-.01em;
-  font-weight: 800;
 }
 .logo em{font-style:italic; color:var(--accent-deep);}
 .site-footer .logo em{color:var(--accent);}
@@ -358,13 +357,13 @@ html{scroll-behavior:smooth;}
    CASE STUDIES
    ============================================================ */
 .case-rail{
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2px;
-  margin-top:52px; background:var(--line);
-  border:1px solid var(--line);
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px;
+  margin-top:52px;
 }
 .case-card{
   background:var(--paper); padding:34px 30px 30px; display:flex; flex-direction:column; gap:16px;
   transition:background .3s var(--ease), transform .4s var(--ease);
+  border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden;
 }
 .case-card:hover{background:var(--paper-2); transform:translateY(-6px);}
 @media (prefers-reduced-motion: reduce){
@@ -386,18 +385,12 @@ html{scroll-behavior:smooth;}
 .case-block{font-size:14px; color:var(--ink-soft); line-height:1.55;}
 .case-block b{display:block; font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
 .case-toggle{
-  margin-top:auto; padding-top:14px; display:flex; align-items:center; gap:8px;
-  font-weight:700; font-size:14px; border-top:1px solid var(--line-soft); padding-top:16px;
+  margin-top:auto; padding-top:16px; display:flex; align-items:center; gap:8px;
+  font-weight:700; font-size:14px; border-top:1px solid var(--line-soft);
+  transition:gap .25s var(--ease), color .25s var(--ease);
 }
-.case-toggle .chev{transition:transform .3s var(--ease);}
-.case-card[data-open="true"] .case-toggle .chev{transform:rotate(180deg);}
-.case-detail{
-  max-height:0; overflow:hidden; transition:max-height .45s var(--ease);
-}
-.case-card[data-open="true"] .case-detail{max-height:900px;}
-.case-detail-inner{padding-top:18px; display:grid; gap:14px; border-top:1px dashed var(--line); margin-top:6px;}
-.case-detail dt{font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint);}
-.case-detail dd{margin:3px 0 0; font-size:14.5px; color:var(--ink-soft); line-height:1.55;}
+.case-toggle:hover{color:var(--accent-deep); gap:12px;}
+.case-toggle .btn-arrow{transition:transform .35s var(--ease);}
 
 /* ============================================================
    PRINCIPLES / WHY
@@ -451,7 +444,7 @@ html{scroll-behavior:smooth;}
 .offer-includes li::before{content:'—'; position:absolute; left:0; color:var(--accent-deep);}
 .offer-card.featured .offer-includes li::before{color:var(--accent);}
 .offer-foot{margin-top:auto; padding-top:28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
-.offer-price{font-family:var(--display); font-size:26px; font-weight: 800;}
+.offer-price{font-family:var(--sans); font-size:24px; font-weight:800; letter-spacing:-.01em; font-variant-numeric:slashed-zero;}
 
 /* ============================================================
    TESTIMONIALS
@@ -590,7 +583,7 @@ html{scroll-behavior:smooth;}
 
 <header class="site-header" id="siteHeader">
   <div class="wrap header-row">
-    <a href="#" class="logo" data-nav="home" aria-label="Bloomotive — home">Bloomotive</a>
+    <a href="#" class="logo" data-nav="home" aria-label="Bloomotive — home">Bloom<em>otive</em></a>
     <nav class="main-nav" aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#" data-nav="work">Work</a></li>
@@ -799,7 +792,7 @@ html{scroll-behavior:smooth;}
             <li>Strategic implementation support</li>
           </ul>
           <div class="offer-foot">
-            <span class="offer-price">$2,200</span>
+            <span class="offer-price">From $2,200</span>
             <a href="#" class="btn btn-ghost" data-nav="apply">Start with Positioning <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -816,7 +809,7 @@ html{scroll-behavior:smooth;}
             <li>Strategic implementation support</li>
           </ul>
           <div class="offer-foot">
-            <span class="offer-price">$5,500</span>
+            <span class="offer-price">From $5,500</span>
             <a href="#" class="btn btn-primary" data-nav="apply">Discuss Your Brand <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -1069,7 +1062,7 @@ html{scroll-behavior:smooth;}
       <li>Strategic implementation support</li>
     </ul>
     <div class="offer-foot">
-      <span class="offer-price">$2,200</span>
+      <span class="offer-price">From $2,200</span>
       <a href="#" class="btn btn-ghost" data-nav="apply">
         Start with Positioning <span aria-hidden="true">→</span>
       </a>
@@ -1089,7 +1082,7 @@ html{scroll-behavior:smooth;}
       <li>Strategic implementation support</li>
     </ul>
     <div class="offer-foot">
-      <span class="offer-price">$5,500</span>
+      <span class="offer-price">From $5,500</span>
       <a href="#" class="btn btn-primary" data-nav="apply">
         Discuss Your Brand <span aria-hidden="true">→</span>
       </a>
@@ -1215,7 +1208,7 @@ html{scroll-behavior:smooth;}
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#" class="logo" data-nav="home">Bloomotive</a>
+        <a href="#" class="logo" data-nav="home">Bloom<em>otive</em></a>
         <p>Strategic Brand Studio</p>
       </div>
       <div class="footer-cols">
@@ -1482,20 +1475,12 @@ html{scroll-behavior:smooth;}
   ];
 
   var caseRail = document.getElementById('caseRail');
-  var detailFields = [
-    ["business","The business"],["challenge","The challenge"],["perception","The perception problem"],
-    ["diagnosis","Strategic diagnosis"],["positioning","Positioning decision"],["identity","Identity intervention"],
-    ["digital","Digital intervention"],["outcome","Outcome / implication"]
-  ];
   cases.forEach(function(c, i){
     var card = document.createElement('article');
     card.className = 'case-card reveal';
-    card.dataset.open = 'false';
     card.style.transitionDelay = Math.min((i % 3) * 70, 140) + 'ms';
 
-    var dl = detailFields.map(function(f){
-      return '<div><dt>'+f[1]+'</dt><dd>'+c.detail[f[0]]+'</dd></div>';
-    }).join('');
+    var slug = c.client.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
     card.innerHTML =
       '<div class="case-media"><img src="https://picsum.photos/seed/bloomotive-'+encodeURIComponent(c.client)+'/640/480" alt="" loading="lazy">'+
@@ -1504,22 +1489,10 @@ html{scroll-behavior:smooth;}
       '<h3>'+c.client+'</h3>'+
       '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
       '<div class="case-block"><b>Intervention</b>'+c.intervention+'</div>'+
-      '<button class="case-toggle" aria-expanded="false" aria-controls="case-detail-'+i+'">'+
-        '<span class="txt">View case study</span><span class="chev" aria-hidden="true">⌄</span>'+
-      '</button>'+
-      '<div class="case-detail" id="case-detail-'+i+'"><div class="case-detail-inner"><dl style="margin:0; display:grid; gap:14px;">'+dl+'</dl>'+
-      '<p style="font-size:12px; color:var(--ink-faint); margin-top:4px;">Visual evidence available on request — not fabricated or estimated here.</p></div></div>';
+      '<a class="case-toggle" href="case-studies/'+slug+'.pdf" target="_blank" rel="noopener">'+
+        '<span class="txt">View case study</span><span class="btn-arrow" aria-hidden="true">→</span>'+
+      '</a>';
     caseRail.appendChild(card);
-  });
-
-  caseRail.addEventListener('click', function(e){
-    var btn = e.target.closest('.case-toggle');
-    if(!btn) return;
-    var card = btn.closest('.case-card');
-    var open = card.dataset.open === 'true';
-    card.dataset.open = open ? 'false' : 'true';
-    btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-    btn.querySelector('.txt').textContent = open ? 'View case study' : 'Close case study';
   });
   revealCheck();
 
