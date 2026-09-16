@@ -1508,15 +1508,15 @@ html{scroll-behavior:smooth;}
     var slug = c.client.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
     card.innerHTML =
-      '<div class="case-media"><img src="https://picsum.photos/seed/bloomotive-'+encodeURIComponent(c.client)+'/640/480" alt="" loading="lazy">'+
-      '<span class="case-media-tag">Placeholder — replace with project imagery</span></div>'+
-      '<span class="case-tag">'+c.tag+'</span>'+
-      '<h3>'+c.client+'</h3>'+
-      '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
-      '<div class="case-block"><b>Intervention</b>'+c.intervention+'</div>'+
-      '<a class="case-toggle" href="case-studies/'+slug+'.pdf" target="_blank" rel="noopener">'+
-        '<span class="txt">View case study</span><span class="btn-arrow" aria-hidden="true">→</span>'+
-      '</a>';
+  '<div class="case-media"><img src="'+c.img+'" alt="'+c.client+' — brand identity work by Bloomotive" '+
+  'loading="lazy" decoding="async" width="640" height="480"></div>'+
+  '<span class="case-tag">'+c.tag+'</span>'+
+  '<h3>'+c.client+'</h3>'+
+  '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
+  '<div class="case-block"><b>Intervention</b>'+c.intervention+'</div>'+
+  '<a class="case-toggle" href="case-studies/'+slug+'.pdf" target="_blank" rel="noopener">'+
+    '<span class="txt">View case study</span><span class="btn-arrow" aria-hidden="true">→</span>'+
+  '</a>';
     caseRail.appendChild(card);
   });
   revealCheck();
