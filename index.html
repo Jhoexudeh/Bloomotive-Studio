@@ -1464,7 +1464,9 @@ html{scroll-behavior:smooth;}
     client:"Aurevia",
     tag:"TODO — category · service",
     img:"images/aurevia.jpg",
-    problem:"TODO — the perception problem in one sentence.",
+    linktype: "website",
+    link:"Aurevia-rho.vercel.app",
+    problem:"The perception problem in one sentence.",
     intervention:"TODO — what you actually did about it.",
     detail:{}
   },
@@ -1473,8 +1475,10 @@ html{scroll-behavior:smooth;}
     client:"Elevate Consulting",
     tag:"Consulting",
     img:"images/elevate consulting.jpg",
-    problem:"TODO — the perception problem in one sentence.",
-    intervention:"TODO — what you actually did about it.",
+    linktype:"website",
+    link: "elevate-consulting-nu.vercel.app",
+    problem:"The perception problem in one sentence.",
+    intervention:"What you actually did about it.",
     detail:{}
   },
 
@@ -1482,6 +1486,8 @@ html{scroll-behavior:smooth;}
     client:"Pelagic",
     tag:"Marine Technology · Brand Identity",
     img:"images/pelagic logo.jpg",
+    linktype:"pdf",
+    link: "pelagic.pdf",
     problem:"A marine technology brand needed an identity that could communicate engineering precision, maritime intelligence, and technological capability.",
     intervention:"A strategic brand identity system built around maritime intelligence, engineered control, and precision across digital and physical applications.",
     detail:{
@@ -1514,9 +1520,11 @@ html{scroll-behavior:smooth;}
   '<h3>'+c.client+'</h3>'+
   '<div class="case-block"><b>Problem</b>'+c.problem+'</div>'+
   '<div class="case-block"><b>Intervention</b>'+c.intervention+'</div>'+
-  '<a class="case-toggle" href="Avenor Brand Identity.pdf" target="_blank" rel="noopener">'+
-    '<span class="txt">View case study</span><span class="btn-arrow" aria-hidden="true">→</span>'+
-  '</a>';
+  
+      '<a class="case-toggle" href="'+c.link+'" target="_blank" rel="noopener">'+
+  '<span class="txt">'+(c.linkType === "website" ? "View website" : "View case study")+'</span>'+
+  '<span class="btn-arrow" aria-hidden="true">→</span>'+
+'</a>';
     caseRail.appendChild(card);
   });
   revealCheck();
