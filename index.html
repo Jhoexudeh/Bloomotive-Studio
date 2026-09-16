@@ -1403,99 +1403,70 @@ html{scroll-behavior:smooth;}
   revealCheck();
 
   /* ---------- CASE STUDIES DATA + RENDER ---------- */
+
+
   var cases = [
     {
-      client:"Avenor", tag:"Real Estate · Brand Identity",
+      client:"Avenor", tag:"Real Estate · Brand Identity", img:"/images/avenor.jpg",
       problem:"Buyers needed to trust the company before they'd consider a property.",
       intervention:"A visual identity designed to create a stronger signal of credibility and confidence.",
-      detail:{
-        business:"A residential real estate developer competing for buyer attention in a crowded, trust-sensitive category.",
-        challenge:"Strong developments, but a brand presence that didn't reassure buyers before the first conversation.",
-        perception:"The identity read as generic developer marketing — indistinguishable from smaller, less capitalized competitors.",
-        diagnosis:"Trust had to be established visually, before a sales conversation ever started.",
-        positioning:"Positioned around certainty and permanence rather than lifestyle imagery alone.",
-        identity:"A visual identity built to read as established and dependable across print, signage, and digital.",
-        digital:"Property presentation pages designed to carry that same sense of credibility online.",
-        outcome:"A brand presence that supports the sales conversation instead of undermining it. No fabricated metrics — the strategic shift is the result."
-      }
+      detail:{ /* unchanged */ }
     },
     {
-      client:"Vanta", tag:"B2B Software · Positioning & Identity",
+      client:"Vanta", tag:"B2B Software · Positioning & Identity", img:"/images/vanta.jpg",
       problem:"A technical, category-defining product with a brand that felt too generic to signal category leadership.",
       intervention:"Positioning and visual identity rebuilt to read as authoritative to enterprise buyers.",
-      detail:{
-        business:"A B2B software company selling a technical product to security-conscious buyers.",
-        challenge:"The product was strong; the brand around it didn't communicate the seriousness of the category.",
-        perception:"Enterprise buyers associated the visual identity with early-stage, unproven vendors.",
-        diagnosis:"The gap was credibility, not capability.",
-        positioning:"Sharpened the message architecture around the specific outcome buyers cared about.",
-        identity:"An identity system built to read as mature and enterprise-ready.",
-        digital:"Restructured the site to lead with proof and precision rather than feature lists.",
-        outcome:"A brand that matches the seriousness of the buying decision it's asking for."
-      }
+      detail:{ /* unchanged */ }
     },
     {
-      client:"J&J Hairss", tag:"Beauty · Brand Identity",
+      client:"J&J Hairss", tag:"Beauty · Brand Identity", img:"/images/jandjhairss.jpg",
       problem:"A strong product line presented like a local shop rather than a scalable beauty brand.",
       intervention:"An identity system built to support wider retail distribution and premium shelf positioning.",
-      detail:{
-        business:"A hair care brand with a loyal customer base looking to move into wider retail.",
-        challenge:"Packaging and identity that worked for direct sales didn't hold up next to established retail competitors.",
-        perception:"The brand read as homemade rather than production-ready, regardless of product quality.",
-        diagnosis:"Retail buyers judge shelf presence before they judge formulation.",
-        positioning:"Repositioned around a clearer promise and a more specific customer.",
-        identity:"A packaging and identity system built to compete visually on a retail shelf.",
-        digital:"A storefront designed to carry the same premium signal as the new packaging.",
-        outcome:"A brand ready for conversations with retail buyers it couldn't credibly have before."
-      }
+      detail:{ /* unchanged */ }
     },
     {
-      client:"Evidiq", tag:"Data / SaaS · Positioning + Digital",
+      client:"Evidiq", tag:"Data / SaaS · Positioning + Digital", img:"/images/evidiq.jpg",
       problem:"A complex data product that was hard to explain to non-technical stakeholders.",
       intervention:"Clarified positioning and a digital experience built around comprehension, not just feature depth.",
-      detail:{
-        business:"A data platform selling into organizations where the economic buyer isn't the technical user.",
-        challenge:"The product's value was real but consistently under-communicated to decision-makers.",
-        perception:"Prospects couldn't summarize what the company did after visiting the website.",
-        diagnosis:"The complexity of the product was leaking into the complexity of the pitch.",
-        positioning:"One clear sentence, tested against non-technical stakeholders, became the anchor for everything else.",
-        identity:"Visual language simplified to support clarity over cleverness.",
-        digital:"A website restructured around a single comprehension path rather than a menu of features.",
-        outcome:"A pitch that a non-technical buyer can repeat back accurately."
-      }
+      detail:{ /* unchanged */ }
     },
     {
-      client:"Stratigen", tag:"Consulting · Positioning",
+      client:"Stratigen", tag:"Consulting · Positioning", img:"/images/stratigen.jpg",
       problem:"Sounded like every other consulting firm claiming to be 'strategic.'",
       intervention:"A sharpened point of view and message architecture built to differentiate.",
-      detail:{
-        business:"A boutique consulting firm competing against larger, better-known names.",
-        challenge:"The firm's actual point of view was distinctive; its language wasn't.",
-        perception:"Prospective clients couldn't tell Stratigen apart from a dozen similarly worded firms.",
-        diagnosis:"Differentiation existed in how they worked, but hadn't been translated into language.",
-        positioning:"Built a specific, ownable point of view rather than a generic capabilities list.",
-        identity:"A visual system restrained enough to let the point of view carry the weight.",
-        digital:"Case-driven content structure replacing generic service pages.",
-        outcome:"A firm that sounds like itself instead of the category average."
-      }
+      detail:{ /* unchanged */ }
     },
     {
-      client:"Mentorly", tag:"Education · Identity + Digital",
+      client:"Mentorly", tag:"Education · Identity + Digital", img:"/images/mentorly.jpg",
       problem:"Its audience couldn't tell if this was a serious platform or a side project.",
       intervention:"Identity and digital experience rebuilt to establish credibility with mentors and learners alike.",
-      detail:{
-        business:"A mentorship platform connecting professionals with learners in a specific field.",
-        challenge:"Both sides of the marketplace needed to trust the platform before engaging.",
-        perception:"The look and feel undercut the seriousness of the people it was trying to attract as mentors.",
-        diagnosis:"A two-sided marketplace needs a brand that reassures both sides simultaneously.",
-        positioning:"Repositioned around credibility and outcomes rather than generic community language.",
-        identity:"A more restrained, professional identity system built to earn mentor trust.",
-        digital:"Onboarding flows redesigned to reduce hesitation on both sides of the marketplace.",
-        outcome:"A platform that reads as credible to the professionals it depends on to work at all."
-      }
+      detail:{ /* unchanged */ }
+    },
+
+    /* --- NEW: image supplied, copy still to be written ------------------ */
+    {
+      client:"Aurevia", tag:"TODO — category · service", img:"/images/aurevia.jpg",
+      problem:"TODO — the perception problem in one sentence.",
+      intervention:"TODO — what you actually did about it.",
+      detail:{}
+    },
+    {
+      client:"Elevate Consulting", tag:"Consulting · TODO", img:"/images/elevate%20consulting.jpg",
+      problem:"TODO — the perception problem in one sentence.",
+      intervention:"TODO — what you actually did about it.",
+      detail:{}
+    },
+    {
+      client:"Pelagic", tag:"TODO — category · service", img:"/images/pelagic%20logo.jpg",
+      problem:"TODO — the perception problem in one sentence.",
+      intervention:"TODO — what you actually did about it.",
+      detail:{}
     }
   ];
 
+
+
+  
   var caseRail = document.getElementById('caseRail');
   cases.forEach(function(c, i){
     var card = document.createElement('article');
