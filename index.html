@@ -204,7 +204,7 @@
     }
 
     .eyebrow {
-      display: inline-flex;
+      display: none;
       align-items: center;
       gap: 10px;
       color: var(--lavender);
@@ -219,6 +219,7 @@
       width: 22px;
       height: 1px;
       background: var(--lavender);
+      display: none;
     }
 
     /* Buttons */
@@ -284,6 +285,28 @@
       letter-spacing: -0.065em;
       white-space: nowrap;
     }
+
+    .logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-image {
+  display: block;
+  width: 30px;
+  height: auto;
+  max-height: 52px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (max-width: 560px) {
+  .logo-image {
+    width: 130px;
+    max-height: 44px;
+  }
+}
 
     .logo-mark {
       position: relative;
