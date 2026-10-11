@@ -47,12 +47,12 @@
       letter-spacing: 0.05em;
     }
 
-    /* Dashboard & Chart Gallery Component - Expanded for Desktop */
+    /* Expanded, High-Impact Desktop Gallery */
     .cs-gallery {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2rem;
-      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin: 3rem 0;
       width: 100%;
     }
 
@@ -60,34 +60,35 @@
       margin: 0;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      width: 100%;
     }
-
-    .cs-gallery figure.full-width { grid-column: span 12; }
-    .cs-gallery figure.half-width { grid-column: span 6; }
 
     .cs-gallery img {
       width: 100%;
       height: auto;
-      max-height: 600px;
-      object-fit: contain; /* Ensures charts aren't cropped awkwardly */
-      background: #0a1110;
       display: block;
+      object-fit: cover;
+    }
+
+    .gallery-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
 
     .cs-gallery figcaption {
-      padding: 1rem 1.25rem;
-      font-size: 0.875rem;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: 768px) {
-      .cs-gallery figure.half-width {
-        grid-column: span 12;
+      .gallery-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -97,7 +98,7 @@
 
 <div class="wrap">
   <header class="cs-nav">
-    <a href="index.html" aria-label="Bloomotive home"><img src="hero logo.png" alt="Bloomotive"></a>
+    <a href="index.html" aria-label="Bloomotive home"><img src="hero%20logo.png" alt="Bloomotive"></a>
     <a class="back" href="index.html#work">&larr; All case studies</a>
   </header>
 
@@ -179,20 +180,24 @@
       </p>
 
       <div class="cs-gallery">
-        <figure class="full-width">
+        <!-- Main Overview Dashboard (Full Width & Large) -->
+        <figure>
           <img src="avenor.png" alt="Executive Churn Overview Dashboard" loading="lazy">
           <figcaption>Executive Dashboard: Revenue impact, overall churn rate (20.4%), and user engagement distributions.</figcaption>
         </figure>
 
-        <figure class="half-width">
-          <img src="avenor.png" alt="Demographic vs Behavioral Churn Breakdown" loading="lazy">
-          <figcaption>Demographics vs. Churn: Uniform distribution across income tiers and age brackets.</figcaption>
-        </figure>
+        <!-- Two-Column Grid for Secondary Charts -->
+        <div class="gallery-row">
+          <figure>
+            <img src="avenor.png" alt="Demographic vs Behavioral Churn Breakdown" loading="lazy">
+            <figcaption>Demographics vs. Churn: Uniform distribution across income tiers and age brackets.</figcaption>
+          </figure>
 
-        <figure class="half-width">
-          <img src="avenor1.png" alt="Platform Engagement Heatmap" loading="lazy">
-          <figcaption>Heatmap Matrix: Low transaction recency and quiet platform footprints directly correlate with churn.</figcaption>
-        </figure>
+          <figure>
+            <img src="avenor1.png" alt="Platform Engagement Heatmap" loading="lazy">
+            <figcaption>Heatmap Matrix: Low transaction recency and quiet platform footprints directly correlate with churn.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
