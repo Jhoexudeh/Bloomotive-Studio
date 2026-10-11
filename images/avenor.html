@@ -1,58 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avenor | Case Study | Bloomotive</title>
-<meta name="description" content="A real estate brand built around thoughtfully designed spaces, healthy living, comfort, and modern lifestyles.">
-<meta name="theme-color" content="#0F1816">
-<link rel="stylesheet" href="case-study.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Churn & Retention Analysis | Case Study | Bloomotive</title>
+  <meta name="description" content="A behavioral data analysis revealing how low engagement drives customer churn and providing an actionable strategy to recover revenue.">
+  <meta name="theme-color" content="#0F1816">
+  <link rel="stylesheet" href="case-study.css">
+  <style>
+    /* CSS Extensions for Analytics Case Study */
+    :root {
+      --accent: #A694D4;
+      --bg-dark: #0F1816;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --text-muted: #A0AAB0;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .kpi-card .val {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-card .lbl {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Dashboard & Chart Gallery Component */
+    .cs-gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .cs-gallery figure {
+      margin: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cs-gallery figure.full-width { grid-column: span 12; }
+    .cs-gallery figure.half-width { grid-column: span 6; }
+    .cs-gallery figure.third-width { grid-column: span 4; }
+
+    .cs-gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cs-gallery figcaption {
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .cs-gallery figure.half-width,
+      .cs-gallery figure.third-width {
+        grid-column: span 12;
+      }
+    }
+  </style>
 </head>
 <body style="--c:#A694D4">
 <a class="skip" href="#main">Skip to content</a>
+
 <div class="wrap">
   <header class="cs-nav">
     <a href="index.html" aria-label="Bloomotive home"><img src="hero logo.png" alt="Bloomotive"></a>
     <a class="back" href="index.html#work">&larr; All case studies</a>
   </header>
+
   <main id="main">
+    <!-- Hero Section -->
     <section class="cs-hero">
       <div class="in">
-        <span class="eyebrow">Case Study &middot; Real Estate</span>
-        <h1>Avenor</h1>
+        <span class="eyebrow">Case Study &middot; Data Analytics &amp; Retention</span>
+        <h1>Turning Quiet Losses into Loyal Wins</h1>
       </div>
-      <p class="lede in">A real estate brand built around thoughtfully designed spaces, healthy living, comfort, and modern lifestyles.</p>
+      <p class="lede in">
+        How behavioral diagnostics and predictive modeling identified the quiet drivers behind 204 churned customers and built a blueprint to protect recurring revenue.
+      </p>
     </section>
-    <div class="cover in" role="img" aria-label="Avenor project preview">
-      <b aria-hidden="true">Avenor</b>
-      <img src="images/avenor.jpg" alt="" onerror="this.remove()">
-    </div>
+
+    <!-- Project Meta Details -->
     <dl class="meta">
-      <div><dt>Client</dt><dd>Avenor</dd></div>
-      <div><dt>Industry</dt><dd>Real Estate</dd></div>
-      <div><dt>Deliverable</dt><dd>Brand Identity</dd></div>
+      <div><dt>Focus</dt><dd>Customer Churn &amp; Retention</dd></div>
+      <div><dt>Impact</dt><dd>₦0.26M Revenue Protected</dd></div>
+      <div><dt>Deliverable</dt><dd>Behavioral Analytics &amp; Strategy</dd></div>
     </dl>
-    <section class="body" aria-labelledby="h-brief">
-      <h2 id="h-brief">The brief</h2>
-      <p>Property is bought on trust and on a feeling of what life there will be like. The brand had to say both, clearly, before anyone walked through a door.</p>
+
+    <!-- Executive Summary KPIs -->
+    <section class="kpi-grid" aria-label="Key Performance Indicators">
+      <div class="kpi-card">
+        <div class="val">20.4%</div>
+        <div class="lbl">Overall Churn Rate</div>
+      </div>
+      <div class="kpi-card">
+        <div class="val">204</div>
+        <div class="lbl">Churned Customers</div>
+      </div>
+      <div class="kpi-card">
+        <div class="val">₦0.26M</div>
+        <div class="lbl">Direct Revenue Lost</div>
+      </div>
+      <div class="kpi-card">
+        <div class="val">5% &rarr; ₦65k</div>
+        <div class="lbl">Target Retention ROI</div>
+      </div>
     </section>
-    <section class="body" aria-labelledby="h-built">
-      <h2 id="h-built">What we built</h2>
-      <ul><li>A brand identity for a real estate business</li><li>Positioning built around designed spaces, healthy living, comfort and modern lifestyles</li><li>A visual language that makes the offer feel considered rather than generic</li></ul>
+
+    <!-- Executive Summary & Problem -->
+    <section class="body" aria-labelledby="h-summary">
+      <h2 id="h-summary">Executive Summary</h2>
+      <p>
+        204 customers churned taking ₦0.26M in revenue with them. But they didn’t leave because of who they were—they left because of how they felt: disengaged, under-served, and unnoticed.
+      </p>
+      <p>
+        This analysis reveals that churn isn’t driven by income or gender; it’s driven by low interaction and weak platform engagement. The opportunity? Reconnect. By targeting silent users, improving cross-platform experiences, and predicting churn early, the business can turn quiet losses into loyal wins.
+      </p>
     </section>
-    <!-- ADD REAL DETAIL HERE when ready:
-         <section class="body"><h2>The problem</h2><p>What was costing this client customers.</p></section>
-         <section class="body"><h2>The decision</h2><p>The position we set and why.</p></section>
-         <section class="body"><h2>The proof</h2><p>Real results only (enquiries, conversion, feedback).</p></section> -->
+
+    <section class="body" aria-labelledby="h-problem">
+      <h2 id="h-problem">The Business Problem</h2>
+      <p>
+        Despite a growing customer base, the business is experiencing a troubling churn rate of 20.4%, resulting in a direct revenue loss of ₦0.26 million. This attrition threatens long-term profitability and customer lifetime value. 
+      </p>
+      <p>
+        The absence of clear, traditional churn drivers—such as income level or gender—made it difficult to target retention efforts effectively. Without a data-driven understanding of why customers leave, the business risks continued erosion of its active user base and revenue potential.
+      </p>
+    </section>
+
+    <section class="body" aria-labelledby="h-method">
+      <h2 id="h-method">Data &amp; Methodology</h2>
+      <p>I approached this analysis with a structured, four-stage data-driven methodology:</p>
+      <ul>
+        <li><strong>Data Cleaning &amp; Preparation:</strong> Corrected missing values, standardized date formats, and ensured numeric data integrity across 1,000 customer records.</li>
+        <li><strong>KPI Selection:</strong> Segmented metrics across Demographics (Age, Gender, Income), Transactions (Spend, Volume, Average Order Value), and Engagement (Login Frequency, Recency, Service Usage).</li>
+        <li><strong>Exploratory Data Analysis:</strong> Leveraged column charts, heatmaps, and transactional breakdown ratios to isolate behavioral anomalies.</li>
+      </ul>
+    </section>
+
+    <!-- Visual Dashboard Section / Gallery -->
+    <section class="body" aria-labelledby="h-visuals">
+      <h2 id="h-visuals">Dashboard &amp; Visual Analytics</h2>
+      <p>
+        Out of 1,000 customers, 204 churned—resulting in ₦0.26M in lost revenue. Churn was evenly spread across gender and income levels, showing no demographic bias. The real drivers were behavioral:
+      </p>
+
+      <div class="cs-gallery">
+        <figure class="full-width">
+          <img src="images/churn-dashboard-overview.jpg" alt="Executive Churn Overview Dashboard" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'300\' style=\'background:%2316221f\'><text x=\'50%\' y=\'50%\' fill=\'%23A694D4\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\'>Main Churn Analytics Dashboard Preview</text></svg>'">
+          <figcaption>Executive Dashboard: Revenue impact, overall churn rate (20.4%), and user engagement distributions.</figcaption>
+        </figure>
+
+        <figure class="half-width">
+          <img src="images/demographic-breakdown.jpg" alt="Demographic vs Behavioral Churn Breakdown" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'200\' style=\'background:%2316221f\'><text x=\'50%\' y=\'50%\' fill=\'%23A694D4\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\'>Demographic Segment Comparison</text></svg>'">
+          <figcaption>Demographics vs. Churn: Uniform distribution across income tiers and age brackets.</figcaption>
+        </figure>
+
+        <figure class="half-width">
+          <img src="images/engagement-heatmap.jpg" alt="Platform Engagement Heatmap" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'200\' style=\'background:%2316221f\'><text x=\'50%\' y=\'50%\' fill=\'%23A694D4\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\'>Platform Engagement Heatmap</text></svg>'">
+          <figcaption>Heatmap Matrix: Low transaction recency and quiet platform footprints directly correlate with churn.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Key Findings -->
+    <section class="body" aria-labelledby="h-findings">
+      <h2 id="h-findings">Key Findings &amp; Insights</h2>
+      <p>The numbers didn’t shout; they whispered. Out of 1,000 customers, 204 quietly exited:</p>
+      <ul>
+        <li><strong>Engagement was the tipping point:</strong> Churned customers barely interacted. Their transaction volumes were low and their digital footprints faint.</li>
+        <li><strong>Spending missed opportunities:</strong> ₦0.26M walked out the door with them—representing 20% of total customer lifetime spending.</li>
+        <li><strong>Platform usage was flat:</strong> Mobile, web, and online banking performed identically. The issue wasn't <em>where</em> they engaged, but <em>how they felt</em> when they did.</li>
+        <li><strong>Seasonal inflection points:</strong> Engagement spiked in January and February, but inactive customers weren't nurtured effectively to sustain long-term retention.</li>
+      </ul>
+    </section>
+
+    <!-- Strategic Recommendations -->
+    <section class="body" aria-labelledby="h-recs">
+      <h2 id="h-recs">Actionable Recommendations</h2>
+      <ul>
+        <li><strong>Reignite Engagement:</strong> Implement automated, behavior-triggered outreach for low-interaction customers before silence turns into attrition.</li>
+        <li><strong>Elevate Cross-Platform UX:</strong> Streamline friction points across mobile, web, and online banking touchpoints to build sticky digital habits.</li>
+        <li><strong>Incentivize Loyalty:</strong> Introduce targeted perks and seasonal rewards for consistent, long-term activity.</li>
+        <li><strong>Deploy Early Warning Signals:</strong> Build predictive churn scoring models based on transaction recency and login drops to enable proactive intervention.</li>
+      </ul>
+    </section>
+
+    <!-- Impact & Financial ROI -->
+    <section class="body" aria-labelledby="h-impact">
+      <h2 id="h-impact">Impact &amp; ROI Projections</h2>
+      <ul>
+        <li><strong>Retention Value:</strong> A modest 5% reduction in churn recovers ₦65,000 directly to the bottom line without additional acquisition spend.</li>
+        <li><strong>Engagement Lift:</strong> Increasing overall user interaction by 10% is projected to drive an annual revenue lift exceeding ₦100,000.</li>
+        <li><strong>Predictive Intervention:</strong> Converting just 20% of identified high-risk churn candidates delivers an estimated 4x return on retention efforts.</li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="body" aria-labelledby="h-conclusion">
+      <h2 id="h-conclusion">Conclusion</h2>
+      <p>
+        Churn didn’t knock loudly; it slipped out the back door. But now we know how it moves. 
+      </p>
+      <p>
+        This analysis uncovered a fundamental truth: customers don’t leave because of who they are—they leave because they don’t feel seen, valued, or engaged. By replacing guesswork with behavioral signals, we can transform churn from a threat into a high-margin growth engine.
+      </p>
+    </section>
+
+    <!-- Action Bar -->
     <div class="actions">
-      
-      <a class="btn ghost" href="mailto:bloomotive@tbmbrand.com?subject=Project%20enquiry">Tell Us About Your Business</a>
+      <a class="btn ghost" href="mailto:bloomotive@tbmbrand.com?subject=Analytics%20%26%20Retention%20Enquiry">Work With Our Data Team</a>
     </div>
   </main>
+
+  <!-- Navigation -->
   <nav class="next" aria-label="Next case study">
-    <a href="elevate-consulting.html"><div><small>Next case study</small><strong>Elevate Consulting</strong></div><span aria-hidden="true">&rarr;</span></a>
+    <a href="elevate-consulting.html">
+      <div>
+        <small>Next case study</small>
+        <strong>Elevate Consulting</strong>
+      </div>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
   </nav>
 </div>
-<footer><div class="wrap"><span>&copy; Bloomotive. Be understood. Be trusted. Be chosen.</span><a href="index.html#work">Back to all work</a></div></footer>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; Bloomotive. Be understood. Be trusted. Be chosen.</span>
+    <a href="index.html#work">Back to all work</a>
+  </div>
+</footer>
 </body>
 </html>
