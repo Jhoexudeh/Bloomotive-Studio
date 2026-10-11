@@ -47,12 +47,13 @@
       letter-spacing: 0.05em;
     }
 
-    /* Dashboard & Chart Gallery Component */
+    /* Dashboard & Chart Gallery Component - Expanded for Desktop */
     .cs-gallery {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1.5rem;
-      margin: 3rem 0;
+      gap: 2rem;
+      margin: 3rem auto;
+      width: 100%;
     }
 
     .cs-gallery figure {
@@ -67,12 +68,13 @@
 
     .cs-gallery figure.full-width { grid-column: span 12; }
     .cs-gallery figure.half-width { grid-column: span 6; }
-    .cs-gallery figure.third-width { grid-column: span 4; }
 
     .cs-gallery img {
       width: 100%;
       height: auto;
-      object-fit: cover;
+      max-height: 600px;
+      object-fit: contain; /* Ensures charts aren't cropped awkwardly */
+      background: #0a1110;
       display: block;
     }
 
@@ -84,8 +86,7 @@
     }
 
     @media (max-width: 768px) {
-      .cs-gallery figure.half-width,
-      .cs-gallery figure.third-width {
+      .cs-gallery figure.half-width {
         grid-column: span 12;
       }
     }
@@ -96,7 +97,7 @@
 
 <div class="wrap">
   <header class="cs-nav">
-    <a href="index.html" aria-label="Bloomotive home"><img src="images/hero logo.png" alt="Bloomotive"></a>
+    <a href="index.html" aria-label="Bloomotive home"><img src="hero logo.png" alt="Bloomotive"></a>
     <a class="back" href="index.html#work">&larr; All case studies</a>
   </header>
 
