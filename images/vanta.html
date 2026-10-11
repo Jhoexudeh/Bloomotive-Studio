@@ -1,58 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vanta | Case Study | Bloomotive</title>
-<meta name="description" content="An energy intelligence platform concept helping businesses monitor, optimize, and decarbonize energy systems with data and AI-powered insights.">
-<meta name="theme-color" content="#0F1816">
-<link rel="stylesheet" href="case-study.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Threat Dashboard | Case Study | Bloomotive</title>
+  <meta name="description" content="A Power BI cybersecurity dashboard uncovering attack patterns, financial losses and user impact across industries, with clear recommendations for stronger defense.">
+  <meta name="theme-color" content="#0F1816">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" type="image/png" href="/images/bloomotive icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Tokens (same as landing page) ===== */
+    :root {
+      --bg: #0F1816;
+      --lavender: #A694D4;
+      --paper: #F7F5F0;
+      --peach: #FFB084;
+      --mint: #A4D4C5;
+      --ochre: #E8B94A;
+      --pink: #FF6B8E;
+      --violet-deep: #4B3A8C;
+
+      --surface: #141F1C;
+      --surface-raised: #192521;
+      --surface-hover: #202D27;
+
+      --text: #F7F5F0;
+      --body: #C2C8C2;
+      --muted: #929D95;
+      --line: rgba(247, 245, 240, 0.13);
+      --lavender-border: rgba(166, 148, 212, 0.3);
+
+      --font: "Manrope", sans-serif;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 30px;
+
+      --gutter: clamp(20px, 5vw, 64px);
+      --section: clamp(76px, 10vw, 132px);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--body);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    ::selection { background: var(--lavender); color: var(--bg); }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    h1, h2, h3 { color: var(--text); font-weight: 600; text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    :focus-visible { outline: 2px solid var(--lavender); outline-offset: 5px; border-radius: 5px; }
+
+    .container { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: var(--gutter); }
+
+    .skip {
+      position: absolute; top: -80px; left: 20px; z-index: 300;
+      padding: 12px 18px; border-radius: var(--radius-sm);
+      background: var(--lavender); color: var(--bg);
+    }
+    .skip:focus { top: 15px; }
+
+    /* ===== Typography ===== */
+    .display-xl { font-size: clamp(2.8rem, 6.7vw, 6rem); line-height: 1.04; letter-spacing: -0.075em; }
+    .display-lg { font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.12; letter-spacing: -0.065em; }
+    .display-md { font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.2; letter-spacing: -0.05em; }
+    .display-sm { font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1.3; letter-spacing: -0.045em; }
+
+    .accent { color: var(--lavender); }
+    .accent-peach { color: var(--peach); }
+    .accent-mint { color: var(--mint); }
+    .accent-ochre { color: var(--ochre); }
+
+    .eyebrow {
+      display: block;
+      color: var(--lavender);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      min-height: 50px; padding: 14px 22px;
+      border: 1px solid var(--lavender); border-radius: var(--radius-sm);
+      background: var(--lavender); color: var(--bg);
+      font-size: 13px; font-weight: 800; line-height: 1.4; cursor: pointer;
+      transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s var(--ease);
+    }
+    .btn:hover { background: var(--paper); border-color: var(--paper); transform: translateY(-2px); }
+    .btn-arrow { font-size: 17px; line-height: 1; }
+
+    .text-link {
+      display: inline-flex; align-items: center; gap: 10px; padding-block: 10px;
+      color: var(--text); font-size: 13px; font-weight: 700; transition: color .2s ease;
+    }
+    .text-link:hover { color: var(--peach); }
+
+    /* ===== Brand + nav ===== */
+    .logo { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 44px; }
+    .logo-image { display: block; width: 140px; height: auto; max-height: 52px; object-fit: contain; object-position: left center; }
+    @media (max-width: 560px) { .logo-image { width: 130px; max-height: 44px; } }
+
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid transparent;
+      background: rgba(15, 24, 22, 0.94);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      transition: border-color .3s ease;
+    }
+    .nav.scrolled { border-color: var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 78px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
+    .nav-links a { padding-block: 12px; color: var(--body); font-size: 13px; font-weight: 600; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--peach); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav .btn { min-height: 44px; padding: 11px 17px; }
+
+    .menu-btn {
+      display: none; width: 46px; height: 46px; align-items: center; justify-content: center;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--text); cursor: pointer;
+    }
+    .menu-icon, .menu-icon::before { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--text); }
+    .menu-icon { position: relative; }
+    .menu-icon::before { position: absolute; top: -6px; content: ""; }
+    .menu-btn[aria-expanded="true"] .menu-icon { transform: rotate(45deg); }
+    .menu-btn[aria-expanded="true"] .menu-icon::before { top: 0; transform: rotate(90deg); }
+
+    /* ===== Case study hero ===== */
+    .cs-hero { position: relative; padding-block: clamp(56px, 8vw, 110px) clamp(44px, 6vw, 72px); overflow: hidden; }
+    .cs-hero::before {
+      position: absolute; top: -10%; right: -16%;
+      width: 55vw; height: 55vw; max-width: 760px; max-height: 760px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(166,148,212,.10), rgba(166,148,212,.025) 48%, transparent 72%);
+      content: ""; pointer-events: none;
+    }
+    .crumbs { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 30px; font-size: 12px; font-weight: 700; color: var(--muted); }
+    .crumbs a { color: var(--body); transition: color .2s ease; }
+    .crumbs a:hover { color: var(--peach); }
+
+    .cs-hero-grid {
+      position: relative; display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      align-items: end; gap: clamp(32px, 7vw, 100px);
+    }
+    .cs-hero h1 { margin-top: 24px; max-width: 900px; }
+    .cs-lede { font-size: clamp(16px, 1.5vw, 19px); line-height: 1.9; color: var(--body); max-width: 440px; padding-bottom: 8px; }
+
+    /* meta bar */
+    .meta {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: clamp(40px, 6vw, 72px);
+      border: 1px solid var(--line); border-radius: var(--radius-lg);
+      background: var(--surface); overflow: hidden;
+    }
+    .meta > div { padding: 24px 28px; }
+    .meta > div + div { border-left: 1px solid var(--line); }
+    .meta dt { font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .meta dd { color: var(--text); font-size: 17px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.4; }
+
+    /* KPI cards */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; padding-bottom: var(--section); }
+    .kpi-card {
+      display: flex; flex-direction: column; justify-content: space-between; gap: 44px;
+      min-height: 210px; padding: clamp(22px, 2.4vw, 32px);
+      border: 1px solid transparent; border-radius: var(--radius-lg);
+      color: var(--bg); transition: transform .4s var(--ease), border-color .3s ease;
+    }
+    .kpi-card:nth-child(1) { background: var(--lavender); }
+    .kpi-card:nth-child(2) { background: var(--peach); }
+    .kpi-card:nth-child(3) { background: var(--mint); }
+    .kpi-card:nth-child(4) { background: var(--ochre); }
+    .kpi-card:hover { transform: translateY(-4px); border-color: var(--bg); }
+    .kpi-card .val { font-size: clamp(2.1rem, 3.6vw, 3.2rem); font-weight: 700; line-height: 1; letter-spacing: -0.07em; color: var(--bg); }
+    .kpi-card .lbl { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(15,24,22,.75); }
+
+    /* ===== Content sections ===== */
+    .cs-sec { border-top: 1px solid var(--line); padding-block: clamp(56px, 7vw, 100px); }
+    .cs-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
+      gap: clamp(30px, 7vw, 110px);
+    }
+    .cs-grid.stack { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .cs-label { position: sticky; top: 108px; align-self: start; }
+    .cs-grid.stack .cs-label { position: static; }
+    .cs-label .num { display: block; margin-bottom: 14px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .15em; }
+    .cs-label h2 { margin-top: 14px; }
+
+    .cs-copy { max-width: 700px; }
+    .cs-copy p { font-size: 16px; line-height: 1.95; }
+    .cs-copy p + p { margin-top: 18px; }
+    .cs-copy .lead { color: var(--text); font-size: clamp(19px, 2vw, 26px); line-height: 1.5; font-weight: 500; letter-spacing: -0.03em; }
+    .cs-copy strong { color: var(--text); font-weight: 700; }
+    .cs-copy em { color: var(--peach); font-style: normal; }
+
+    /* numbered rows (methodology) */
+    .rows { display: grid; gap: 14px; margin-top: 30px; max-width: 760px; }
+    .rows li {
+      --c: var(--lavender);
+      display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 20px; align-items: start;
+      padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface);
+      font-size: 15px; line-height: 1.85; counter-increment: r;
+    }
+    .rows { counter-reset: r; }
+    .rows li:nth-child(1) { --c: var(--lavender); }
+    .rows li:nth-child(2) { --c: var(--peach); }
+    .rows li:nth-child(3) { --c: var(--mint); }
+    .rows li::before {
+      content: "0" counter(r); display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+      background: var(--c); color: var(--bg); font-size: 12px; font-weight: 800;
+    }
+    .rows li strong { display: block; color: var(--text); font-size: 17px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 4px; }
+
+    /* gallery */
+    .cs-gallery { display: grid; gap: 22px; }
+    .cs-gallery figure { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
+    .cs-gallery img { width: 100%; height: auto; }
+    .cs-gallery figcaption { padding: 18px 24px; border-top: 1px solid var(--line); background: var(--surface-raised); color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .gallery-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+
+    /* findings cards (2 x 2) */
+    .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .info-card {
+      --c: var(--lavender);
+      padding: clamp(24px, 2.6vw, 34px); border: 1px solid var(--line); border-top: 3px solid var(--c);
+      border-radius: var(--radius-lg); background: var(--surface); font-size: 14px; line-height: 1.9;
+      transition: transform .4s var(--ease), border-color .3s ease;
+    }
+    .info-card:hover { transform: translateY(-4px); border-color: var(--c); }
+    .info-card:nth-child(1) { --c: var(--lavender); }
+    .info-card:nth-child(2) { --c: var(--peach); }
+    .info-card:nth-child(3) { --c: var(--mint); }
+    .info-card:nth-child(4) { --c: var(--ochre); }
+    .info-card strong { display: block; margin-bottom: 8px; color: var(--text); font-size: clamp(18px, 1.7vw, 22px); font-weight: 700; letter-spacing: -0.05em; line-height: 1.3; }
+    .info-card em { color: var(--c); font-style: normal; font-weight: 700; }
+    .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* recommendations: solid colour cards like Services */
+    .rec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .rec {
+      --card: var(--lavender);
+      position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 48px;
+      min-height: 260px; padding: clamp(24px, 3vw, 38px);
+      border: 1px solid transparent; border-radius: var(--radius-lg); background: var(--card);
+      font-size: 14px; line-height: 1.9; color: rgba(15,24,22,.82);
+      transition: transform .4s var(--ease), border-color .3s ease;
+    }
+    .rec:nth-child(1) { --card: var(--lavender); }
+    .rec:nth-child(2) { --card: var(--peach); }
+    .rec:nth-child(3) { --card: var(--mint); }
+    .rec:nth-child(4) { --card: var(--ochre); }
+    .rec:hover { transform: translateY(-4px); border-color: var(--bg); }
+    .rec .rec-num { color: rgba(15,24,22,.65); font-size: 12px; font-weight: 700; }
+    .rec strong { display: block; margin-bottom: 10px; color: var(--bg); font-size: clamp(21px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.05em; line-height: 1.2; }
+
+    /* conclusion statement (ochre, like landing) */
+    .statement {
+      position: relative; padding: clamp(35px, 7vw, 88px); overflow: hidden;
+      border: 1px solid var(--ochre); border-radius: var(--radius-xl); background: var(--ochre);
+    }
+    .statement::after {
+      position: absolute; right: -3%; bottom: -30%; content: "B"; color: rgba(15,24,22,.07);
+      font-size: clamp(260px, 38vw, 520px); font-weight: 800; letter-spacing: -.1em; line-height: 1; pointer-events: none;
+    }
+    .statement-content { position: relative; z-index: 1; }
+    .statement .eyebrow { color: var(--violet-deep); }
+    .statement .big { max-width: 950px; margin-top: 25px; color: var(--bg); font-size: clamp(27px, 4.4vw, 56px); font-weight: 600; line-height: 1.18; letter-spacing: -0.065em; }
+    .statement .big .accent { color: var(--violet-deep); }
+    .statement .small { max-width: 640px; margin-top: 28px; color: rgba(15,24,22,.85); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.9; }
+
+    /* CTA (mint, like landing contact) */
+    .contact {
+      position: relative; padding: clamp(30px, 6vw, 76px); overflow: hidden;
+      border: 1px solid var(--mint); border-radius: var(--radius-xl); background: var(--mint);
+    }
+    .contact-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: end; gap: 35px 70px; }
+    .contact h2 { max-width: 700px; color: var(--bg); }
+    .contact .accent { color: var(--violet-deep); }
+    .contact-copy { max-width: 430px; color: rgba(15,24,22,.85); font-size: 14px; line-height: 1.95; }
+    .contact .btn { margin-top: 24px; border-color: var(--bg); background: var(--bg); color: var(--paper); }
+    .contact .btn:hover { border-color: var(--paper); background: var(--paper); color: var(--bg); }
+    .contact-email { display: block; width: fit-content; margin-top: 18px; color: var(--violet-deep); font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
+
+    /* next case study */
+    .next { border-top: 1px solid var(--line); margin-top: var(--section); padding-block: clamp(36px, 5vw, 60px); }
+    .next a { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .next small { display: block; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .next strong { display: block; margin-top: 8px; color: var(--text); font-size: clamp(2rem, 5vw, 4rem); font-weight: 600; letter-spacing: -0.065em; line-height: 1.1; transition: color .25s ease; }
+    .next .arrow { display: grid; place-items: center; flex: none; width: 64px; height: 64px; border: 1px solid var(--line); border-radius: 50%; color: var(--text); font-size: 24px; transition: background .25s ease, color .25s ease, transform .3s var(--ease); }
+    .next a:hover strong { color: var(--peach); }
+    .next a:hover .arrow { background: var(--peach); color: var(--bg); border-color: var(--peach); transform: translateX(6px); }
+
+    /* ===== Footer ===== */
+    .foot { border-top: 1px solid var(--line); background: #0C1311; }
+    .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 45px; padding-block: 65px 55px; }
+    .foot-brand p { margin-top: 13px; color: var(--muted); font-size: 12px; }
+    .foot-links { display: flex; flex-wrap: wrap; gap: clamp(35px, 7vw, 95px); }
+    .foot-col h2 { margin-bottom: 13px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .foot-col a { display: block; padding-block: 6px; color: var(--body); font-size: 12px; transition: color .2s ease; }
+    .foot-col a:hover { color: var(--peach); }
+    .foot-base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-block: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+
+    /* ===== Motion ===== */
+    .reveal { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .js-ready .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+      .js-ready .reveal.in { opacity: 1; transform: translateY(0); }
+      .rise { animation: rise .8s var(--ease) both; animation-delay: calc(var(--i, 0) * 110ms); }
+      @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card-grid.three { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .nav-inner { min-height: 70px; }
+      .nav-links { display: none; }
+      .nav-links.mobile-open {
+        position: absolute; top: calc(100% + 8px); right: var(--gutter); left: var(--gutter);
+        display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 12px;
+        border: 1px solid var(--line); border-radius: var(--radius-md); background: #141F1C; box-shadow: 0 24px 55px rgba(0,0,0,.35);
+      }
+      .nav-links.mobile-open a { padding: 15px 13px; border-radius: 8px; color: var(--text); font-size: 14px; }
+      .nav-links.mobile-open a:hover { background: var(--surface-hover); color: var(--peach); }
+      .menu-btn { display: inline-flex; }
+      .nav .nav-right > .btn { display: none; }
+
+      .cs-hero-grid, .cs-grid, .contact-inner { grid-template-columns: minmax(0, 1fr); }
+      .cs-hero-grid { gap: 24px; }
+      .cs-label { position: static; }
+      .meta { grid-template-columns: minmax(0, 1fr); }
+      .meta > div + div { border-left: 0; border-top: 1px solid var(--line); }
+      .card-grid, .rec-grid, .gallery-row { grid-template-columns: minmax(0, 1fr); }
+      .contact-inner { gap: 25px; }
+    }
+    @media (max-width: 560px) {
+      .kpi-grid { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+      .kpi-card { min-height: 170px; gap: 30px; }
+      .rows li { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .statement { padding: 30px 23px; border-radius: 20px; }
+      .contact { padding: 28px 23px; border-radius: 20px; }
+      .next .arrow { width: 50px; height: 50px; }
+      .foot-top { padding-block: 48px 38px; }
+      .foot-links { width: 100%; justify-content: flex-start; gap: 45px; }
+      .foot-base { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    /* ===== Vanta additions ===== */
+    .rows li > div > ul.sub { display: grid; gap: 6px; margin-top: 10px; }
+    .rows li > div > ul.sub li { display: block; padding: 0 0 0 18px; border: 0; background: none; position: relative; font-size: 14px; line-height: 1.8; }
+    .rows li > div > ul.sub li::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 6px; border-radius: 50%; background: var(--c); display: block; place-items: unset; }
+    .rows li:nth-child(4) { --c: var(--ochre); }
+    .rows li:nth-child(5) { --c: var(--pink); }
+    .rows.wide { max-width: none; margin-top: 0; }
+    .chip-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 8px; }
+    .chip { --c: var(--lavender); display: flex; gap: 14px; align-items: flex-start; padding: 20px 22px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); color: var(--body); font-size: 14px; line-height: 1.7; }
+    .chip::before { content: "✓"; flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--c); color: var(--bg); font-size: 13px; font-weight: 800; }
+    .chip:nth-child(6n+2) { --c: var(--peach); }
+    .chip:nth-child(6n+3) { --c: var(--mint); }
+    .chip:nth-child(6n+4) { --c: var(--ochre); }
+    .chip:nth-child(6n+5) { --c: var(--pink); }
+    .chip strong { display: block; color: var(--text); font-weight: 700; }
+    .card-grid.five .info-card:nth-child(5) { grid-column: 1 / -1; --c: var(--pink); }
+    .takeaway { margin-top: 36px; padding: clamp(24px, 3vw, 36px); border: 1px solid var(--lavender-border); border-radius: var(--radius-lg); background: var(--surface); color: var(--text); font-size: clamp(17px, 1.6vw, 21px); line-height: 1.7; letter-spacing: -0.03em; }
+    .takeaway strong { color: var(--lavender); font-weight: 700; }
+    .statement .big.long { font-size: clamp(22px, 3.3vw, 42px); line-height: 1.25; }
+    @media (max-width: 1024px) { .chip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 820px) { .card-grid.five .info-card:nth-child(5) { grid-column: auto; } }
+    @media (max-width: 560px) { .chip-grid { grid-template-columns: minmax(0, 1fr); } }
+  </style>
 </head>
-<body style="--c:#A4D4C5">
+
+<body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
-  <header class="cs-nav">
-    <a href="index.html" aria-label="Bloomotive home"><img src="hero logo.png" alt="Bloomotive"></a>
-    <a class="back" href="index.html#work">&larr; All case studies</a>
-  </header>
-  <main id="main">
-    <section class="cs-hero">
-      <div class="in">
-        <span class="eyebrow">Case Study &middot; Energy Technology</span>
-        <h1>Vanta</h1>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="/index.html" aria-label="Bloomotive home">
+      <img src="/hero%20logo.png" alt="Bloomotive" class="logo-image">
+    </a>
+
+    <nav class="nav-links" id="site-navigation" aria-label="Primary navigation">
+      <a href="/index.html#work" aria-current="page">Case Studies</a>
+      <a href="/index.html#services">Services</a>
+      <a href="/index.html#about">About</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn" href="mailto:bloomotive@tbmbrand.com">Send a Message <span class="btn-arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="cs-hero" aria-labelledby="cs-title">
+    <div class="container">
+      <nav class="crumbs rise" style="--i:0" aria-label="Breadcrumb">
+        <a href="/index.html#work">&larr; All case studies</a>
+        <span aria-hidden="true">/</span>
+        <span>Cybersecurity Analytics</span>
+      </nav>
+
+      <div class="cs-hero-grid">
+        <div>
+          <span class="eyebrow rise" style="--i:1">Case Study &middot; Data Analytics &amp; Cybersecurity</span>
+          <h1 class="display-xl rise" id="cs-title" style="--i:2">
+            Cybersecurity <span class="accent-mint">Threat Dashboard</span>
+          </h1>
+        </div>
+
+        <p class="cs-lede rise" style="--i:3">
+          Turning raw cybersecurity data into strategic insights and actionable recommendations for stronger defense and smarter decision-making.
+        </p>
       </div>
-      <p class="lede in">An energy intelligence platform concept helping businesses monitor, optimize, and decarbonize energy systems with data and AI-powered insights.</p>
-    </section>
-    <div class="cover in" role="img" aria-label="Vanta project preview">
-      <b aria-hidden="true">Vanta</b>
-      <img src="images/vanta.jpg" alt="" onerror="this.remove()">
+
+      <dl class="meta rise" style="--i:4">
+        <div><dt>Tool</dt><dd>Power BI</dd></div>
+        <div><dt>Focus</dt><dd>Attack Patterns, Losses &amp; Vulnerabilities</dd></div>
+        <div><dt>Deliverable</dt><dd>Interactive Dashboard &amp; Recommendations</dd></div>
+      </dl>
     </div>
-    <dl class="meta">
-      <div><dt>Client</dt><dd>Vanta</dd></div>
-      <div><dt>Industry</dt><dd>Energy Technology</dd></div>
-      <div><dt>Deliverable</dt><dd>Landing Page</dd></div>
-    </dl>
-    <section class="body" aria-labelledby="h-brief">
-      <h2 id="h-brief">The brief</h2>
-      <p>Technical buyers distrust vague claims. The page had to explain a complex platform plainly, so the value could be understood in one read.</p>
+  </section>
+
+  <!-- KPIs -->
+  <div class="container">
+    <section class="kpi-grid" aria-label="Dashboard highlights">
+      <div class="kpi-card reveal"><div class="val">$151,479</div><div class="lbl">Total Financial Loss</div></div>
+      <div class="kpi-card reveal"><div class="val">3,000</div><div class="lbl">Recorded Incidents</div></div>
+      <div class="kpi-card reveal"><div class="val">2 Billion</div><div class="lbl">Users Affected</div></div>
+      <div class="kpi-card reveal"><div class="val">$50</div><div class="lbl">Average Loss per Incident</div></div>
     </section>
-    <section class="body" aria-labelledby="h-built">
-      <h2 id="h-built">What we built</h2>
-      <ul><li>A landing page for an energy intelligence platform concept</li><li>Messaging that translates monitoring, optimization and decarbonization into plain language</li><li>A data-forward visual tone suited to technical buyers</li></ul>
-    </section>
-    <!-- ADD REAL DETAIL HERE when ready:
-         <section class="body"><h2>The problem</h2><p>What was costing this client customers.</p></section>
-         <section class="body"><h2>The decision</h2><p>The position we set and why.</p></section>
-         <section class="body"><h2>The proof</h2><p>Real results only (enquiries, conversion, feedback).</p></section> -->
-    <div class="actions">
-      <a class="btn solid" href="https://vanta-landing-page-delta.vercel.app/" target="_blank" rel="noopener noreferrer">Visit Live Website <span aria-hidden="true">↗</span></a>
-      <a class="btn ghost" href="mailto:bloomotive@tbmbrand.com?subject=Project%20enquiry">Tell Us About Your Business</a>
+  </div>
+
+  <!-- Executive summary -->
+  <section class="cs-sec" aria-labelledby="h-summary">
+    <div class="container cs-grid">
+      <div class="cs-label reveal">
+        <span class="eyebrow">01</span>
+        <h2 class="display-sm" id="h-summary">Executive Summary</h2>
+      </div>
+      <div class="cs-copy reveal">
+        <p class="lead">
+          This project analyzed cybersecurity threat data to uncover attack patterns, financial losses, and user impact across industries.
+        </p>
+        <p>
+          After cleaning and transforming the dataset in <strong>Power BI</strong>, I built an interactive dashboard highlighting key KPIs: <strong>$151K financial loss, 3,000 incidents, and 2B affected users</strong>.
+        </p>
+        <p>
+          The analysis revealed that <strong>basic vulnerabilities</strong> (weak passwords, unpatched software) caused as much damage as advanced exploits. <strong>Banking and IT</strong> industries faced the highest financial losses, while <strong>nation-state actors</strong> emerged as the most dangerous attack source. Defense adoption was uneven—with antivirus widely used but <strong>AI detection underutilized</strong>.
+        </p>
+        <p>
+          The outcome translated into clear recommendations: strengthen <strong>patch management and password policies</strong>, increase <strong>investment in AI-powered detection</strong>, and prioritize <strong>risk-heavy industries</strong> like Banking and IT.
+        </p>
+        <p>
+          This case study demonstrates my ability to turn raw cybersecurity data into <strong>strategic insights and actionable recommendations</strong> for stronger defense and smarter decision-making.
+        </p>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Background -->
+  <section class="cs-sec" aria-labelledby="h-background">
+    <div class="container cs-grid">
+      <div class="cs-label reveal">
+        <span class="eyebrow">02</span>
+        <h2 class="display-sm" id="h-background">Background</h2>
+      </div>
+      <div class="cs-copy reveal">
+        <p>
+          I developed a cybersecurity threat dashboard to uncover patterns in attacks, financial losses, and vulnerabilities across industries such as banking, IT, healthcare, and government. The dataset contained multiple dimensions—attack types, incident counts, user impact, sources, and defense mechanisms—which required careful preparation before insights could be derived.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="cs-sec" aria-labelledby="h-problem">
+    <div class="container cs-grid">
+      <div class="cs-label reveal">
+        <span class="eyebrow">03</span>
+        <h2 class="display-sm" id="h-problem">Problem</h2>
+      </div>
+      <div class="cs-copy reveal">
+        <p class="lead">
+          Organizations across industries are experiencing a surge in cyberattacks, but many lack clear visibility into <strong>which threats cause the most damage, which vulnerabilities are being exploited, and how effective their defenses really are</strong>.
+        </p>
+        <p>Without this understanding, financial losses and user exposure continue to rise unchecked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="cs-sec" aria-labelledby="h-process">
+    <div class="container cs-grid">
+      <div class="cs-label reveal">
+        <span class="eyebrow">04</span>
+        <h2 class="display-sm" id="h-process">Process</h2>
+      </div>
+      <div class="cs-copy reveal">
+        <ul class="rows">
+          <li><div><strong>Data Cleaning</strong>
+            <ul class="sub">
+              <li>Imported raw cybersecurity data into <strong style="display:inline;font-size:inherit">Power BI</strong>.</li>
+              <li>Removed duplicate records, corrected inconsistent attack type names, and handled missing values in financial loss and user counts.</li>
+            </ul></div></li>
+          <li><div><strong>Data Transformation</strong>
+            <ul class="sub">
+              <li>Built <strong style="display:inline;font-size:inherit">calculated columns</strong> and <strong style="display:inline;font-size:inherit">DAX measures</strong> (e.g., average loss per incident, percentage of users affected by source).</li>
+              <li>Aggregated financial losses and user exposure across industries and vulnerabilities.</li>
+              <li>Standardized metrics (billions for users, thousands for financial loss) for consistency.</li>
+            </ul></div></li>
+          <li><div><strong>Data Modeling</strong>
+            <ul class="sub">
+              <li>Linked tables across <strong style="display:inline;font-size:inherit">attack type, target industries, vulnerabilities, and defense mechanisms</strong>.</li>
+              <li>Structured relationships enabled a single view of incidents across all dimensions.</li>
+            </ul></div></li>
+          <li><div><strong>Visualization Design</strong>
+            <ul class="sub">
+              <li>Designed KPI cards, bar charts, pie charts, and maps for clear storytelling.</li>
+              <li>Applied a <strong style="display:inline;font-size:inherit">six-color complementary palette</strong> to highlight categories while maintaining professional readability.</li>
+            </ul></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard highlights -->
+  <section class="cs-sec" aria-labelledby="h-dash">
+    <div class="container">
+      <div class="cs-grid" style="margin-bottom:clamp(32px,4vw,52px)">
+        <div class="cs-label reveal">
+          <span class="eyebrow">05</span>
+          <h2 class="display-sm" id="h-dash">Dashboard Highlights</h2>
+        </div>
+        <div class="cs-copy reveal">
+          <p class="lead">Visual components</p>
+          <div class="chip-grid">
+            <div class="chip reveal"><span>Users affected by attack type (Phishing, DDoS, Ransomware, SQL Injection, Malware)</span></div>
+            <div class="chip reveal"><span>Financial loss by industry (Banking, IT, Healthcare, Government, Retail, Education)</span></div>
+            <div class="chip reveal"><span>Attack sources (Nation-state, Insider, Hacker groups, Unknown)</span></div>
+            <div class="chip reveal"><span>Loss by vulnerabilities (Weak passwords, Unpatched software, Zero-day exploits, Social engineering)</span></div>
+            <div class="chip reveal"><span>Defense mechanism adoption (Antivirus, Firewalls, AI Detection, VPN, Encryption)</span></div>
+            <div class="chip reveal"><span>Geographic distribution of financial loss</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-gallery">
+        <figure class="reveal">
+          <img src="images/vanta.png" alt="Cybersecurity threat dashboard overview" loading="lazy">
+        </figure>
+        <div class="gallery-row">
+          <figure class="reveal">
+            <img src="images/vanta1.png" alt="Cybersecurity dashboard: attack types, industries and sources" loading="lazy">
+          </figure>
+          <figure class="reveal">
+            <img src="images/vanta2.png" alt="Cybersecurity dashboard: vulnerabilities, defenses and geography" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key insights -->
+  <section class="cs-sec" aria-labelledby="h-insights">
+    <div class="container">
+      <div class="cs-grid" style="margin-bottom:clamp(32px,4vw,52px)">
+        <div class="cs-label reveal">
+          <span class="eyebrow">06</span>
+          <h2 class="display-sm" id="h-insights">Key Insights</h2>
+        </div>
+        <div class="cs-copy reveal">
+          <p class="takeaway" style="margin-top:0">
+            Over <strong>2B users</strong> were impacted, with <strong>Phishing and DDoS</strong> as top threats; <strong>weak passwords and unpatched software</strong> drove major losses, <strong>Banking and IT</strong> were prime targets, <strong>nation-state actors</strong> led 26% of attacks, and <strong>AI detection gaps</strong> left critical blind spots despite strong antivirus adoption.
+          </p>
+        </div>
+      </div>
+
+      <ul class="card-grid five">
+        <li class="info-card reveal"><strong>High Exposure</strong>Over <em>2B users</em> were impacted, with Phishing and DDoS among the top threats.</li>
+        <li class="info-card reveal"><strong>Basic Vulnerabilities = Major Losses</strong>Weak passwords and unpatched software caused the highest financial losses (~$37K–$40K each).</li>
+        <li class="info-card reveal"><strong>Industry Targets</strong>Banking and IT suffered the greatest financial damage, highlighting their attractiveness to attackers.</li>
+        <li class="info-card reveal"><strong>Attack Sources</strong>Nation-state actors were responsible for 26% of incidents, showcasing the scale of advanced persistent threats.</li>
+        <li class="info-card reveal"><strong>Defense Gaps</strong>While antivirus protected 174M users, <em>AI detection tools were underutilized</em>, creating blind spots.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="cs-sec" aria-labelledby="h-impact">
+    <div class="container cs-grid">
+      <div class="cs-label reveal">
+        <span class="eyebrow">07</span>
+        <h2 class="display-sm" id="h-impact">Impact &amp; Recommendations</h2>
+      </div>
+      <div class="cs-copy reveal">
+        <ul class="rows">
+          <li><div><strong>An insight-rich dashboard</strong>Converted fragmented, raw data into an insight-rich dashboard that highlights key risks and vulnerabilities.</div></li>
+          <li><div><strong>Everyday issues, real cost</strong>Exposed how everyday issues like weak passwords had financial impacts comparable to advanced exploits.</div></li>
+          <li><div><strong>Patching and authentication</strong>Recommended stricter patch management policies and stronger authentication practices to reduce exposure.</div></li>
+          <li><div><strong>AI-powered detection</strong>Advocated for increased investment in AI-powered threat detection for real-time resilience.</div></li>
+          <li><div><strong>Industry-specific safeguards</strong>Suggested industry-specific safeguards, particularly in Banking and IT, to address their high-risk exposure.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusion -->
+  <section class="cs-sec" aria-labelledby="h-conclusion" style="padding-bottom:0">
+    <div class="container">
+      <div class="statement reveal">
+        <div class="statement-content">
+          <span class="eyebrow" id="h-conclusion">Conclusion</span>
+          <p class="big long">
+            By framing the problem, analyzing the data, and recommending proactive security measures, I was able to highlight potential vulnerabilities, identify attack patterns, and <span class="accent">deliver actionable insights that strengthen organizational defenses against future threats.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cs-sec" style="border-top:0;padding-bottom:0" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="contact reveal">
+        <div class="contact-inner">
+          <h2 class="display-lg" id="cta-title">
+            Have data that isn&rsquo;t <span class="accent">talking?</span>
+          </h2>
+          <div class="contact-copy">
+            <p>Tell us what you are trying to understand. We will reply with what we would look at first.</p>
+            <a class="btn" href="mailto:bloomotive@tbmbrand.com?subject=Data%20Analytics%20Enquiry">
+              Work With Our Data Team <span class="btn-arrow" aria-hidden="true">&#8599;</span>
+            </a>
+            <a class="contact-email" href="mailto:bloomotive@tbmbrand.com">bloomotive@tbmbrand.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next case study -->
   <nav class="next" aria-label="Next case study">
-    <a href="avenor.html"><div><small>Next case study</small><strong>Avenor</strong></div><span aria-hidden="true">&rarr;</span></a>
+    <div class="container">
+      <a href="/avenor.html">
+        <div>
+          <small>Next case study</small>
+          <strong>Data Analytics &amp; Retention</strong>
+        </div>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
   </nav>
-</div>
-<footer><div class="wrap"><span>&copy; Bloomotive. Be understood. Be trusted. Be chosen.</span><a href="index.html#work">Back to all work</a></div></footer>
+
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="/index.html" aria-label="Bloomotive home">
+          <img src="/hero%20logo.png" alt="Bloomotive" class="logo-image">
+        </a>
+        <p>Be understood. Be trusted. Be chosen.</p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer navigation">
+        <div class="foot-col">
+          <h2>Explore</h2>
+          <a href="/index.html#work">Case Studies</a>
+          <a href="/index.html#services">Services</a>
+          <a href="/index.html#process">How We Work</a>
+          <a href="/index.html#about">About</a>
+        </div>
+        <div class="foot-col">
+          <h2>Connect</h2>
+          <a href="mailto:bloomotive@tbmbrand.com">Email</a>
+          <a href="https://www.instagram.com/thebloomotive?stkn=bXFsdGhiMmFxanRz" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://www.linkedin.com/company/bloomotive/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Bloomotive. All rights reserved.</span>
+      <span>Designing how businesses are chosen.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var nav = document.getElementById("nav");
+  var menuBtn = document.querySelector(".menu-btn");
+  var navLinks = document.querySelector(".nav-links");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function updateNav() { nav.classList.toggle("scrolled", window.scrollY > 8); }
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
+
+  function setMenu(open) {
+    navLinks.classList.toggle("mobile-open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("menu-open", open);
+  }
+  menuBtn.addEventListener("click", function () {
+    setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+  });
+  navLinks.querySelectorAll("a").forEach(function (l) { l.addEventListener("click", function () { setMenu(false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+  document.addEventListener("click", function (e) {
+    if (menuBtn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target)) setMenu(false);
+  });
+  window.addEventListener("resize", function () { if (window.innerWidth > 820) setMenu(false); });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  var items = document.querySelectorAll(".reveal");
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("js-ready");
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -35px 0px" });
+    items.forEach(function (i) { io.observe(i); });
+  }
+})();
+</script>
 </body>
 </html>
