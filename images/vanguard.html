@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Customer Purchase Dashboard | Case Study | Bloomotive</title>
+  <meta name="description" content="A Power BI dashboard that turned raw FMCG transaction data into clear customer segment, product and sales insight, cutting overstock by 18%.">
+  <meta name="theme-color" content="#0F1816">
+  <meta name="color-scheme" content="dark">
+
+  <link rel="icon" type="image/png" href="/images/bloomotive icon.png">
+  <link rel="apple-touch-icon" href="/images/bloomotive icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0F1816;
+      --lavender: #A694D4;
+      --paper: #F7F5F0;
+      --peach: #FFB084;
+      --mint: #A4D4C5;
+      --ochre: #E8B94A;
+      --pink: #FF6B8E;
+      --violet-deep: #4B3A8C;
+
+      --surface: #141F1C;
+      --surface-raised: #192521;
+      --surface-hover: #202D27;
+
+      --text: #F7F5F0;
+      --body: #C2C8C2;
+      --muted: #929D95;
+      --line: rgba(247, 245, 240, 0.13);
+      --lavender-border: rgba(166, 148, 212, 0.3);
+
+      --c: var(--mint); /* accent for this case study */
+
+      --font: "Manrope", sans-serif;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 30px;
+
+      --gutter: clamp(20px, 5vw, 64px);
+      --section: clamp(64px, 9vw, 112px);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--body);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body.menu-open { overflow: hidden; }
+
+    ::selection { background: var(--lavender); color: var(--bg); }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+
+    h1, h2, h3 { color: var(--text); font-weight: 600; text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    :focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 5px;
+      border-radius: 5px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    .section { padding-block: var(--section); }
+
+    .skip {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 300;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      background: var(--lavender);
+      color: var(--bg);
+    }
+    .skip:focus { top: 15px; }
+
+    /* Typography */
+
+    .display-xl { font-size: clamp(2.6rem, 6.2vw, 5.4rem); line-height: 1.04; letter-spacing: -0.075em; }
+    .display-lg { font-size: clamp(2.1rem, 4.2vw, 3.7rem); line-height: 1.12; letter-spacing: -0.065em; }
+    .display-md { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.2; letter-spacing: -0.05em; }
+    .display-sm { font-size: clamp(1.3rem, 2vw, 1.7rem); line-height: 1.3; letter-spacing: -0.045em; }
+
+    .accent { color: var(--lavender); }
+    .accent-peach { color: var(--peach); }
+    .accent-mint { color: var(--mint); }
+    .accent-ochre { color: var(--ochre); }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--c);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Buttons */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 50px;
+      padding: 14px 22px;
+      border: 1px solid var(--lavender);
+      border-radius: var(--radius-sm);
+      background: var(--lavender);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease);
+    }
+    .btn:hover { background: var(--paper); border-color: var(--paper); transform: translateY(-2px); }
+    .btn-arrow { font-size: 17px; line-height: 1; }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-block: 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+    .text-link:hover { color: var(--peach); }
+
+    /* Brand */
+
+    .logo { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 44px; }
+    .logo-image { display: block; width: 140px; height: auto; max-height: 52px; object-fit: contain; object-position: left center; }
+    @media (max-width: 560px) { .logo-image { width: 130px; max-height: 44px; } }
+
+    /* Navigation */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      background: rgba(15, 24, 22, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: border-color 0.3s ease;
+    }
+    .nav.scrolled { border-color: var(--line); }
+
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 78px; }
+
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
+    .nav-links a { padding-block: 12px; color: var(--body); font-size: 13px; font-weight: 600; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--peach); }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav .btn { min-height: 44px; padding: 11px 17px; }
+
+    .menu-btn {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .menu-icon, .menu-icon::before { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--text); }
+    .menu-icon { position: relative; }
+    .menu-icon::before { position: absolute; top: -6px; content: ""; }
+    .menu-btn[aria-expanded="true"] .menu-icon { transform: rotate(45deg); }
+    .menu-btn[aria-expanded="true"] .menu-icon::before { top: 0; transform: rotate(90deg); }
+
+    /* Hero */
+
+    .hero { position: relative; padding-block: clamp(56px, 8vw, 104px) 0; overflow: hidden; }
+
+    .hero::before {
+      position: absolute;
+      top: -6%;
+      right: -16%;
+      width: 55vw;
+      height: 55vw;
+      max-width: 760px;
+      max-height: 760px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(164, 212, 197, 0.10), rgba(164, 212, 197, 0.025) 48%, transparent 72%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .back { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 36px; color: var(--muted); font-size: 12px; font-weight: 700; transition: color 0.2s ease, transform 0.25s var(--ease); }
+    .back:hover { color: var(--peach); transform: translateX(-3px); }
+
+    .hero-inner { position: relative; }
+    .hero h1 { max-width: 1000px; margin-top: 24px; }
+
+    .hero-copy { max-width: 620px; margin-top: 26px; color: var(--body); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.9; }
+
+    /* Cover */
+
+    .cover {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 2 / 1;
+      margin-top: clamp(36px, 5vw, 64px);
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid var(--lavender-border);
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 50% 40%, rgba(164, 212, 197, 0.14), transparent 55%), var(--surface);
+    }
+    .cover::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.32;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+    .cover-name {
+      color: var(--c);
+      font-size: clamp(34px, 9vw, 110px);
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      opacity: 0.85;
+    }
+    .cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Meta */
+
+    .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 15px; }
+    .meta div { padding: 20px 22px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+    .meta dt { color: var(--c); font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .meta dd { margin-top: 6px; color: var(--text); font-size: 16px; font-weight: 700; letter-spacing: -0.03em; }
+
+    /* Split sections (problem etc.) */
+
+    .split-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); align-items: end; gap: clamp(28px, 8vw, 120px); margin-top: 26px; }
+    .split-copy { max-width: 500px; font-size: 16px; line-height: 1.95; }
+    .split-copy p + p { margin-top: 16px; }
+
+    .section-head { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 24px 48px; margin-bottom: 44px; }
+    .section-head > p { max-width: 440px; font-size: 15px; line-height: 1.9; }
+    .section-head h2 { margin-top: 20px; }
+
+    .rule { border-top: 1px solid var(--line); }
+
+    /* Objective cards (colored like the services grid) */
+
+    .cards-4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+
+    .goal {
+      --card: var(--lavender);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 230px;
+      padding: clamp(24px, 3vw, 36px);
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      transition: border-color 0.3s ease, transform 0.4s var(--ease);
+    }
+    .goal:nth-child(1) { --card: var(--lavender); }
+    .goal:nth-child(2) { --card: var(--peach); }
+    .goal:nth-child(3) { --card: var(--mint); }
+    .goal:nth-child(4) { --card: var(--ochre); }
+    .goal:hover { transform: translateY(-4px); border-color: var(--bg); }
+    .goal-number { color: rgba(15, 24, 22, 0.65); font-size: 12px; font-weight: 700; }
+    .goal h3 { color: var(--bg); }
+
+    /* Approach steps */
+
+    .process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; margin-top: 8px; }
+    .step { --sc: var(--lavender); min-width: 0; padding: 26px 22px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+    .step:nth-child(1) { --sc: var(--lavender); }
+    .step:nth-child(2) { --sc: var(--peach); }
+    .step:nth-child(3) { --sc: var(--mint); }
+    .step:nth-child(4) { --sc: var(--ochre); }
+    .step-number { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: var(--sc); color: var(--bg); font-size: 12px; font-weight: 800; }
+    .step h3 { margin-top: 34px; font-size: 19px; letter-spacing: -0.045em; }
+    .step p { margin-top: 10px; font-size: 13px; line-height: 1.9; }
+
+    /* Dashboard */
+
+    .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+    .kpi { padding: 26px 22px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); transition: border-color 0.3s ease, transform 0.4s var(--ease); }
+    .kpi:hover { border-color: var(--c); transform: translateY(-4px); }
+    .kpi strong { display: block; color: var(--c); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1; letter-spacing: -0.07em; }
+    .kpi span { display: block; margin-top: 12px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    .panel { margin-top: 15px; padding: clamp(24px, 4vw, 44px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
+    .panel-head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 32px; }
+    .panel-head p { max-width: 360px; color: var(--muted); font-size: 12px; }
+
+    .dash-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 6vw, 80px); }
+
+    .seg-bars { display: grid; gap: 22px; }
+    .seg-bars .row { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; color: var(--text); font-size: 14px; font-weight: 700; letter-spacing: -0.02em; }
+    .seg-bars .row span { color: var(--body); font-weight: 600; }
+    .track { height: 16px; overflow: hidden; border-radius: 999px; background: rgba(247, 245, 240, 0.07); }
+    .fill { width: var(--w); height: 100%; border-radius: 999px; background: var(--sc); transform-origin: left; }
+    .s-main { --sc: var(--mint); }
+    .s-budget { --sc: var(--lavender); }
+    .s-premium { --sc: var(--peach); }
+
+    .donut { display: block; width: 100%; max-width: 250px; margin-inline: auto; }
+    .donut circle { fill: none; stroke-width: 5.4; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .donut .bg { stroke: rgba(247, 245, 240, 0.07); }
+    .donut .d1 { stroke: var(--mint); }
+    .donut .d2 { stroke: var(--lavender); }
+    .donut .d3 { stroke: var(--peach); }
+    .donut text { fill: var(--text); text-anchor: middle; font-family: var(--font); }
+
+    .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 18px; color: var(--body); font-size: 12px; font-weight: 600; }
+    .legend li { display: inline-flex; align-items: center; gap: 8px; }
+    .legend i { width: 10px; height: 10px; border-radius: 50%; background: var(--sc); }
+
+    .views { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin-top: 15px; }
+    .view { padding: 26px 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+    .view small { color: var(--sc); font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .view:nth-child(1) { --sc: var(--lavender); }
+    .view:nth-child(2) { --sc: var(--peach); }
+    .view:nth-child(3) { --sc: var(--mint); }
+    .view h3 { margin-top: 14px; font-size: 19px; letter-spacing: -0.045em; }
+    .view p { margin-top: 10px; font-size: 13px; line-height: 1.9; }
+
+    /* Findings */
+
+    .findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
+    .finding { position: relative; padding: 24px 24px 24px 54px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); font-size: 14px; line-height: 1.85; }
+    .finding::before { position: absolute; top: 31px; left: 24px; width: 12px; height: 12px; border-radius: 50%; background: var(--sc, var(--c)); content: ""; }
+    .finding:nth-child(5n+1) { --sc: var(--mint); }
+    .finding:nth-child(5n+2) { --sc: var(--lavender); }
+    .finding:nth-child(5n+3) { --sc: var(--peach); }
+    .finding:nth-child(5n+4) { --sc: var(--ochre); }
+    .finding:nth-child(5n+5) { --sc: var(--pink); }
+
+    /* Impact */
+
+    .impact { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+    .stat {
+      --card: var(--lavender);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 56px;
+      min-height: 250px;
+      padding: 26px 24px;
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      color: var(--bg);
+      transition: transform 0.4s var(--ease);
+    }
+    .stat:hover { transform: translateY(-4px); }
+    .stat:nth-child(1) { --card: var(--lavender); }
+    .stat:nth-child(2) { --card: var(--peach); }
+    .stat:nth-child(3) { --card: var(--mint); }
+    .stat:nth-child(4) { --card: var(--ochre); }
+    .stat strong { font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 700; line-height: 1; letter-spacing: -0.08em; }
+    .stat span { font-size: 13px; font-weight: 600; line-height: 1.6; color: rgba(15, 24, 22, 0.82); }
+    .impact-lede { max-width: 640px; margin-bottom: 34px; font-size: 16px; line-height: 1.95; }
+
+    /* Recommendations */
+
+    .recs { display: grid; gap: 12px; }
+    .rec { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 20px; padding: 18px 24px 18px 18px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.6; transition: border-color 0.3s ease, background 0.3s ease; }
+    .rec:hover { border-color: var(--c); background: var(--surface-raised); }
+    .rec b { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: var(--c); color: var(--bg); font-size: 12px; font-weight: 800; }
+
+    /* Outcome statement */
+
+    .statement { position: relative; padding: clamp(32px, 6vw, 80px); overflow: hidden; border: 1px solid var(--ochre); border-radius: var(--radius-xl); background: var(--ochre); }
+    .statement::after { position: absolute; right: -3%; bottom: -34%; content: "B"; color: rgba(15, 24, 22, 0.07); font-size: clamp(240px, 36vw, 480px); font-weight: 800; letter-spacing: -0.1em; line-height: 1; pointer-events: none; }
+    .statement-content { position: relative; z-index: 1; }
+    .statement .eyebrow { color: var(--violet-deep); }
+    .statement p { max-width: 980px; margin-top: 24px; color: var(--bg); font-size: clamp(22px, 3.2vw, 38px); font-weight: 600; line-height: 1.3; letter-spacing: -0.05em; }
+    .statement .accent { color: var(--violet-deep); }
+
+    /* Contact */
+
+    .contact { padding: clamp(30px, 6vw, 76px); overflow: hidden; border: 1px solid var(--mint); border-radius: var(--radius-xl); background: var(--mint); }
+    .contact-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: end; gap: 35px 70px; }
+    .contact h2 { max-width: 700px; color: var(--bg); }
+    .contact .accent { color: var(--violet-deep); }
+    .contact-copy { max-width: 430px; color: rgba(15, 24, 22, 0.85); font-size: 14px; line-height: 1.95; }
+    .contact .btn { margin-top: 24px; border-color: var(--bg); background: var(--bg); color: var(--paper); }
+    .contact .btn:hover { border-color: var(--paper); background: var(--paper); color: var(--bg); }
+    .contact-email { display: block; width: fit-content; margin-top: 18px; color: var(--violet-deep); font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
+
+    /* Next case study */
+
+    .next { display: block; margin-top: var(--section); border-top: 1px solid var(--line); }
+    .next a { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 40px; }
+    .next small { display: block; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .next strong { display: block; margin-top: 8px; color: var(--text); font-size: clamp(2rem, 6vw, 4.4rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.075em; transition: color 0.25s ease; }
+    .next span.arrow { display: grid; flex: none; width: 64px; height: 64px; place-items: center; border: 1px solid var(--c); border-radius: 50%; color: var(--c); font-size: 24px; transition: background 0.25s ease, color 0.25s ease, transform 0.35s var(--ease); }
+    .next a:hover strong { color: var(--peach); }
+    .next a:hover span.arrow { background: var(--c); color: var(--bg); transform: translateX(6px); }
+
+    /* Footer */
+
+    .foot { border-top: 1px solid var(--line); background: #0C1311; }
+    .foot-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 45px; padding-block: 65px 55px; }
+    .foot-brand p { margin-top: 13px; color: var(--muted); font-size: 12px; }
+    .foot-links { display: flex; flex-wrap: wrap; gap: clamp(35px, 7vw, 95px); }
+    .foot-col h2 { margin-bottom: 13px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .foot-col a { display: block; padding-block: 6px; color: var(--body); font-size: 12px; transition: color 0.2s ease; }
+    .foot-col a:hover { color: var(--peach); }
+    .foot-base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-block: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+
+    /* Motion */
+
+    .reveal { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js-ready .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+      .js-ready .reveal.in { opacity: 1; transform: translateY(0); }
+
+      .rise { animation: rise 0.8s var(--ease) both; animation-delay: calc(var(--i, 0) * 110ms); }
+      @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+      .js-ready .fill { transform: scaleX(0); transition: transform 1.2s var(--ease); transition-delay: var(--d, 0s); }
+      .js-ready .in .fill, .js-ready .fill.in { transform: scaleX(1); }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1024px) {
+      .process-grid, .impact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .views { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (max-width: 820px) {
+      .nav-inner { min-height: 70px; }
+      .nav-links { display: none; }
+      .nav-links.mobile-open {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: var(--gutter);
+        left: var(--gutter);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #141F1C;
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.35);
+      }
+      .nav-links.mobile-open a { padding: 15px 13px; border-radius: 8px; color: var(--text); font-size: 14px; }
+      .nav-links.mobile-open a:hover { background: var(--surface-hover); color: var(--peach); }
+      .menu-btn { display: inline-flex; }
+      .nav .nav-right > .btn { display: none; }
+
+      .split-grid, .contact-inner, .dash-split, .cards-4, .findings { grid-template-columns: minmax(0, 1fr); }
+      .split-grid { gap: 22px; }
+      .meta { grid-template-columns: minmax(0, 1fr); }
+      .cover { aspect-ratio: 1.5 / 1; border-radius: 20px; }
+    }
+
+    @media (max-width: 560px) {
+      .section { padding-block: 64px; }
+      .display-xl { font-size: clamp(38px, 11vw, 54px); }
+      .process-grid, .impact, .kpis { grid-template-columns: minmax(0, 1fr); }
+      .goal { min-height: 190px; gap: 30px; }
+      .stat { min-height: 200px; gap: 40px; }
+      .statement, .contact { padding: 28px 22px; border-radius: 20px; }
+      .rec { grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding-right: 16px; }
+      .next span.arrow { width: 52px; height: 52px; }
+      .foot-top { padding-block: 48px 38px; }
+      .foot-links { width: 100%; justify-content: flex-start; gap: 45px; }
+      .foot-base { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+
+    <a class="logo" href="index.html" aria-label="Bloomotive home">
+      <img src="hero logo.png" alt="Bloomotive" class="logo-image">
+    </a>
+
+    <nav class="nav-links" id="site-navigation" aria-label="Primary navigation">
+      <a href="index.html#work">Case Studies</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+    </nav>
+
+    <div class="nav-right">
+      <a class="btn" href="mailto:bloomotive@tbmbrand.com">
+        Send a Message <span class="btn-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-navigation">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-inner">
+
+      <a class="back rise" style="--i:0" href="index.html#work">
+        <span aria-hidden="true">←</span> All case studies
+      </a>
+
+      <div>
+        <span class="eyebrow rise" style="--i:1">Case Study / Data &amp; Analytics</span>
+
+        <h1 class="display-xl rise" id="hero-title" style="--i:2">
+          Customer Purchase <span class="accent-mint">Dashboard</span>
+        </h1>
+
+        <p class="hero-copy rise" style="--i:3">
+          A Power BI dashboard that turned raw FMCG transaction data into a
+          clear picture of who drives revenue, which products sustain
+          growth, and where to act next.
+        </p>
+      </div>
+
+      <div class="cover rise" style="--i:4" role="img" aria-label="Customer Purchase Dashboard project preview">
+        <span class="cover-name" aria-hidden="true">Dashboard</span>
+        <img src="images/customer-dashboard.jpg" alt="" loading="lazy" onerror="this.remove()">
+      </div>
+
+      <dl class="meta rise" style="--i:5">
+        <div><dt>Client</dt><dd>Mid-sized FMCG retailer</dd></div>
+        <div><dt>Industry</dt><dd>Retail &amp; FMCG</dd></div>
+        <div><dt>Deliverable</dt><dd>Power BI Dashboard</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- The problem -->
+
+  <section class="section" aria-labelledby="problem-title">
+    <div class="container">
+      <span class="eyebrow reveal">The problem</span>
+
+      <div class="split-grid">
+        <h2 class="display-lg reveal" id="problem-title">
+          Sales were coming in. <span class="accent-peach">The reasons weren't visible.</span>
+        </h2>
+
+        <div class="split-copy reveal">
+          <p>
+            A mid-sized FMCG retailer could not see which customer segments
+            were driving sales, or how product performance varied across
+            categories.
+          </p>
+          <p>
+            Without visibility into spending patterns and segment
+            contribution, pricing, inventory and marketing decisions were
+            being made on instinct.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives -->
+
+  <section class="section rule" aria-labelledby="goals-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">The objectives</span>
+          <h2 class="display-lg" id="goals-title">Four clear <span class="accent-ochre">business goals.</span></h2>
+        </div>
+        <p>Every chart on the dashboard exists to answer one of these.</p>
+      </div>
+
+      <div class="cards-4">
+        <article class="goal reveal">
+          <span class="goal-number">01 / 04</span>
+          <h3 class="display-sm">Identify top-performing customer segments: Mainstream, Budget and Premium</h3>
+        </article>
+        <article class="goal reveal">
+          <span class="goal-number">02 / 04</span>
+          <h3 class="display-sm">Analyze product-level sales and quantity trends</h3>
+        </article>
+        <article class="goal reveal">
+          <span class="goal-number">03 / 04</span>
+          <h3 class="display-sm">Track sales performance over time to forecast demand</h3>
+        </article>
+        <article class="goal reveal">
+          <span class="goal-number">04 / 04</span>
+          <h3 class="display-sm">Support data-driven marketing and inventory decisions</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+
+  <section class="section" aria-labelledby="approach-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">The approach</span>
+          <h2 class="display-lg" id="approach-title">Questions first. <span class="accent-mint">Visuals second.</span></h2>
+        </div>
+        <p>
+          We began with what leadership needed answered: which customers
+          drive revenue, and which products sustain growth. Each visual was
+          then chosen to make its pattern obvious at a glance.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <article class="step reveal">
+          <span class="step-number">01</span>
+          <h3>Cards for KPIs</h3>
+          <p>The headline numbers, readable in seconds.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step-number">02</span>
+          <h3>Line chart for growth</h3>
+          <p>Monthly sales over time, to expose seasonality and forecast demand.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step-number">03</span>
+          <h3>Bar charts for products</h3>
+          <p>Direct comparison of top sellers by sales and quantity.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step-number">04</span>
+          <h3>Segment correlation</h3>
+          <p>Segment spend read against sales trends to surface actions that turn into revenue.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+
+  <section class="section rule" aria-labelledby="dash-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">The dashboard</span>
+          <h2 class="display-lg" id="dash-title">Built in Power BI. <span class="accent-peach">Read in seconds.</span></h2>
+        </div>
+        <p>It opens with the numbers leadership checks first, then lets them go deeper.</p>
+      </div>
+
+      <ul class="kpis" aria-label="Key metrics">
+        <li class="kpi reveal"><strong>$1.93M</strong><span>Total sales</span></li>
+        <li class="kpi reveal"><strong>265K</strong><span>Customers</span></li>
+        <li class="kpi reveal"><strong>+12%</strong><span>Growth rate</span></li>
+        <li class="kpi reveal"><strong>39%</strong><span>Conversion rate</span></li>
+      </ul>
+
+      <div class="panel reveal">
+        <div class="panel-head">
+          <h3 class="display-sm">Revenue by customer segment</h3>
+          <p>Share of the $1.93M total.</p>
+        </div>
+
+        <div class="dash-split">
+          <ul class="seg-bars" aria-label="Revenue by segment">
+            <li class="s-main">
+              <div class="row"><b>Mainstream</b><span>$751K</span></div>
+              <div class="track"><div class="fill" style="--w:100%"></div></div>
+            </li>
+            <li class="s-budget">
+              <div class="row"><b>Budget</b><span>$676K</span></div>
+              <div class="track"><div class="fill" style="--w:90%;--d:.12s"></div></div>
+            </li>
+            <li class="s-premium">
+              <div class="row"><b>Premium</b><span>$507K</span></div>
+              <div class="track"><div class="fill" style="--w:67.5%;--d:.24s"></div></div>
+            </li>
+          </ul>
+
+          <figure>
+            <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Share of revenue: Mainstream 39 percent, Budget 35 percent, Premium 26 percent">
+              <circle class="bg" cx="21" cy="21" r="15.9155"/>
+              <circle class="d1" cx="21" cy="21" r="15.9155" stroke-dasharray="39 61" stroke-dashoffset="0"/>
+              <circle class="d2" cx="21" cy="21" r="15.9155" stroke-dasharray="35 65" stroke-dashoffset="-39"/>
+              <circle class="d3" cx="21" cy="21" r="15.9155" stroke-dasharray="26 74" stroke-dashoffset="-74"/>
+              <text x="21" y="22.4" font-size="5.2" font-weight="800">$1.93M</text>
+              <text x="21" y="27" font-size="2.3" font-weight="700" opacity=".6">TOTAL SALES</text>
+            </svg>
+            <figcaption>
+              <ul class="legend">
+                <li class="s-main"><i></i>Mainstream 39%</li>
+                <li class="s-budget"><i></i>Budget 35%</li>
+                <li class="s-premium"><i></i>Premium 26%</li>
+              </ul>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="views">
+        <article class="view reveal">
+          <small>Line chart</small>
+          <h3>Monthly sales trend</h3>
+          <p>Sales rise steadily from January to December, pointing to consistent seasonal growth.</p>
+        </article>
+        <article class="view reveal">
+          <small>Bar charts</small>
+          <h3>Product performance</h3>
+          <p>Doritos Corn Chips, Smiths Crinkle Chips and Kettle Mozzarella Chips lead on sales.</p>
+        </article>
+        <article class="view reveal">
+          <small>Area chart</small>
+          <h3>Quantity trend</h3>
+          <p>Product quantities climb quarter on quarter, peaking around early 2019.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key findings -->
+
+  <section class="section" aria-labelledby="findings-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Key findings</span>
+          <h2 class="display-lg" id="findings-title">What the data <span class="accent">actually said.</span></h2>
+        </div>
+      </div>
+
+      <ul class="findings">
+        <li class="finding reveal">Mainstream customers generate the highest revenue at $751K, showing strong mid-tier loyalty.</li>
+        <li class="finding reveal">Budget customers contribute $676K, a stable segment that responds to volume-led offers.</li>
+        <li class="finding reveal">Premium customers contribute $507K, the smallest share, which makes repeat frequency the clearest growth lever.</li>
+        <li class="finding reveal">Steady monthly growth suggests effective customer retention and seasonal campaigns.</li>
+        <li class="finding reveal">Doritos and Kettle dominate both sales and quantity, making them strategic inventory priorities.</li>
+        <li class="finding reveal">Gradual growth across months and years signals consistent market penetration and brand loyalty.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Impact -->
+
+  <section class="section rule" aria-labelledby="impact-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">The proof</span>
+          <h2 class="display-lg" id="impact-title">Decisions got <span class="accent-ochre">measurably better.</span></h2>
+        </div>
+        <p>
+          Leadership gained a clear view of profitability across customer
+          tiers, which fed directly into smarter pricing and promotion.
+        </p>
+      </div>
+
+      <ul class="impact" aria-label="Results">
+        <li class="stat reveal"><strong>-18%</strong><span>Overstock, by stocking against high-selling SKUs</span></li>
+        <li class="stat reveal"><strong>+10%</strong><span>Premium engagement from segment-focused promotions</span></li>
+        <li class="stat reveal"><strong>+15%</strong><span>Sales forecasting accuracy from data-informed planning</span></li>
+        <li class="stat reveal"><strong>+12%</strong><span>Growth rate across the period</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Recommendations -->
+
+  <section class="section" aria-labelledby="recs-title">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">What we recommended next</span>
+          <h2 class="display-lg" id="recs-title">Five moves to <span class="accent-peach">keep it compounding.</span></h2>
+        </div>
+      </div>
+
+      <ol class="recs">
+        <li class="rec reveal"><b>01</b>Deepen segmentation by integrating demographic or loyalty data.</li>
+        <li class="rec reveal"><b>02</b>Bundle offers for Mainstream and Budget buyers to raise purchase frequency.</li>
+        <li class="rec reveal"><b>03</b>Introduce loyalty rewards for Premium customers to increase repeat sales.</li>
+        <li class="rec reveal"><b>04</b>Extend the dashboard to track campaign ROI and channel-level metrics.</li>
+        <li class="rec reveal"><b>05</b>Automate alerts for declining product performance, so marketing and inventory can react faster.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Outcome -->
+
+  <section class="section" style="padding-top:0" aria-label="Outcome">
+    <div class="container">
+      <div class="statement reveal">
+        <div class="statement-content">
+          <span class="eyebrow">The outcome</span>
+          <p>
+            Raw transactional data became a clear, actionable business
+            narrative. The team now makes pricing, inventory and marketing
+            decisions with confidence, backed by
+            <span class="accent">12% growth and 18% less overstock.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+
+  <section class="section" id="contact" style="padding-top:0" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact reveal">
+        <div class="contact-inner">
+
+          <h2 class="display-xl" id="contact-title">
+            Tell us what your data <span class="accent">isn't telling you.</span>
+          </h2>
+
+          <div class="contact-copy">
+            <p>
+              Write a few lines: what you sell, who you sell to, and where
+              you feel you are losing ground. We will reply with what we
+              would look at first.
+            </p>
+
+            <a class="btn" href="mailto:bloomotive@tbmbrand.com?subject=Project%20enquiry">
+              Tell Us About Your Business
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="contact-email" href="mailto:bloomotive@tbmbrand.com">bloomotive@tbmbrand.com</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next -->
+
+  <nav class="next" aria-label="Next case study">
+    <div class="container">
+      <a href="vanta.html">
+        <div><small>Next case study</small><strong>Vanta</strong></div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </nav>
+
+</main>
+
+<footer class="foot">
+  <div class="container">
+
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo" href="index.html" aria-label="Bloomotive home">
+          <img src="hero logo.png" alt="Bloomotive" class="logo-image">
+        </a>
+        <p>Be understood. Be trusted. Be chosen.</p>
+      </div>
+
+      <nav class="foot-links" aria-label="Footer navigation">
+        <div class="foot-col">
+          <h2>Explore</h2>
+          <a href="index.html#work">Case Studies</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#process">How We Work</a>
+          <a href="index.html#about">About</a>
+        </div>
+
+        <div class="foot-col">
+          <h2>Connect</h2>
+          <a href="mailto:bloomotive@tbmbrand.com">Email</a>
+          <a href="https://www.instagram.com/thebloomotive?stkn=bXFsdGhiMmFxanRz" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://www.linkedin.com/company/bloomotive/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Bloomotive. All rights reserved.</span>
+      <span>Designing how businesses are chosen.</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var nav = document.getElementById("nav");
+  var menuBtn = document.querySelector(".menu-btn");
+  var navLinks = document.querySelector(".nav-links");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function updateNav() { nav.classList.toggle("scrolled", window.scrollY > 8); }
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
+
+  function setMenu(open) {
+    navLinks.classList.toggle("mobile-open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("menu-open", open);
+  }
+
+  menuBtn.addEventListener("click", function () {
+    setMenu(menuBtn.getAttribute("aria-expanded") !== "true");
+  });
+
+  navLinks.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () { setMenu(false); });
+  });
+
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+  document.addEventListener("click", function (e) {
+    if (menuBtn.getAttribute("aria-expanded") === "true" && !nav.contains(e.target)) setMenu(false);
+  });
+
+  window.addEventListener("resize", function () { if (window.innerWidth > 820) setMenu(false); });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Scroll reveal (also animates the segment bars) */
+
+  var items = document.querySelectorAll(".reveal, .seg-bars .fill");
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("js-ready");
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -35px 0px" });
+
+    items.forEach(function (item) { observer.observe(item); });
+  }
+})();
+</script>
+
+</body>
+</html>
